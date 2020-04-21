@@ -11,6 +11,8 @@ const fighterSchema = mongoose.Schema({
     country: String,
     deathDate: String,
     description: String,
+    age: String,
+    occupation : String,
     photo: {type: Object}
 }, schemaOptions);
 

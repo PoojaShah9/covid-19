@@ -13,10 +13,10 @@ let create = (req, res) => {
         let validatingInputs = () => {
             console.log("validatingInputs");
             return new Promise((resolve, reject) => {
-                if (req.body.name && req.body.country && req.body.deathDate && req.body.description && req.file) {
+                if (req.body.name && req.body.country && req.body.deathDate && req.body.description&& req.body.occupation && req.body.age && req.file) {
                     resolve();
                 } else {
-                    let apiResponse = response.generate(true, "Required Parameter name, country, deathDate, description or file is missing", 400, null);
+                    let apiResponse = response.generate(true, "Required Parameter name, country, deathDate,occupation ,age, description or file is missing", 400, null);
                     reject(apiResponse);
                 }
             });
@@ -60,6 +60,8 @@ let create = (req, res) => {
                     country: req.body.country,
                     deathDate: req.body.deathDate,
                     description: req.body.description,
+                    occupation : req.body.occupation ,
+                    age: req.body.age,
                     photo: img
                 };
                 console.log('body', body);
