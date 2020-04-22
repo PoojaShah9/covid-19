@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-declare var magnificPopup: Function;
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
@@ -9,10 +8,27 @@ declare var magnificPopup: Function;
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  display = 'none';
+  imgName = '';
+
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
-    magnificPopup();
+    // magnificPopup();
+    this.http.get<any>('https://api.ipdata.co?api-key=test')
+      .subscribe((res) => {
+        console.log('location res', res);
+        alert('location ' + res.country_name + ' ' + res.region +  ' ' + res.city);
+      });
+  }
+
+  openModal(img) {
+    this.imgName = img;
+    this.display = 'block';
+  }
+
+  closeModal() {
+    this.display = 'none';
   }
 
 }
