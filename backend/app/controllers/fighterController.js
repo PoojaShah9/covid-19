@@ -58,7 +58,7 @@ let create = (req, res) => {
                     fighter_id: shortid.generate(),
                     name: req.body.name,
                     country: req.body.country,
-                    deathDate: req.body.deathDate,
+                    deathDate: new Date(req.body.deathDate),
                     description: req.body.description,
                     occupation : req.body.occupation ,
                     age: req.body.age,
