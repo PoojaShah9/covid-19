@@ -27,7 +27,7 @@ let create = (req, res) => {
             return new Promise((resolve, reject) => {
                 Fighters.find({
                         name: req.body.name,
-                        country: req.body.country
+                        country: (req.body.country).toLowerCase()
                     }, function (err, userDetail) {
                         if (err) {
                             logger.error("Internal Server error while fetching record", "create => findRecord()", 5);
@@ -53,18 +53,18 @@ let create = (req, res) => {
                     data: fs.readFileSync(req.file.path),
                     contentType: 'image/png'
                 };
-                console.log('imag', img);
+                // console.log('imag', img);
                 const body = {
                     fighter_id: shortid.generate(),
                     name: req.body.name,
-                    country: req.body.country,
+                    country: (req.body.country).toLowerCase(),
                     deathDate: new Date(req.body.deathDate),
                     description: req.body.description,
                     occupation : req.body.occupation ,
                     age: req.body.age,
                     photo: img
                 };
-                console.log('body', body);
+                // console.log('body', body);
                 Fighters.create(body,
                     function (err, fightersDetails) {
                         if (err) {
@@ -94,8 +94,7 @@ let create = (req, res) => {
                     fs.unlinkSync(req.file.path)
                 res.status(err.status).send(err);
             });
-    }
-;
+    };
 
 let getTopTen = (req, res) => {
 
@@ -142,7 +141,7 @@ let getfightergetByCountry = (req, res) => {
         return new Promise((resolve, reject) => {
             let body = {};
             if (req.query.country) {
-                body['country'] = req.query.country
+                body['country'] = (req.query.country).toLowerCase();
             }
             Fighters.find(body, function (err, userDetail) {
                 if (err) {

@@ -12,8 +12,8 @@ const fighterSchema = mongoose.Schema({
     deathDate: String,
     description: String,
     age: String,
-    occupation : String,
-    photo: {type: Object}
+    occupation: String,
+    photo: {data: Buffer, contentType: String}
 }, schemaOptions);
 
 var Fighters = mongoose.model('fighters', fighterSchema);
