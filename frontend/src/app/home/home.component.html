@@ -5,14 +5,16 @@
       <div class="container">
         <div class="row no-gutters slider-text align-items-center">
           <div class="col-md-9 ftco-animate fadeInUp ftco-animated">
-<!--            <p class="breadcrumbs"><span class="mr-2"><a [routerLink]="['/']">Home</a></span> <span>Gallery</span></p>-->
+            <!--            <p class="breadcrumbs"><span class="mr-2"><a [routerLink]="['/']">Home</a></span> <span>Gallery</span></p>-->
             <h1 class="mb-3 bread">Corona Heroes</h1>
             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
               <li class="nav-item">
-                <a class="nav-link active" id="country-tab" data-toggle="pill" href="#country" role="tab" (click)="onTabClick('country')" aria-controls="country" aria-selected="false">Country</a>
+                <a class="nav-link active" id="country-tab" data-toggle="pill" href="#country" role="tab"
+                   (click)="onTabClick('country')" aria-controls="country" aria-selected="false">Country</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" id="showall-tab" data-toggle="pill" href="#showall" (click)="onTabClick('world')" role="tab" aria-controls="showall" aria-selected="true">World wide</a>
+                <a class="nav-link" id="showall-tab" data-toggle="pill" href="#showall" (click)="onTabClick('world')"
+                   role="tab" aria-controls="showall" aria-selected="true">World wide</a>
               </li>
             </ul>
           </div>
@@ -26,9 +28,9 @@
                   <option *ngFor="let item of countrylist" [value]="item.cluster_name">{{item.cluster_name}}</option>
                 </datalist>
               </div>
+            </div>
           </div>
         </div>
-      </div>
       </div>
     </section>
     <section class="ftco-section-2">
@@ -78,7 +80,8 @@
           <div class="col-md-3 ftco-animate fadeInUp ftco-animated">
             <a href="../../assets/images/image_2.jpg"
                class="photography-entry img image-popup d-flex justify-content-center align-items-center"
-               style="background-image: url(../../assets/images/image_2.jpg);">
+               [style.background]="'url(' + mySrc + ') no-repeat'">
+              <!--               style="background-image: url(../../assets/images/image_2.jpg);">-->
               <div class="overlay"></div>
               <div class="text text-center">
                 <h3>Work 02</h3>
@@ -217,23 +220,23 @@
         <!--                 <h4 class="modal-title">Model Title</h4>     -->
         <!--        </div>-->
         <div class="modal-body">   
-<!--          <div class="row">-->
-            <div class="row col-md-12">
-              <div class="col-md-5">
-                <div class="form-group">
-                  <img id="image-gallery-image" class="img-responsive" [src]="imgName" style="width: 100%;">
-                </div>
-              </div>
-              <div class="col-md-7">
-                <div class="form-group">
-                  <p>Angular 2 or 4 is a component-based framework with typescript, Components are major building blocks
-                    of it. A component can be defined as an independent cohesive block of code which has the required
-                    logic, view, and data as one unit. When written using TypeScript, a component is a TypeScript class
-                    decorated with @Component() decorator.</p>
-                </div>
+          <!--          <div class="row">-->
+          <div class="row col-md-12">
+            <div class="col-md-5">
+              <div class="form-group">
+                <img id="image-gallery-image" class="img-responsive" [src]="imgName" style="width: 100%;">
               </div>
             </div>
-<!--          </div>-->
+            <div class="col-md-7">
+              <div class="form-group">
+                <p>Angular 2 or 4 is a component-based framework with typescript, Components are major building blocks
+                  of it. A component can be defined as an independent cohesive block of code which has the required
+                  logic, view, and data as one unit. When written using TypeScript, a component is a TypeScript class
+                  decorated with @Component() decorator.</p>
+              </div>
+            </div>
+          </div>
+          <!--          </div>-->
         </div>
         <div class="modal-footer">
           <div class="row float-right">
