@@ -13,6 +13,7 @@ import { ContactComponent } from './contact/contact.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { SingleComponent } from './single/single.component';
 import {HttpClientModule} from '@angular/common/http';
+import {FormsModule} from "@angular/forms";
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +29,7 @@ import {HttpClientModule} from '@angular/common/http';
   imports: [
     BrowserModule,
     RouterModule,
+    FormsModule,
     AppRoutingModule,
     HttpClientModule
   ],
