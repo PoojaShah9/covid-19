@@ -34,16 +34,14 @@ export class HomeComponent implements OnInit {
         console.log('location res', res);
         if (res) {
           this.loading = false;
-          this.cntName = 'India';
-          // this.cntName = res.country_name;
+          // this.cntName = 'India';
+          this.cntName = res.country_name;
           this.getFighter(this.cntName);
         }
         // alert('location ' + res.country_name + ' ' + res.region +  ' ' + res.city);
       }, error => {
         this.loading= false;
         console.log('error', error);
-        this.cntName = 'India';
-        this.getFighter(this.cntName);
       });
     this.countrylist = Country;
 
