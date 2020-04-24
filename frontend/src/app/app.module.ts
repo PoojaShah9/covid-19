@@ -14,6 +14,8 @@ import { GalleryComponent } from './gallery/gallery.component';
 import { SingleComponent } from './single/single.component';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from "@angular/forms";
+import {ngxLoadingAnimationTypes, NgxLoadingModule} from 'ngx-loading';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +33,14 @@ import {FormsModule} from "@angular/forms";
     RouterModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxLoadingModule.forRoot({
+      animationType: ngxLoadingAnimationTypes.threeBounce,
+      backdropBackgroundColour: 'rgba(1,1,1,0.57)',
+      backdropBorderRadius: '4px',
+      primaryColour: '#ffffff',
+      secondaryColour: '#ffffff',
+      tertiaryColour: '#ffffff'})
   ],
   providers: [],
   bootstrap: [AppComponent]

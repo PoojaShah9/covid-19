@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+declare var burgerMenu: Function;
+declare var mobileMenuOutsideClick: Function;
 
 @Component({
   selector: 'app-sidebar',
@@ -10,6 +12,8 @@ export class SidebarComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    burgerMenu();
+    mobileMenuOutsideClick();
   }
 
 }

@@ -1,3 +1,4 @@
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }"></ngx-loading>
 <div id="colorlib-page">
   <app-sidebar></app-sidebar>
   <div id="colorlib-main">
@@ -19,15 +20,14 @@
             </ul>
           </div>
           <div class="col-md-3 ftco-animate fadeInUp ftco-animated">
-            <div class="serach-bar">
-              <div class="searh-bar-inner">
-                <button type="submit"><i class="far fa-search"></i></button>
-                <input type="text" name="searchText" (keydown)="onChanges()" class="form-control"
-                       list="filteredArray" [(ngModel)]="searchText" placeholder="" (change)="onCountryChange()"/>
-                <datalist *ngIf="showDD" id="filteredArray">
-                  <option *ngFor="let item of countrylist" [value]="item.cluster_name">{{item.cluster_name}}</option>
-                </datalist>
-              </div>
+            <div class="form-group has-search">
+              <span class="icon-search form-control-feedback"></span>
+              <input type="text" name="searchText" (keydown)="onChanges()" class="form-control"
+                     list="filteredArray" [(ngModel)]="searchText" placeholder="Search Country"
+                     (change)="onCountryChange()"/>
+              <datalist *ngIf="showDD" id="filteredArray">
+                <option *ngFor="let item of countrylist" [value]="item.name">{{item.name}}</option>
+              </datalist>
             </div>
           </div>
         </div>
@@ -36,37 +36,48 @@
     <section class="ftco-section-2">
       <div class="photograhy">
         <div class="row no-gutters">
-          <div class="tab-content" id="pills-tabContent">
+          <div class="tab-content" id="pills-tabContent" style="width: 100%">
 
             <div class="tab-pane fade show active" id="country" role="tabpanel" aria-labelledby="country-tab">
-              <div class="col-md-3 ftco-animate fadeInUp ftco-animated">
-                <a class="photography-entry img image-popup d-flex justify-content-center align-items-center"
-                   style="background-image: url(../../assets/images/image_1.jpg);"
-                   (click)="openModal('../../assets/images/image_1.jpg')">
-                  <div class="overlay"></div>
-                  <div class="text text-center">
-                    <h3>Work 01</h3>
-                    <span class="tag">Model</span>
+              <div class="row">
+                <div class="col-md-12" style="display: contents;">
+                  <div class="col-md-3 ftco-animate fadeInUp ftco-animated" *ngFor="let f of fighterData">
+                    <div class="custom-image">
+                      <img
+                        class="photography-entry img image-popup d-flex justify-content-center align-items-center image"
+                        src='data:image/jpeg;base64,{{f.photo}}'
+                        (click)="openModal(f)">
+                      <!--<div class="middle">
+                        <div class="text">
+                          <h4>{{f.name}}</h4>
+                        </div>
+                      </div>-->
+                    </div>
                   </div>
-                </a>
+                </div>
               </div>
             </div>
 
             <div class="tab-pane fade show" id="showall" role="tabpanel" aria-labelledby="showall-tab">
-              <div class="col-md-3 ftco-animate fadeInUp ftco-animated">
-                <a class="photography-entry img image-popup d-flex justify-content-center align-items-center"
-                   style="background-image: url(../../assets/images/image_1.jpg);"
-                   (click)="openModal('../../assets/images/image_1.jpg')">
-                  <div class="overlay"></div>
-                  <div class="text text-center">
-                    <h3>Work 01</h3>
-                    <span class="tag">Model</span>
+              <div class="row">
+                <div class="col-md-12" style="display: contents;">
+                  <div class="col-md-3 ftco-animate fadeInUp ftco-animated" *ngFor="let f of fighterData">
+                    <div class="custom-image">
+                      <img
+                        class="photography-entry img image-popup d-flex justify-content-center align-items-center image"
+                        src='data:image/jpeg;base64,{{f.photo}}' (click)="openModal(f)">
+                      <!--<div class="middle">
+                        <div class="text">
+                          <h4>{{f.name}}</h4>
+                        </div>
+                      </div>-->
+                    </div>
                   </div>
-                </a>
+                </div>
               </div>
             </div>
           </div>
-          <div class="col-md-3 ftco-animate fadeInUp ftco-animated">
+          <!--<div class="col-md-3 ftco-animate fadeInUp ftco-animated">
             <a class="photography-entry img image-popup d-flex justify-content-center align-items-center"
                style="background-image: url(../../assets/images/image_1.jpg);"
                (click)="openModal('../../assets/images/image_1.jpg')">
@@ -198,52 +209,67 @@
                 <span class="tag">Photography</span>
               </div>
             </a>
-          </div>
+          </div>-->
         </div>
       </div>
     </section>
-  </div>
-
-  <div class="backdrop" [ngStyle]="{'display':display}"></div>
-
-  <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':display}">
-    <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content">
-        <!--        <div class="modal-header">     -->
-        <div class="modal-header">
-          <h4 class="modal-title" id="image-gallery-title"></h4>
-          <button type="button" class="close" aria-label="Close" (click)="closeModal()"><span
-            aria-hidden="true">&times;</span></button>
-        </div>
-        <!--          <button type="button" class="close" aria-label="Close" (click)="closeModal()"><span-->
-        <!--            aria-hidden="true">&times;</span></button>-->
-        <!--                 <h4 class="modal-title">Model Title</h4>     -->
-        <!--        </div>-->
-        <div class="modal-body">   
-          <!--          <div class="row">-->
-          <div class="row col-md-12">
-            <div class="col-md-5">
-              <div class="form-group">
-                <img id="image-gallery-image" class="img-responsive" [src]="imgName" style="width: 100%;">
+    <div class="backdrop" [ngStyle]="{'display':display}"></div>
+    <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':display}">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <!--        <div class="modal-header">     -->
+          <div class="modal-header">
+            <h4 class="modal-title" id="image-gallery-title">Name: {{selectedFighter.name}}</h4>
+            <button type="button" class="close" aria-label="Close" (click)="closeModal()"><span
+              aria-hidden="true">&times;</span></button>
+          </div>
+          <!--          <button type="button" class="close" aria-label="Close" (click)="closeModal()"><span-->
+          <!--            aria-hidden="true">&times;</span></button>-->
+          <!--                 <h4 class="modal-title">Model Title</h4>     -->
+          <!--        </div>-->
+          <div class="modal-body">   
+            <!--          <div class="row">-->
+            <div class="row col-md-12">
+              <div class="col-md-5">
+                <div class="form-group">
+                  <img id="image-gallery-image" class="img-responsive"
+                       src="data:image/jpeg;base64,{{selectedFighter.photo}}" style="width: 100%;
+    height: 235px;">
+                </div>
+              </div>
+              <div class="col-md-7">
+                <!--<div class="form-group">
+                  <label>Name: </label>
+                </div>-->
+                <div class="form-group">
+                  <label>Occupation: </label>{{selectedFighter.occupation}}
+                </div>
+                <div class="form-group">
+                  <label>Description: </label>{{selectedFighter.description}}
+                </div>
+                <div class="form-group">
+                  <label>Death Date: </label>{{selectedFighter.deathDate |date: 'dd-MM-yyyy h:mm'}}
+                </div>
+                <div class="form-group">
+                  <label>Age: </label>{{selectedFighter.age}}
+                </div>
+                <div class="form-group">
+                  <label>Address: </label>{{selectedFighter.country}}
+                </div>
               </div>
             </div>
-            <div class="col-md-7">
-              <div class="form-group">
-                <p>Angular 2 or 4 is a component-based framework with typescript, Components are major building blocks
-                  of it. A component can be defined as an independent cohesive block of code which has the required
-                  logic, view, and data as one unit. When written using TypeScript, a component is a TypeScript class
-                  decorated with @Component() decorator.</p>
-              </div>
+            <!--          </div>-->
+          </div>
+          <div class="modal-footer">
+            <div class="row float-right">
+              <button class="btn btn-primary" style="margin: 5px">Share</button>
+              <button class="btn btn-success" style="margin: 5px">Donate</button>
             </div>
-          </div>
-          <!--          </div>-->
-        </div>
-        <div class="modal-footer">
-          <div class="row float-right">
-            <button class="btn btn-primary" style="margin: 5px">Share</button>
-            <button class="btn btn-success" style="margin: 5px">Donate</button>
-          </div>
-        </div><!-- /.modal-content --> 
-      </div><!-- /.modal-dialog -->
-    </div><!-- /.modal !-->
+          </div><!-- /.modal-content --> 
+        </div><!-- /.modal-dialog -->
+      </div><!-- /.modal !-->
+    </div>
   </div>
+
+</div>
+
