@@ -20,6 +20,12 @@ export class HomeComponent implements OnInit {
   showDD = false;
   countrylist: any = [];
   background;
+  photoArray: any = ['https://wallpapercave.com/wp/wp2622932.jpg',
+    'https://lu2cspjiis-flywheel.netdna-ssl.com/wp-content/uploads/2017/03/pexels-photo-105254.jpeg',
+    'https://cdn.fstoppers.com/styles/large-16-9/s3/lead/2019/04/bd7ef9c6cfca327dc3fa4cee512a68be.jpg',
+    'https://blog.shawacademy.com/wp-content/uploads/2015/09/Photography-is.jpg',
+    'https://blog.shawacademy.com/wp-content/uploads/2015/09/photographer-1000x605.jpg',
+    'https://blog.shawacademy.com/wp-content/uploads/2015/09/photography-tutor-1000x605.jpg'];
 
   constructor(private http: HttpClient,
               private sanitizer: DomSanitizer,
@@ -40,7 +46,9 @@ export class HomeComponent implements OnInit {
         }
         // alert('location ' + res.country_name + ' ' + res.region +  ' ' + res.city);
       }, error => {
-        this.loading= false;
+        this.loading = false;
+        this.cntName = 'India';
+        this.getFighter(this.cntName);
         console.log('error', error);
       });
     this.countrylist = Country;
@@ -64,11 +72,14 @@ export class HomeComponent implements OnInit {
         if (res.data) {
           this.loading = false;
           this.fighterData = res.data;
-          this.fighterData.filter((x) => {
-            let image = this._arrayBufferToBase64(x.photo.data.data);
-            // this.myFunction(image);
-            x['photo'] = image;
-            // this.mySrc = image;
+          this.fighterData.filter((x, i) => {
+          // this.photoArray.filter((y) => {
+              x['link'] = this.photoArray[i];
+            // });
+            // let image = this._arrayBufferToBase64(x.photo.data.data);
+            // // this.myFunction(image);
+            // x['photo'] = image;
+            // // this.mySrc = image;
           });
         }
       }, error => {
@@ -88,9 +99,6 @@ export class HomeComponent implements OnInit {
   openModal(data) {
     this.selectedFighter = data;
     console.log('selected', this.selectedFighter);
-    // let image = this._arrayBufferToBase64(this.selectedFighter.photo);
-    // // this.myFunction(image);
-    // this.selectedFighter['photo'] = image;
     this.display = 'block';
   }
 
@@ -98,7 +106,9 @@ export class HomeComponent implements OnInit {
     this.display = 'none';
   }
 
-  onChanges() {
+  onChanges(e) {
+    // let abc = e.target.value.toUpperCase();
+    // console.log('abcccc', e.target.value, abc);
     if (this.searchText === '' || this.searchText === undefined) {
       this.showDD = false;
     } else {

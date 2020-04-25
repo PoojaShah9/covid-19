@@ -22,7 +22,7 @@
           <div class="col-md-3 ftco-animate fadeInUp ftco-animated">
             <div class="form-group has-search">
               <span class="icon-search form-control-feedback"></span>
-              <input type="text" name="searchText" (keydown)="onChanges()" class="form-control"
+              <input type="text" name="searchText" (keydown)="onChanges($event)" class="form-control"
                      list="filteredArray" [(ngModel)]="searchText" placeholder="Search Country"
                      (change)="onCountryChange()"/>
               <datalist *ngIf="showDD" id="filteredArray">
@@ -42,18 +42,30 @@
               <div class="row">
                 <div class="col-md-12" style="display: contents;">
                   <div class="col-md-3 ftco-animate fadeInUp ftco-animated" *ngFor="let f of fighterData">
+                    <a class="photography-entry img image-popup d-flex justify-content-center align-items-center"
+                       style="width: 280px;"
+                       [ngStyle]="{'background-image': 'url(' + f.link + ')'}"
+                       (click)="openModal(f)">
+                      <div class="overlay"></div>
+                      <div class="text text-center">
+                        <h3>{{f.name}}</h3>
+                        <span class="tag">{{f.age}}</span>
+                      </div>
+                    </a>
+                  </div>
+                  <!--<div class="col-md-3 ftco-animate fadeInUp ftco-animated" >
                     <div class="custom-image">
                       <img
                         class="photography-entry img image-popup d-flex justify-content-center align-items-center image"
                         src='data:image/jpeg;base64,{{f.photo}}'
                         (click)="openModal(f)">
-                      <!--<div class="middle">
+                      &lt;!&ndash;<div class="middle">
                         <div class="text">
                           <h4>{{f.name}}</h4>
                         </div>
-                      </div>-->
+                      </div>&ndash;&gt;
                     </div>
-                  </div>
+                  </div>-->
                 </div>
               </div>
             </div>
@@ -62,17 +74,18 @@
               <div class="row">
                 <div class="col-md-12" style="display: contents;">
                   <div class="col-md-3 ftco-animate fadeInUp ftco-animated" *ngFor="let f of fighterData">
-                    <div class="custom-image">
-                      <img
-                        class="photography-entry img image-popup d-flex justify-content-center align-items-center image"
-                        src='data:image/jpeg;base64,{{f.photo}}' (click)="openModal(f)">
-                      <!--<div class="middle">
-                        <div class="text">
-                          <h4>{{f.name}}</h4>
-                        </div>
-                      </div>-->
-                    </div>
+                    <a class="photography-entry img image-popup d-flex justify-content-center align-items-center"
+                       style="width: 280px;"
+                       [ngStyle]="{'background-image': 'url(' + f.link + ')'}"
+                       (click)="openModal(f)">
+                      <div class="overlay"></div>
+                      <div class="text text-center">
+                        <h3>{{f.name}}</h3>
+                        <span class="tag">{{f.age}}</span>
+                      </div>
+                    </a>
                   </div>
+
                 </div>
               </div>
             </div>
@@ -233,7 +246,7 @@
               <div class="col-md-5">
                 <div class="form-group">
                   <img id="image-gallery-image" class="img-responsive"
-                       src="data:image/jpeg;base64,{{selectedFighter.photo}}" style="width: 100%;
+                       src="{{selectedFighter.link}}" style="width: 100%;
     height: 235px;">
                 </div>
               </div>

@@ -69,3 +69,13 @@
 .btn {
   border-radius: 5px;
 }
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: black;
+  background-color: #f67e7d;
+}
+a {
+  color: black;
+}
+.form-control {
+  background-color: #f8f9fa !important;
+}
