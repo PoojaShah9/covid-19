@@ -3,6 +3,8 @@ import {HttpClient} from '@angular/common/http';
 import {FighterService} from "../services/fighter.service";
 import {DomSanitizer} from '@angular/platform-browser';
 import {Country} from '../country';
+import {ShareService} from '@ngx-share/core';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -12,6 +14,7 @@ import {Country} from '../country';
 export class HomeComponent implements OnInit {
 
   display = 'none';
+  displayReturnModal = 'none';
   selectedFighter: any = {};
   cntName = '';
   loading = false;
@@ -26,10 +29,18 @@ export class HomeComponent implements OnInit {
     'https://blog.shawacademy.com/wp-content/uploads/2015/09/Photography-is.jpg',
     'https://blog.shawacademy.com/wp-content/uploads/2015/09/photographer-1000x605.jpg',
     'https://blog.shawacademy.com/wp-content/uploads/2015/09/photography-tutor-1000x605.jpg'];
+  param1;
+  param2;
 
   constructor(private http: HttpClient,
+              public share: ShareService,
               private sanitizer: DomSanitizer,
-              private fighterService: FighterService) {
+              private fighterService: FighterService,
+              private route: ActivatedRoute) {
+  }
+
+  onShareClick(e) {
+    console.log('eeeeee', e);
   }
 
   ngOnInit(): void {
@@ -52,6 +63,16 @@ export class HomeComponent implements OnInit {
         console.log('error', error);
       });
     this.countrylist = Country;
+    this.route.queryParams.subscribe(params => {
+      console.log('params', params);
+      if (params.id) {
+        console.log('in if');
+        this.getFighter(this.cntName);
+        this.openReturnModal()
+      } else {
+        console.log('in else');
+      }
+    });
 
   }
 
@@ -73,8 +94,8 @@ export class HomeComponent implements OnInit {
           this.loading = false;
           this.fighterData = res.data;
           this.fighterData.filter((x, i) => {
-          // this.photoArray.filter((y) => {
-              x['link'] = this.photoArray[i];
+            // this.photoArray.filter((y) => {
+            x['link'] = this.photoArray[i];
             // });
             // let image = this._arrayBufferToBase64(x.photo.data.data);
             // // this.myFunction(image);
@@ -102,8 +123,13 @@ export class HomeComponent implements OnInit {
     this.display = 'block';
   }
 
+  openReturnModal() {
+    this.displayReturnModal = 'block';
+  }
+
   closeModal() {
     this.display = 'none';
+    this.displayReturnModal = 'none';
   }
 
   onChanges(e) {

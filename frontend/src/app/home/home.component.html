@@ -30,6 +30,27 @@
               </datalist>
             </div>
           </div>
+          <!--<div class="row">
+            <a href="www.google.com" type="button" mat-fab shareButton="facebook"
+               [style.backgroundColor]="share.prop.facebook.color">
+              fackbook
+              &lt;!&ndash;              <fa-icon [icon]="share.prop.facebook.icon" size="lg"></fa-icon>&ndash;&gt;
+            </a>
+            <a href="http://www.facebook.com/share.php?u=https://wallpapercave.com/wp/wp2622932.jpg"
+               target="_blank">
+              <button class="btn btn-social btn-facebook">
+      <span class="icon icon-facebook">
+      </span>
+                Share on Facebook
+              </button>
+            </a>
+            <button mat-fab shareButton="twitter" [style.backgroundColor]="share.prop.twitter.color">twitter
+              &lt;!&ndash;              <fa-icon [icon]="share.prop.twitter.icon" size="lg"></fa-icon>&ndash;&gt;
+            </button>
+            <button mat-fab shareButton="linkedin" [style.backgroundColor]="share.prop.linkedin.color">linkedin
+              &lt;!&ndash;              <fa-icon [icon]="share.prop.linkedin.icon" size="lg"></fa-icon>&ndash;&gt;
+            </button>
+          </div>-->
         </div>
       </div>
     </section>
@@ -275,7 +296,74 @@
           </div>
           <div class="modal-footer">
             <div class="row float-right">
+<!--              <a href="http://www.facebook.com/share.php?u={{selectedFighter.link}}&description={{selectedFighter.description}}"-->
+<!--                 target="_blank">-->
+              <a href="https://www.facebook.com/dialog/feed?app_id=1389892087910588 &redirect_uri=http://localhost:4200/ &link=http://localhost:4200/ &picture={{selectedFighter.link}}
+              &caption={{selectedFighter.country}} &description={{selectedFighter.description}}">
+                <button class="btn btn-social btn-facebook">
+                  <span class="icon icon-facebook">
+                  </span>
+                  Share on Facebook
+                </button>
+              </a>
               <button class="btn btn-primary" style="margin: 5px">Share</button>
+              <button class="btn btn-success" style="margin: 5px">Donate</button>
+            </div>
+          </div><!-- /.modal-content --> 
+        </div><!-- /.modal-dialog -->
+      </div><!-- /.modal !-->
+    </div>
+
+
+    <div class="backdrop" [ngStyle]="{'display':displayReturnModal}"></div>
+    <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayReturnModal}">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <!--        <div class="modal-header">     -->
+          <div class="modal-header">
+            <h4 class="modal-title" id="image-gallery-title">Name: {{selectedFighter.name}}</h4>
+            <button type="button" class="close" aria-label="Close" (click)="closeModal()"><span
+              aria-hidden="true">&times;</span></button>
+          </div>
+          <!--          <button type="button" class="close" aria-label="Close" (click)="closeModal()"><span-->
+          <!--            aria-hidden="true">&times;</span></button>-->
+          <!--                 <h4 class="modal-title">Model Title</h4>     -->
+          <!--        </div>-->
+          <div class="modal-body">   
+            <!--          <div class="row">-->
+            <div class="row col-md-12">
+              <div class="col-md-5">
+                <div class="form-group">
+                  <img id="image-gallery-image" class="img-responsive"
+                       src="{{selectedFighter.link}}" style="width: 100%;
+    height: 235px;">
+                </div>
+              </div>
+              <div class="col-md-7">
+                <!--<div class="form-group">
+                  <label>Name: </label>
+                </div>-->
+                <div class="form-group">
+                  <label>Occupation: </label>{{selectedFighter.occupation}}
+                </div>
+                <div class="form-group">
+                  <label>Description: </label>{{selectedFighter.description}}
+                </div>
+                <div class="form-group">
+                  <label>Death Date: </label>{{selectedFighter.deathDate |date: 'dd-MM-yyyy h:mm'}}
+                </div>
+                <div class="form-group">
+                  <label>Age: </label>{{selectedFighter.age}}
+                </div>
+                <div class="form-group">
+                  <label>Address: </label>{{selectedFighter.country}}
+                </div>
+              </div>
+            </div>
+            <!--          </div>-->
+          </div>
+          <div class="modal-footer">
+            <div class="row float-right">
               <button class="btn btn-success" style="margin: 5px">Donate</button>
             </div>
           </div><!-- /.modal-content --> 
