@@ -1,0 +1,95 @@
+<div class="container">
+  <ngx-spinner
+    bdOpacity=0.9
+    bdColor="#333"
+    size="large"
+    color="#fff"
+    type="ball-atom">
+    <p style="color: white"> Loading... </p>
+  </ngx-spinner>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel with-nav-tabs panel-default">
+        <div class="panel-heading">
+          <ul class="nav nav-tabs">
+            <li class="active"><a href="#tab1default" (click)="changeTab()"  data-toggle="tab">Upload Data</a></li>
+<!--            <li><a href="#tab2default" (click)="getPhotos()" data-toggle="tab">Gallary</a></li>-->
+          </ul>
+        </div>
+        <div class="panel-body">
+          <div class="tab-content">
+            <div class="tab-pane fade in active" id="tab1default">
+              <div class="row col-md-12">
+                <div class="col-md-4">
+                  <div class=" form-group">
+                    <select name="cat" id="cat" class="form-control" [(ngModel)]="categoryName">
+                      <option value="partyMehndi">Party Mehndi</option>
+                      <option value="bestForAll">Best For All</option>
+                      <option value="affordable">Affordable</option>
+                      <option value="heavyIndian">Heavy Indian</option>
+                      <option value="engagementMehndi">Engagement Mehndi</option>
+                      <option value="bridalMehndi">Bridal Mehndi</option>
+                      <option value="babyShowerMehndi">Baby Shower Mehndi</option>
+                      <option value="aakritiMehndiClasses">Aakriti Mehndi Classes</option>
+                      <option value="classStudentWork">Class Student Work</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <br>
+              <br>
+              <div class="row col-md-12">
+                <div class=" col-md-12">
+                  <div class=" form-group">
+                    <input type='file' (change)="onSelectFile($event)" multiple class="btn btn-fill btn-danger">
+                  </div>
+                </div>
+              </div>
+              <div class="row col-md-12">
+                <div class="form-group col-md-4" *ngFor='let url of images; let i = index'
+                     [ngStyle]="{'display':displayImg}">
+                  <button id="xButton" (click)="onImgClose(i)"> x</button>
+                  <img name="image_{{i}}" id="image_{{i}}" [src]="url" height="200"><br/>
+                </div>
+              </div>
+              <div class="row col-md-12">
+                <button class="btn btn-fill btn-danger" type='file' (click)="onSubmit()">
+                  Upload Product Image
+                </button>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="tab2default">
+              <div class="row col-md-12">
+                <div class="col-md-4">
+                  <div class=" form-group">
+                    <select name="listcat" id="listcat" class="form-control" (change)="getPhotos()"
+                            [(ngModel)]="categoryName">
+                      <option value="partyMehndi">Party Mehndi</option>
+                      <option value="bestForAll">Best For All</option>
+                      <option value="affordable">Affordable</option>
+                      <option value="heavyIndian">Heavy Indian</option>
+                      <option value="engagementMehndi">Engagement Mehndi</option>
+                      <option value="bridalMehndi">Bridal Mehndi</option>
+                      <option value="babyShowerMehndi">Baby Shower Mehndi</option>
+                      <option value="aakritiMehndiClasses">Aakriti Mehndi Classes</option>
+                      <option value="classStudentWork">Class Student Work</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <br>
+              <br>
+              <div class="row col-md-12">
+                <div class="form-group col-md-4" *ngFor='let url of displayImage; let i = index'
+                     [ngStyle]="{'display':displayImg}">
+                  <button id="xButton1" (click)="onImgClose(i)"> x</button>
+                  <img name="display_image_{{i}}" id="display_image_{{i}}" [src]="url" height="200"><br/>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
