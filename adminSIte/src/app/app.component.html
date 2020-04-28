@@ -12,8 +12,8 @@
       <div class="panel with-nav-tabs panel-default">
         <div class="panel-heading">
           <ul class="nav nav-tabs">
-            <li class="active"><a href="#tab1default" (click)="changeTab()"  data-toggle="tab">Upload Data</a></li>
-<!--            <li><a href="#tab2default" (click)="getPhotos()" data-toggle="tab">Gallary</a></li>-->
+            <li class="active"><a href="#tab1default" (click)="changeTab()" data-toggle="tab">Upload Data</a></li>
+            <!--            <li><a href="#tab2default" (click)="getPhotos()" data-toggle="tab">Gallary</a></li>-->
           </ul>
         </div>
         <div class="panel-body">
@@ -22,26 +22,67 @@
               <div class="row col-md-12">
                 <div class="col-md-4">
                   <div class=" form-group">
-                    <select name="cat" id="cat" class="form-control" [(ngModel)]="categoryName">
-                      <option value="partyMehndi">Party Mehndi</option>
-                      <option value="bestForAll">Best For All</option>
-                      <option value="affordable">Affordable</option>
-                      <option value="heavyIndian">Heavy Indian</option>
-                      <option value="engagementMehndi">Engagement Mehndi</option>
-                      <option value="bridalMehndi">Bridal Mehndi</option>
-                      <option value="babyShowerMehndi">Baby Shower Mehndi</option>
-                      <option value="aakritiMehndiClasses">Aakriti Mehndi Classes</option>
-                      <option value="classStudentWork">Class Student Work</option>
-                    </select>
+                    <input class="form-control" type="text" name="name" id="name" placeholder="name of fighter">
                   </div>
                 </div>
               </div>
+              <div class="row col-md-12">
+                <div class="col-md-4">
+                  <div class=" form-group">
+                    <input class="form-control" type="text" name="city" id="city" placeholder="city(optional)">
+                  </div>
+                </div>
+              </div>
+              <div class="row col-md-12">
+                <div class="col-md-4">
+                  <div class=" form-group">
+                    <input class="form-control" type="text" name="country" id="country" placeholder="country">
+                  </div>
+                </div>
+              </div>
+              <div class="row col-md-12">
+                <div class="col-md-4">
+                  <div class=" form-group">
+                    <input class="form-control" type="date" name="deathDate" id="deathDate" placeholder="death Date">
+                  </div>
+                </div>
+              </div>
+              <div class="row col-md-12">
+                <div class="col-md-4">
+                  <div class=" form-group">
+                    <input class="form-control" type="number" name="age" id="age" placeholder="Age">
+                  </div>
+                </div>
+              </div>
+              <div class="row col-md-12">
+                <div class="col-md-4">
+                  <div class=" form-group">
+                    <textarea class="form-control" type="text" name="description" id="description"
+                              placeholder="Description"></textarea>
+                  </div>
+                </div>
+              </div>
+              <div class="row col-md-12">
+                <div class="col-md-4">
+                  <div class=" form-group">
+                    <input class="form-control" type="text" name="occupation" id="occupation" placeholder="Occupation">
+                  </div>
+                </div>
+              </div>
+              <div class="row col-md-12">
+                <div class="col-md-4">
+                  <div class=" form-group">
+                    <input class="form-control" type="text" name="source" id="source" placeholder="Source">
+                  </div>
+                </div>
+              </div>
+
               <br>
               <br>
               <div class="row col-md-12">
                 <div class=" col-md-12">
                   <div class=" form-group">
-                    <input type='file' (change)="onSelectFile($event)" multiple class="btn btn-fill btn-danger">
+                    <input type='file' (change)="onSelectFile($event)" class="btn btn-fill btn-danger">
                   </div>
                 </div>
               </div>

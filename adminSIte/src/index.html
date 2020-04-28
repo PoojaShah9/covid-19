@@ -12,8 +12,73 @@
 
   <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
   <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase.js"></script>
+
+  <script>
+    const config
+      = {
+      apiKey: "AIzaSyC5o5mJTd9j3e3_BzEYqLGqbYREIco-s_8",
+      authDomain: "databasetrial-e0476.firebaseapp.com",
+      databaseURL: "https://databasetrial-e0476.firebaseio.com",
+      projectId: "databasetrial-e0476",
+      storageBucket: "databasetrial-e0476.appspot.com",
+      messagingSenderId: "43671016649",
+      appId: "1:43671016649:web:700b3162c89b9c4a0ee918",
+      measurementId: "G-ELWQPX8190"
+    };
+
+    firebase.initializeApp(config);
+    let no = 0;
+
+    function uploadFile(image, index, catgoryName, callback) {
+      var file = image;
+
+      console.log('\'abc/\' + catgoryName + \'/\' + file.name', 'abc/' + catgoryName + '/' + file.name);
+
+      var storegeRef = firebase.storage().ref('abc/' + catgoryName + '/' + file.name);
+
+      var task = storegeRef.put(file);
+
+      /*task.on('state_changed', function progress(snapshot) {
+          var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          upl.value = percentage;
+          console.log('snapshot', percentage);
+          console.log('snapshot.downloadURL', snapshot.downloadURL);
+          if (percentage === 100) {
+              console.log('complete');
+              no++;
+          }
+      });
+      task.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+          console.log('File available at', downloadURL);
+      });*/
+      task.on('state_changed', function (snapshot) {
+        var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        console.log('Upload is ' + progress + '% done');
+        switch (snapshot.state) {
+          case firebase.storage.TaskState.PAUSED: // or 'paused'
+            console.log('Upload is paused');
+            break;
+          case firebase.storage.TaskState.RUNNING: // or 'running'
+            console.log('Upload is running');
+            break;
+        }
+      }, function (error) {
+      }, function () {
+        task.snapshot.ref.getDownloadURL().then(function (downloadURL) {
+          callback(index, downloadURL);
+        });
+      });
+    }
+
+    function deleteFile(folder, name, callback) {
+      let storagePath = firebase.storage().ref();
+      storagePath.child(`abc/${folder}/${name}`).delete();
+      callback('done')
+    }
+  </script>
+
 </head>
 <body>
-  <app-root></app-root>
+<app-root></app-root>
 </body>
 </html>
