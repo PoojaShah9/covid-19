@@ -19,10 +19,16 @@
         <div class="panel-body">
           <div class="tab-content">
             <div class="tab-pane fade in active" id="tab1default">
+              <form #f="ngForm" (ngSubmit)="f.form.valid && onSubmit()">
+
               <div class="row col-md-12">
                 <div class="col-md-4">
                   <div class=" form-group">
-                    <input class="form-control" type="text" name="name" id="name" placeholder="name of fighter">
+                    <input class="form-control" type="text" name="name" id="name" placeholder="name of fighter" required
+                           #name="ngModel" [ngClass]="{ 'is-invalid': f.submitted && name.invalid }">
+                    <div class="invalid-feedback" *ngIf="f.submitted && name.invalid">
+                      <p *ngIf="name.errors.required">Name is required</p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -36,36 +42,56 @@
               <div class="row col-md-12">
                 <div class="col-md-4">
                   <div class=" form-group">
-                    <input class="form-control" type="text" name="country" id="country" placeholder="country">
+                    <input class="form-control" type="text" name="country" id="country" placeholder="country" required
+                           #country="ngModel" [ngClass]="{ 'is-invalid': f.submitted && country.invalid }">
+                    <div class="invalid-feedback" *ngIf="f.submitted && country.invalid">
+                      <p *ngIf="country.errors.required">Country is required</p>
+                    </div>
                   </div>
                 </div>
               </div>
               <div class="row col-md-12">
                 <div class="col-md-4">
                   <div class=" form-group">
-                    <input class="form-control" type="date" name="deathDate" id="deathDate" placeholder="death Date">
+                    <input class="form-control" type="date" name="deathDate" id="deathDate" placeholder="death Date" required
+                           #deathDate="ngModel" [ngClass]="{ 'is-invalid': f.submitted && deathDate.invalid }">
+                    <div class="invalid-feedback" *ngIf="f.submitted && deathDate.invalid">
+                      <p *ngIf="deathDate.errors.required">Death Date is required</p>
+                    </div>
                   </div>
                 </div>
               </div>
               <div class="row col-md-12">
                 <div class="col-md-4">
                   <div class=" form-group">
-                    <input class="form-control" type="number" name="age" id="age" placeholder="Age">
+                    <input class="form-control" type="number" name="age" id="age" placeholder="Age" required
+                           #age="ngModel" [ngClass]="{ 'is-invalid': f.submitted && age.invalid }">
+                    <div class="invalid-feedback" *ngIf="f.submitted && age.invalid">
+                      <p *ngIf="age.errors.required">Age is required</p>
+                    </div>
                   </div>
                 </div>
               </div>
               <div class="row col-md-12">
                 <div class="col-md-4">
                   <div class=" form-group">
-                    <textarea class="form-control" type="text" name="description" id="description"
-                              placeholder="Description"></textarea>
+                    <textarea class="form-control" name="description" id="description"
+                              placeholder="Description" required
+                              #description="ngModel" [ngClass]="{ 'is-invalid': f.submitted && description.invalid }"></textarea>
+                    <div class="invalid-feedback" *ngIf="f.submitted && description.invalid">
+                      <p *ngIf="description.errors.required">Description is required</p>
+                    </div>
                   </div>
                 </div>
               </div>
               <div class="row col-md-12">
                 <div class="col-md-4">
                   <div class=" form-group">
-                    <input class="form-control" type="text" name="occupation" id="occupation" placeholder="Occupation">
+                    <input class="form-control" type="text" name="occupation" id="occupation" placeholder="Occupation" required
+                           #occupation="ngModel" [ngClass]="{ 'is-invalid': f.submitted && occupation.invalid }">
+                    <div class="invalid-feedback" *ngIf="f.submitted && occupation.invalid">
+                      <p *ngIf="occupation.errors.required">Occupation is required</p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -82,7 +108,11 @@
               <div class="row col-md-12">
                 <div class=" col-md-12">
                   <div class=" form-group">
-                    <input type='file' (change)="onSelectFile($event)" class="btn btn-fill btn-danger">
+                    <input type='file' (change)="onSelectFile($event)" class="btn btn-fill btn-danger" name="image" required
+                           #img="ngModel" [ngClass]="{ 'is-invalid': f.submitted && img.invalid }">
+                    <div class="invalid-feedback" *ngIf="f.submitted && img.invalid">
+                      <p *ngIf="img.errors.required">Image is required</p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -94,10 +124,11 @@
                 </div>
               </div>
               <div class="row col-md-12">
-                <button class="btn btn-fill btn-danger" type='file' (click)="onSubmit()">
+                <button class="btn btn-fill btn-danger" type="submit">
                   Upload Product Image
                 </button>
               </div>
+              </form>
             </div>
             <div class="tab-pane fade" id="tab2default">
               <div class="row col-md-12">
