@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {NgxSpinnerService} from "ngx-spinner";
 import {MainserviceService} from "./mainservice.service";
+import {TestService} from "./service/test.service";
 
 declare var uploadFile;
 declare var deleteFile;
@@ -18,10 +19,10 @@ export class AppComponent {
   selectedFile = [];
   displayImg = 'block';
   arrayForApi = [];
-  categoryName = 'partyMehndi';
   tab = 'tab1';
+  fighter: any = {};
 
-  constructor(private spinner: NgxSpinnerService, private mainserviceService: MainserviceService) {
+  constructor(private spinner: NgxSpinnerService, private testService: TestService) {
   }
 
   uploadImages(callback) {
@@ -30,7 +31,7 @@ export class AppComponent {
     let cnt = 0;
     if (this.selectedFile.length > 0) {
       for (let i = 0; i < this.selectedFile.length; i++) {
-        uploadFile(this.selectedFile[i], i, this.categoryName, function (index, data) {
+        uploadFile(this.selectedFile[i], i, function (index, data) {
           cnt++;
           that.arrayForApi.push(data);
           console.log('cnt', cnt, that.selectedFile.length - 1);
@@ -94,13 +95,18 @@ export class AppComponent {
   onSubmit() {
     this.spinner.show();
     // upload image time
-    console.log('prosct data', this.categoryName);
+    console.log('prosct data');
     const that = this;
     this.uploadImages(function (data) {
       console.log('prosct data', data);
       console.log('prosct arrayForApi', that.arrayForApi);
+      that.spinner.show();
       (that.arrayForApi).forEach((x) => {
-        that.mainserviceService.newRecord({categoryName: that.categoryName, photos: x})
+        console.log('fighter', that.fighter);
+        if (that.arrayForApi.length > 0) {
+          that.fighter.link = that.arrayForApi[0];
+        }
+        that.testService.newRecord(that.fighter)
           .subscribe((res) => {
             that.spinner.hide();
             console.log('productttttt', res);

@@ -7,7 +7,7 @@ import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { NgxSpinnerModule } from "ngx-spinner";
-import {MainserviceService} from "./mainservice.service";
+import {TestService} from "./service/test.service";
 
 @NgModule({
   declarations: [
@@ -21,7 +21,7 @@ import {MainserviceService} from "./mainservice.service";
     BrowserAnimationsModule,
     AppRoutingModule
   ],
-  providers: [MainserviceService],
+  providers: [TestService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

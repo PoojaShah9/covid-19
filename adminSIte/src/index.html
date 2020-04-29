@@ -29,12 +29,12 @@
     firebase.initializeApp(config);
     let no = 0;
 
-    function uploadFile(image, index, catgoryName, callback) {
+    function uploadFile(image, index, callback) {
       var file = image;
 
-      console.log('\'abc/\' + catgoryName + \'/\' + file.name', 'abc/' + catgoryName + '/' + file.name);
+      console.log('\'abc/\' + catgoryName + \'/\' + file.name', 'abc/' + file.name);
 
-      var storegeRef = firebase.storage().ref('abc/' + catgoryName + '/' + file.name);
+      var storegeRef = firebase.storage().ref('abc/' + file.name);
 
       var task = storegeRef.put(file);
 

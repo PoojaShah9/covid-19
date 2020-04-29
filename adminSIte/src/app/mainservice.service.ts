@@ -1,15 +1,11 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
 })
 export class MainserviceService {
 
-  constructor(private http: HttpClient) {
+  constructor() {
   }
 
-  newRecord(data) {
-    return this.http.post<any>('https://covid19poojamaam.herokuapp.com/api/v1/fighters', data);
-  }
 }
