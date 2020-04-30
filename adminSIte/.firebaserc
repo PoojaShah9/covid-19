@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "aakritimehndi"
+  },
+  "targets": {
+    "aakritimehndi": {
+      "hosting": {
+        "admin": [
+          "covid19admin-87569"
+        ]
+      }
+    }
+  }
+}
