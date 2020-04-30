@@ -1,7 +1,10 @@
-import {Component} from '@angular/core';
+import {Component, ElementRef} from '@angular/core';
 import {NgxSpinnerService} from "ngx-spinner";
 import {MainserviceService} from "./mainservice.service";
 import {TestService} from "./service/test.service";
+
+import {NgxFileDropEntry} from 'ngx-file-drop';
+import {FileUploader} from 'ng2-file-upload/ng2-file-upload';
 
 declare var uploadFile;
 declare var deleteFile;
@@ -22,7 +25,13 @@ export class AppComponent {
   tab = 'tab1';
   fighter: any = {};
 
-  constructor(private spinner: NgxSpinnerService, private testService: TestService) {
+  filenamestr = '';
+  validfile: boolean = true;
+  files: NgxFileDropEntry[] = [];
+  uploadData: any = {};
+
+  constructor(private spinner: NgxSpinnerService, private testService: TestService,
+              private el: ElementRef,) {
   }
 
   uploadImages(callback) {
@@ -124,6 +133,43 @@ export class AppComponent {
           });
       });
     });
+  }
+
+  upload() {
+    const inputEl: HTMLInputElement = this.el.nativeElement.querySelector('#photo');
+    this.uploadData.file = inputEl.files;
+    this.selectedFile = [];
+    this.images = [];
+    this.selectedFile.push(inputEl.files[0]);
+    this.uploadFile1(inputEl.files[0]);
+  }
+
+  uploadFile1(file) {
+    console.log('file', file);
+    const contentType = file.type;
+    const reader = new FileReader();
+
+    reader.onload = (event: any) => {
+      console.log(event.target.result);
+      this.images.push(event.target.result);
+    };
+
+    reader.readAsDataURL(file);
+  }
+
+  filechange(event) {
+    const inputEl: HTMLInputElement = this.el.nativeElement.querySelector('#photo');
+    if (inputEl.files && inputEl.files.length > 0) {
+      const filename = inputEl.files[0].name;
+      this.filenamestr = filename;
+      if (filename.includes('.jpeg') || filename.includes('.png') || filename.includes('.jpg')) {
+        this.validfile = true;
+        this.upload();
+      } else {
+        this.validfile = false;
+      }
+    }
+
   }
 
 }

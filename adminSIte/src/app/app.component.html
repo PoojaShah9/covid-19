@@ -21,109 +21,118 @@
             <div class="tab-pane fade in active" id="tab1default">
               <form #f="ngForm" (ngSubmit)="f.form.valid && onSubmit()">
 
-              <div class="row col-md-12">
-                <div class="col-md-4">
-                  <div class=" form-group">
-                    <input class="form-control" [(ngModel)]="fighter.name" type="text" name="name" id="name" placeholder="name of fighter" required
-                           #name="ngModel" [ngClass]="{ 'is-invalid': f.submitted && name.invalid }">
-                    <div class="text text-danger" *ngIf="f.submitted && name.invalid">
-                      <p *ngIf="name.errors.required">Name is required</p>
+                <div class="row col-md-12">
+                  <div class="col-md-4">
+                    <div class=" form-group">
+                      <input class="form-control" [(ngModel)]="fighter.name" type="text" name="name" id="name"
+                             placeholder="name of fighter" required
+                             #name="ngModel" [ngClass]="{ 'is-invalid': f.submitted && name.invalid }">
+                      <div class="text text-danger" *ngIf="f.submitted && name.invalid">
+                        <p *ngIf="name.errors.required">Name is required</p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="row col-md-12">
-                <div class="col-md-4">
-                  <div class=" form-group">
-                    <input class="form-control" [(ngModel)]="fighter.city" type="text" name="city" id="city" placeholder="city(optional)">
-                  </div>
-                </div>
-              </div>
-              <div class="row col-md-12">
-                <div class="col-md-4">
-                  <div class=" form-group">
-                    <input class="form-control" [(ngModel)]="fighter.country" type="text" name="country" id="country" placeholder="country" required
-                           #country="ngModel" [ngClass]="{ 'is-invalid': f.submitted && country.invalid }">
-                    <div class="text text-danger" *ngIf="f.submitted && country.invalid">
-                      <p *ngIf="country.errors.required">Country is required</p>
+                <div class="row col-md-12">
+                  <div class="col-md-4">
+                    <div class=" form-group">
+                      <input class="form-control" [(ngModel)]="fighter.country" type="text" name="country" id="country"
+                             placeholder="country" required
+                             #country="ngModel" [ngClass]="{ 'is-invalid': f.submitted && country.invalid }">
+                      <div class="text text-danger" *ngIf="f.submitted && country.invalid">
+                        <p *ngIf="country.errors.required">Country is required</p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="row col-md-12">
-                <div class="col-md-4">
-                  <div class=" form-group">
-                    <input class="form-control" [(ngModel)]="fighter.deathDate" type="date" name="deathDate" id="deathDate" placeholder="death Date" required
-                           #deathDate="ngModel" [ngClass]="{ 'is-invalid': f.submitted && deathDate.invalid }">
-                    <div class="text text-danger" *ngIf="f.submitted && deathDate.invalid">
-                      <p *ngIf="deathDate.errors.required">Death Date is required</p>
+                <div class="row col-md-12">
+                  <div class="col-md-4">
+                    <div class=" form-group">
+                      <input class="form-control" [(ngModel)]="fighter.deathDate" type="date" name="deathDate"
+                             id="deathDate" placeholder="death Date" required
+                             #deathDate="ngModel" [ngClass]="{ 'is-invalid': f.submitted && deathDate.invalid }">
+                      <div class="text text-danger" *ngIf="f.submitted && deathDate.invalid">
+                        <p *ngIf="deathDate.errors.required">Death Date is required</p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="row col-md-12">
-                <div class="col-md-4">
-                  <div class=" form-group">
-                    <input class="form-control" [(ngModel)]="fighter.age" type="number" name="age" id="age" placeholder="Age" required
-                           #age="ngModel" [ngClass]="{ 'is-invalid': f.submitted && age.invalid }">
-                    <div class="text text-danger" *ngIf="f.submitted && age.invalid">
-                      <p *ngIf="age.errors.required">Age is required</p>
+                <div class="row col-md-12">
+                  <div class="col-md-4">
+                    <div class=" form-group">
+                      <input class="form-control" [(ngModel)]="fighter.age" type="number" name="age" id="age"
+                             placeholder="Age" required
+                             #age="ngModel" [ngClass]="{ 'is-invalid': f.submitted && age.invalid }">
+                      <div class="text text-danger" *ngIf="f.submitted && age.invalid">
+                        <p *ngIf="age.errors.required">Age is required</p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="row col-md-12">
-                <div class="col-md-4">
-                  <div class=" form-group">
+                <div class="row col-md-12">
+                  <div class="col-md-4">
+                    <div class=" form-group">
+                      <input class="form-control" [(ngModel)]="fighter.occupation" type="text" name="occupation"
+                             id="occupation" placeholder="Occupation" required
+                             #occupation="ngModel" [ngClass]="{ 'is-invalid': f.submitted && occupation.invalid }">
+                      <div class="text text-danger" *ngIf="f.submitted && occupation.invalid">
+                        <p *ngIf="occupation.errors.required">Occupation is required</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row col-md-12">
+                  <div class="col-md-4">
+                    <div class=" form-group">
                     <textarea class="form-control" [(ngModel)]="fighter.description" name="description" id="description"
-                              placeholder="Description" required
-                              #description="ngModel" [ngClass]="{ 'is-invalid': f.submitted && description.invalid }"></textarea>
-                    <div class="text text-danger" *ngIf="f.submitted && description.invalid">
-                      <p *ngIf="description.errors.required">Description is required</p>
+                              placeholder="Description"></textarea>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="row col-md-12">
-                <div class="col-md-4">
-                  <div class=" form-group">
-                    <input class="form-control" [(ngModel)]="fighter.occupation" type="text" name="occupation" id="occupation" placeholder="Occupation" required
-                           #occupation="ngModel" [ngClass]="{ 'is-invalid': f.submitted && occupation.invalid }">
-                    <div class="text text-danger" *ngIf="f.submitted && occupation.invalid">
-                      <p *ngIf="occupation.errors.required">Occupation is required</p>
+                <div class="row col-md-12">
+                  <div class="col-md-4">
+                    <div class=" form-group">
+                      <input class="form-control" type="text" [(ngModel)]="fighter.source" name="source" id="source"
+                             placeholder="Source">
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="row col-md-12">
-                <div class="col-md-4">
-                  <div class=" form-group">
-                    <input class="form-control" type="text" [(ngModel)]="fighter.source"  name="source" id="source" placeholder="Source">
-                  </div>
-                </div>
-              </div>
 
-              <br>
-              <br>
-              <div class="row col-md-12">
-                <div class=" col-md-12">
-                  <div class=" form-group">
-                    <input type='file' (change)="onSelectFile($event)" class="btn btn-fill btn-danger" name="image" required>
+                <br>
+                <br>
+                <!--<div class="row col-md-12">
+                  <div class=" col-md-12">
+                    <div class=" form-group">
+                      <input type='file' (change)="onSelectFile($event)" class="btn btn-fill btn-danger" name="image"
+                             required>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="row col-md-12">
-                <div class="form-group col-md-4" *ngFor='let url of images; let i = index'
-                     [ngStyle]="{'display':displayImg}">
-                  <button id="xButton" (click)="onImgClose(i)"> x</button>
-                  <img name="image_{{i}}" id="image_{{i}}" [src]="url" height="200"><br/>
+                <div class="row col-md-12">
+                  <div class="form-group col-md-4" *ngFor='let url of images; let i = index'
+                       [ngStyle]="{'display':displayImg}">
+                    <button id="xButton" (click)="onImgClose(i)"> x</button>
+                    <img name="image_{{i}}" id="image_{{i}}" [src]="url" height="200"><br/>
+                  </div>
+                </div>-->
+                <div class="row col-md-12">
+                  <div class="image-upload-wrap"
+                       [ngClass]="((!validfile) ? 'image-invalid' : ((filenamestr !='') ? 'image-valid':''))">
+                    <input class="file-upload-input" id="photo" required type='file' (change)="filechange($event)"
+                           accept="image/*">
+                    <div class="drag-text">
+                      <h3 *ngIf="filenamestr === ''">Drag and drop a file or select add Image</h3>
+                      <h3 *ngIf="filenamestr"
+                          [ngClass]="((!validfile) ? 'text-invalid' : ((filenamestr !='') ? 'text-valid':''))">{{filenamestr}}</h3>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div class="row col-md-12">
-                <button class="btn btn-fill btn-danger" type="submit">
-                  Save
-                </button>
-              </div>
+
+                <div class="row col-md-12">
+                  <button class="btn btn-fill btn-danger" type="submit">
+                    Save
+                  </button>
+                </div>
               </form>
             </div>
           </div>
