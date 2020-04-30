@@ -1,0 +1,123 @@
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }"></ngx-loading>
+<div id="colorlib-page">
+  <app-sidebar></app-sidebar>
+  <div id="colorlib-main">
+    <section class="ftco-section bg-light ftco-bread">
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center">
+          <div class="col-md-9 ftco-animate fadeInUp ftco-animated">
+
+            <!-- <p class="breadcrumbs"><span class="mr-2"><a [routerLink]="['/']">Home</a></span></p> -->
+            <h2 class="mb-3 bread">Corona Warriors</h2>
+            <p>A small tributes towards real life heroes. Warriors who died to save world against COVID-19</p>
+
+            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link" id="country-tab" data-toggle="pill" href="#country" role="tab"
+                   (click)="onTabClick('country')" aria-controls="country" aria-selected="false">Country</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" id="showall-tab" data-toggle="pill" href="#showall"
+                   (click)="onTabClick('world')"
+                   role="tab" aria-controls="showall" aria-selected="true">World wide</a>
+              </li>
+            </ul>
+          </div>
+          <!-- <div class="col-md-3 ftco-animate fadeInUp ftco-animated">
+            <div class="list-container">
+      <dx-list
+          #list
+          [dataSource]="products"
+          [height]="400"
+          [searchEnabled]="true"
+          searchExpr="name"
+          searchMode="contains" >
+              <div *dxTemplate="let data of 'item'">
+                  <div>{{data.name}}</div>
+              </div>
+      </dx-list>
+  </div>
+          </div> -->
+        </div>
+      </div>
+    </section>
+    <section class="ftco-section-2">
+      <div class="photograhy">
+        <div class="row no-gutters">
+          <!--<div class="tab-content" id="pills-tabContent" style="width: 100%">
+
+            <div class="tab-pane fade show " id="country" role="tabpanel" aria-labelledby="country-tab">-->
+          <div *ngFor="let fighter of fighterData" class="col-custom ftco-animate fadeInUp ftco-animated border-image">
+            <a (click)="showFighter(fighter)" style="cursor: pointer;"
+               class="photography-entry img image-popup d-flex justify-content-center align-items-center"
+               [ngStyle]="{'background-image': 'url(' + fighter.link + ')'}">
+              <div class="overlay"></div>
+              <div class="text text-center">
+                <h3>{{fighter.name}}</h3>
+                <span class="tag">{{fighter.occupation}}</span>
+              </div>
+            </a>
+          </div>
+          <!-- </div>
+           <div class="tab-pane fade show active" id="showall" role="tabpanel" aria-labelledby="showall-tab">
+           </div>-->
+        </div>
+      </div>
+    </section>
+    <dx-popup
+      [width]="660"
+      [height]="500"
+      [showTitle]="true"
+      [title]="currentFighter.name"
+      [dragEnabled]="false"
+      [closeOnOutsideClick]="false"
+      [(visible)]="popupVisible">
+      <div>
+        <div class='popup-property-details'>
+          <div class='large-text'>Occupation: {{currentFighter.occupation | uppercase}}</div>
+          <button class="dx-button favorites"
+                  (onClick)="changeFavoriteState($event)">Donate
+          </button>
+          <div class="row" style="margin-top: 30px;">
+            <div class="col-md-6">
+              <div class='images'>
+                <img src="{{currentFighter.link}}" class="custom-img"/>
+                <!-- <img src="{{currentHouse.Image.replace('.jpg', 'b.jpg')}}" /> -->
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div style="margin: 10px 10px 10px 0;">
+                <p><label class="label">Death Date:</label> {{currentFighter.deathDate |date: 'dd-MM-yyyy'}}</p>
+                <p><label class="label">Age:</label> {{currentFighter.age}}</p>
+                <p>{{currentFighter.description}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="" style="margin-top: -30px;">
+            <div class="accordion" id="accordionExample">
+              <div class="card">
+                <div class="card-head" id="headingOne">
+                  <h2 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false"
+                      aria-controls="collapseOne">
+                    Share
+                  </h2>
+                </div>
+
+                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                  <div class="card-body">
+                    <button class="btn social-btn fa fa-facebook" [url]='"https://www.google.com"'></button>
+                    <button class="btn social-btn fa fa-twitter" [url]='"https://www.google.com"'></button>
+                    <button class="btn social-btn fa fa-linkedin" [url]='"https://www.google.com"'></button>
+                    <button class="btn social-btn fa fa-whatsapp" [url]='"https://www.google.com"'></button>
+                    <button class="btn social-btn fa fa-telegram" [url]='"https://www.google.com"'></button>
+                    <button class="btn social-btn fa fa-pinterest" [url]='"https://www.google.com"'></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </dx-popup>
+  </div><!-- END COLORLIB-MAIN -->
+</div>
