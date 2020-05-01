@@ -91,7 +91,7 @@ a {
 
 
 /*dx-popup*/
-/*.large-text {
+.large-text {
   font-size: 20px;
   color: #ff6a50;
 }
@@ -232,7 +232,7 @@ a {
 }
 
 /*Accordian*/
-/*.accordion {
+.accordion {
   margin-top: 40px;
 }
 
@@ -271,7 +271,6 @@ a {
   margin: 10px 10px 10px 0;
   width: 40%;
 }
-*/
 .social-btn {
   border-radius: 50%;
   padding-left: 10px;
