@@ -46,7 +46,7 @@
 
             <div class="tab-pane fade show " id="country" role="tabpanel" aria-labelledby="country-tab">-->
           <div *ngFor="let fighter of fighterData" class="col-custom ftco-animate fadeInUp ftco-animated border-image">
-            <a (click)="openModal(fighter)" style="cursor: pointer;"
+            <a (click)="showFighter(fighter)" style="cursor: pointer;"
                class="photography-entry img image-popup d-flex justify-content-center align-items-center"
                [ngStyle]="{'background-image': 'url(' + fighter.link + ')'}">
               <div class="overlay"></div>
@@ -62,7 +62,7 @@
         </div>
       </div>
     </section>
-    <!-- <dx-popup
+     <dx-popup
       [width]="660"
       [height]="500"
       [showTitle]="true"
@@ -74,7 +74,7 @@
         <div class='popup-property-details'>
           <div class='large-text'>Occupation: {{currentFighter.occupation | uppercase}}</div>
           <button class="dx-button favorites"
-                  (onClick)="changeFavoriteState($event)">Donate
+                  (click)="changeFavoriteState($event)">Donate
           </button>
           <div class="row" style="margin-top: 30px;">
             <div class="col-md-6">
@@ -102,12 +102,12 @@
 
                 <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                   <div class="card-body">
-                    <button class="btn social-btn fa fa-facebook" [url]='"https://www.google.com"'></button>
-                    <button class="btn social-btn fa fa-twitter" [url]='"https://www.google.com"'></button>
-                    <button class="btn social-btn fa fa-linkedin" [url]='"https://www.google.com"'></button>
-                    <button class="btn social-btn fa fa-whatsapp" [url]='"https://www.google.com"'></button>
-                    <button class="btn social-btn fa fa-telegram" [url]='"https://www.google.com"'></button>
-                    <button class="btn social-btn fa fa-pinterest" [url]='"https://www.google.com"'></button>
+                    <button class="btn social-btn fa fa-facebook"  mat-fab shareButton="facebook"  [url]='"https://www.google.com"'></button>
+                    <button class="btn social-btn fa fa-twitter" mat-fab shareButton="twitter" [url]='"https://www.google.com"'></button>
+                    <button class="btn social-btn fa fa-linkedin" mat-fab shareButton="linkedin" [url]='"https://www.google.com"'></button>
+                    <button class="btn social-btn fa fa-whatsapp" mat-fab shareButton="whatsapp" [url]='"https://www.google.com"'></button>
+                    <button class="btn social-btn fa fa-telegram" mat-fab shareButton="telegram" [url]='"https://www.google.com"'></button>
+                    <button class="btn social-btn fa fa-pinterest" mat-fab shareButton="pinterest" [url]='"https://www.google.com"'></button>
                   </div>
                 </div>
               </div>
@@ -115,17 +115,17 @@
           </div>
         </div>
       </div>
-    </dx-popup> -->
+    </dx-popup>
 
 
-    <div class="backdrop" [ngStyle]="{'display':display}"></div>
+    <!--<div class="backdrop" [ngStyle]="{'display':display}"></div>
     <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':display}">
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-body">  
             <div class="page-content">
-              <!-- <button type="button" class="close" aria-label="Close" (click)="closeModal()"><span
-              aria-hidden="true">&times;</span></button> -->
+              &lt;!&ndash; <button type="button" class="close" aria-label="Close" (click)="closeModal()"><span
+              aria-hidden="true">&times;</span></button> &ndash;&gt;
               <div class="wizard-v2-content">
                 <div class="wizard-image"
                      [ngStyle]="{'background-image': 'url(' + currentFighter.link + ')'}"
@@ -138,7 +138,7 @@
                   </div>
                   <form class="form-register" action="#" method="post">
                     <div id="form-total">
-                      <!-- SECTION 1 -->
+                      &lt;!&ndash; SECTION 1 &ndash;&gt;
                       <h2>1</h2>
                       <section>
                         <div class="inner">
@@ -146,27 +146,27 @@
                             <div class="form-holder">
                               <label class="label">Death Date: {{currentFighter.deathDate |date: 'dd-MM-yyyy'}}</label>
                             </div>
-                            <!-- <div class="form-holder">
+                            &lt;!&ndash; <div class="form-holder">
                               <input type="text" placeholder="First Name" class="form-control" id="first_name">
                             </div>
                             <div class="form-holder">
                               <input type="text" placeholder="Last Name" class="form-control" id="last_name">
-                            </div> -->
+                            </div> &ndash;&gt;
                           </div>
                           <div class="form-row">
                             <div class="form-holder">
                               <label class="label">Age: {{currentFighter.age}}</label>
                             </div>
-                            <!-- <div class="form-holder">
+                            &lt;!&ndash; <div class="form-holder">
                               <input type="text" placeholder="Phone Number" class="form-control" id="phone">
                             </div>
                             <div class="form-holder">
                               <input type="email" placeholder="Email" class="form-control" id="email">
-                            </div> -->
+                            </div> &ndash;&gt;
                           </div>
                         </div>
                       </section>
-                      <!-- SECTION 2 -->
+                      &lt;!&ndash; SECTION 2 &ndash;&gt;
                       <h2>2</h2>
                       <section>
                         <div class="inner">
@@ -210,6 +210,6 @@
 
         </div>
       </div>
-    </div>
+    </div>-->
   </div>
 </div>
