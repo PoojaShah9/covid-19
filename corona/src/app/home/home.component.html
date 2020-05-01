@@ -6,8 +6,6 @@
       <div class="container">
         <div class="row no-gutters slider-text align-items-center">
           <div class="col-md-9 ftco-animate fadeInUp ftco-animated">
-
-            <!-- <p class="breadcrumbs"><span class="mr-2"><a [routerLink]="['/']">Home</a></span></p> -->
             <h2 class="mb-3 bread">Corona Warriors</h2>
             <p>A small tributes towards real life heroes. Warriors who died to save world against COVID-19</p>
 
@@ -48,7 +46,7 @@
 
             <div class="tab-pane fade show " id="country" role="tabpanel" aria-labelledby="country-tab">-->
           <div *ngFor="let fighter of fighterData" class="col-custom ftco-animate fadeInUp ftco-animated border-image">
-            <a (click)="showFighter(fighter)" style="cursor: pointer;"
+            <a (click)="openModal(fighter)" style="cursor: pointer;"
                class="photography-entry img image-popup d-flex justify-content-center align-items-center"
                [ngStyle]="{'background-image': 'url(' + fighter.link + ')'}">
               <div class="overlay"></div>
@@ -64,7 +62,7 @@
         </div>
       </div>
     </section>
-    <dx-popup
+    <!-- <dx-popup
       [width]="660"
       [height]="500"
       [showTitle]="true"
@@ -82,7 +80,6 @@
             <div class="col-md-6">
               <div class='images'>
                 <img src="{{currentFighter.link}}" class="custom-img"/>
-                <!-- <img src="{{currentHouse.Image.replace('.jpg', 'b.jpg')}}" /> -->
               </div>
             </div>
             <div class="col-md-6">
@@ -118,6 +115,101 @@
           </div>
         </div>
       </div>
-    </dx-popup>
-  </div><!-- END COLORLIB-MAIN -->
+    </dx-popup> -->
+
+
+    <div class="backdrop" [ngStyle]="{'display':display}"></div>
+    <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':display}">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-body">  
+            <div class="page-content">
+              <!-- <button type="button" class="close" aria-label="Close" (click)="closeModal()"><span
+              aria-hidden="true">&times;</span></button> -->
+              <div class="wizard-v2-content">
+                <div class="wizard-image"
+                     [ngStyle]="{'background-image': 'url(' + currentFighter.link + ')'}"
+                     style="background: center center no-repeat;">
+                </div>
+                <div class="wizard-form">
+                  <div class="wizard-header">
+                    <h3>{{currentFighter.name}}</h3>
+                    <p>{{currentFighter.description}}</p>
+                  </div>
+                  <form class="form-register" action="#" method="post">
+                    <div id="form-total">
+                      <!-- SECTION 1 -->
+                      <h2>1</h2>
+                      <section>
+                        <div class="inner">
+                          <div class="form-row">
+                            <div class="form-holder">
+                              <label class="label">Death Date: {{currentFighter.deathDate |date: 'dd-MM-yyyy'}}</label>
+                            </div>
+                            <!-- <div class="form-holder">
+                              <input type="text" placeholder="First Name" class="form-control" id="first_name">
+                            </div>
+                            <div class="form-holder">
+                              <input type="text" placeholder="Last Name" class="form-control" id="last_name">
+                            </div> -->
+                          </div>
+                          <div class="form-row">
+                            <div class="form-holder">
+                              <label class="label">Age: {{currentFighter.age}}</label>
+                            </div>
+                            <!-- <div class="form-holder">
+                              <input type="text" placeholder="Phone Number" class="form-control" id="phone">
+                            </div>
+                            <div class="form-holder">
+                              <input type="email" placeholder="Email" class="form-control" id="email">
+                            </div> -->
+                          </div>
+                        </div>
+                      </section>
+                      <!-- SECTION 2 -->
+                      <h2>2</h2>
+                      <section>
+                        <div class="inner">
+                          <div class="form-row">
+                            <div class="form-holder form-holder-2">
+                              <select name="location" id="location" class="form-control">
+                                <option value="" disabled selected>Choose A Location</option>
+                                <option value="united states">United States</option>
+                                <option value="united kingdom">United Kingdom</option>
+                                <option value="viet nam">Viet Nam</option>
+                              </select>
+                              <span class="select-btn">
+                                  <i class="zmdi zmdi-chevron-down"></i>
+                                </span>
+                            </div>
+                          </div>
+                          <div class="form-row">
+                            <div class="form-holder">
+                              <input type="text" name="date" class="date" id="date" placeholder="15 / Jan / 2018">
+                            </div>
+                            <div class="form-holder">
+                              <select name="" id="time" class="form-control">
+                                <option value="7:00am - 18:00pm" selected>7:00am - 18:00pm</option>
+                                <option value="9:00am - 21:00pm">9:00am - 21:00pm</option>
+                                <option value="10:00am - 22:00pm">10:00am - 22:00pm</option>
+                                <option value="12:00am - 24:00pm">12:00am - 24:00pm</option>
+                              </select>
+                              <span class="select-btn">
+                                  <i class="zmdi zmdi-chevron-down"></i>
+                                </span>
+                            </div>
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
