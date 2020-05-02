@@ -23,6 +23,7 @@ import {
   DxTemplateHost,
   DxTemplateModule
 } from 'devextreme-angular';
+import { PaymentComponent } from './payment/payment.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import {
     BlogComponent,
     ContactComponent,
     GalleryComponent,
-    SingleComponent
+    SingleComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,

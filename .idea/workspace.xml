@@ -12,6 +12,10 @@
   <component name="ChangeListManager">
     <list default="true" id="783126e4-dc3d-4157-9b97-186a2fa8683f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/corona/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/corona/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/corona/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/corona/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/corona/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/corona/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/corona/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/corona/src/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +28,7 @@
         <option value="poojaShah &lt;shah.developer9@gmail.com&gt;" />
       </list>
     </option>
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/backend" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1aqJjMYzubuiuqcOVx1TLfCnQO3" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -36,7 +40,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/newDesign" />
+    <property name="last_opened_file_path" value="D:/MyOwnProjects/demo/lime-pay-demo" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
@@ -44,12 +48,13 @@
     <property name="ts.external.directory.path" value="C:\Users\abhik\Desktop\covid-19\adminSIte\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\abhik\Desktop\covid-19\backend" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\abhik\Desktop\covid-19" />
       <recent name="C:\Users\abhik\Desktop\covid-19\adminSIte" />
+      <recent name="C:\Users\abhik\Desktop\covid-19\backend" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\abhik\Desktop\covid-19\backend\app\middlewares" />
       <recent name="C:\Users\abhik\Desktop\covid-19\backend" />
     </key>
   </component>
@@ -99,7 +104,7 @@
       <workItem from="1588343378712" duration="3388000" />
       <workItem from="1588349759377" duration="954000" />
       <workItem from="1588396362734" duration="1819000" />
-      <workItem from="1588398349638" duration="2731000" />
+      <workItem from="1588398349638" duration="18380000" />
     </task>
     <task id="LOCAL-00001" summary="backend">
       <created>1587463302364</created>
@@ -223,10 +228,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="92" y="92" width="1182" height="544" key="DiffContextDialog/0.0.1366.728@0.0.1366.728" timestamp="1588401082933" />
-    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1588344040300">
+    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1588410252100">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1588344040300" />
+    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1588410252100" />
     <state width="1345" height="223" key="GridCell.Tab.0.bottom" timestamp="1587842019668">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
