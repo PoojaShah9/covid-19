@@ -15,4 +15,8 @@ export class FightersService {
   getFighterList(countryName) {
     return this.http.get<any>(this.api + 'fighters/getfightergetByCountry?country=' + countryName);
   }
+
+  getFighterById(id) {
+    return this.http.get<any>(this.api + 'fighters/getbyid?id=' + id);
+  }
 }

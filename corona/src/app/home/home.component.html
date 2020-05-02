@@ -21,6 +21,19 @@
               </li>
             </ul>
           </div>
+          <div class="col-md-3 ftco-animate fadeInUp ftco-animated">
+            <div class="form-group has-search">
+              <span class="icon-search form-control-feedback"></span>
+              <input type="text" name="searchText" (keyup)="onChanges($event)" class="form-control"
+                     list="filteredArray" [(ngModel)]="searchText" placeholder="Search Country" autocomplete="on"
+                     (change)="onCountryChange()"/>
+              <datalist *ngIf="showDD" id="filteredArray">
+                <select>
+                  <option *ngFor="let item of countrylist" [value]="item.name">{{item.name}}</option>
+                </select>
+              </datalist>
+            </div>
+          </div>
           <!-- <div class="col-md-3 ftco-animate fadeInUp ftco-animated">
             <div class="list-container">
       <dx-list
@@ -102,12 +115,12 @@
 
                 <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                   <div class="card-body">
-                    <button class="btn social-btn fa fa-facebook"  mat-fab shareButton="facebook"  [url]='"https://www.google.com"'></button>
-                    <button class="btn social-btn fa fa-twitter" mat-fab shareButton="twitter" [url]='"https://www.google.com"'></button>
-                    <button class="btn social-btn fa fa-linkedin" mat-fab shareButton="linkedin" [url]='"https://www.google.com"'></button>
-                    <button class="btn social-btn fa fa-whatsapp" mat-fab shareButton="whatsapp" [url]='"https://www.google.com"'></button>
-                    <button class="btn social-btn fa fa-telegram" mat-fab shareButton="telegram" [url]='"https://www.google.com"'></button>
-                    <button class="btn social-btn fa fa-pinterest" mat-fab shareButton="pinterest" [url]='"https://www.google.com"'></button>
+                    <button class="btn social-btn fa fa-facebook"  mat-fab shareButton="facebook"  url="{{href}}"></button>
+                    <button class="btn social-btn fa fa-twitter" mat-fab shareButton="twitter" url="{{href}}"></button>
+                    <button class="btn social-btn fa fa-linkedin" mat-fab shareButton="linkedin" url="{{href}}"></button>
+                    <button class="btn social-btn fa fa-whatsapp" mat-fab shareButton="whatsapp" url="{{href}}"></button>
+                    <button class="btn social-btn fa fa-telegram" mat-fab shareButton="telegram" url="{{href}}"></button>
+                    <button class="btn social-btn fa fa-pinterest" mat-fab shareButton="pinterest" url="{{href}}"></button>
                   </div>
                 </div>
               </div>
@@ -136,15 +149,15 @@
                     <h3>{{currentFighter.name}}</h3>
                     <p>{{currentFighter.description}}</p>
                   </div>
-                  <form class="form-register" action="#" method="post">
+                  <form class="form-register">
                     <div id="form-total">
                       &lt;!&ndash; SECTION 1 &ndash;&gt;
                       <h2>1</h2>
                       <section>
-                        <div class="inner">
-                          <div class="form-row">
+&lt;!&ndash;                        <div class="inner">&ndash;&gt;
+&lt;!&ndash;                          <div class="form-row">&ndash;&gt;
                             <div class="form-holder">
-                              <label class="label">Death Date: {{currentFighter.deathDate |date: 'dd-MM-yyyy'}}</label>
+                              <p>Death Date: {{currentFighter.deathDate |date: 'dd-MM-yyyy'}}</p>
                             </div>
                             &lt;!&ndash; <div class="form-holder">
                               <input type="text" placeholder="First Name" class="form-control" id="first_name">
@@ -152,10 +165,10 @@
                             <div class="form-holder">
                               <input type="text" placeholder="Last Name" class="form-control" id="last_name">
                             </div> &ndash;&gt;
-                          </div>
+&lt;!&ndash;                          </div>&ndash;&gt;
                           <div class="form-row">
                             <div class="form-holder">
-                              <label class="label">Age: {{currentFighter.age}}</label>
+                              <p>Age: {{currentFighter.age}}</p>
                             </div>
                             &lt;!&ndash; <div class="form-holder">
                               <input type="text" placeholder="Phone Number" class="form-control" id="phone">
@@ -164,7 +177,33 @@
                               <input type="email" placeholder="Email" class="form-control" id="email">
                             </div> &ndash;&gt;
                           </div>
-                        </div>
+
+                            <div class="">
+                              <div class="accordion" id="accordionExample">
+                                <div class="card">
+                                  <div class="card-head" id="headingOne">
+                                    <h2 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false"
+                                        aria-controls="collapseOne">
+                                      Share
+                                    </h2>
+                                  </div>
+
+                                  <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                      <button class="btn social-btn fa fa-facebook"  mat-fab shareButton="facebook"  [url]='"https://www.google.com"'></button>
+                                      <button class="btn social-btn fa fa-twitter" mat-fab shareButton="twitter" [url]='"https://www.google.com"'></button>
+                                      <button class="btn social-btn fa fa-linkedin" mat-fab shareButton="linkedin" [url]='"https://www.google.com"'></button>
+                                      <button class="btn social-btn fa fa-whatsapp" mat-fab shareButton="whatsapp" [url]='"https://www.google.com"'></button>
+                                      <button class="btn social-btn fa fa-telegram" mat-fab shareButton="telegram" [url]='"https://www.google.com"'></button>
+                                      <button class="btn social-btn fa fa-pinterest" mat-fab shareButton="pinterest" [url]='"https://www.google.com"'></button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+
+&lt;!&ndash;                        </div>&ndash;&gt;
                       </section>
                       &lt;!&ndash; SECTION 2 &ndash;&gt;
                       <h2>2</h2>
