@@ -11,12 +11,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="783126e4-dc3d-4157-9b97-186a2fa8683f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/app/libs/cache.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/app/models/fighterComments.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app/controllers/fighterController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/controllers/fighterController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app/routes/fighter.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/routes/fighter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/corona/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +41,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="ts.external.directory.path" value="C:\Users\abhik\Desktop\covid-19\frontend\node_modules\typescript\lib" />
+    <property name="ts.external.directory.path" value="C:\Users\abhik\Desktop\covid-19\adminSIte\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -104,7 +99,7 @@
       <workItem from="1588343378712" duration="3388000" />
       <workItem from="1588349759377" duration="954000" />
       <workItem from="1588396362734" duration="1819000" />
-      <workItem from="1588398349638" duration="769000" />
+      <workItem from="1588398349638" duration="2731000" />
     </task>
     <task id="LOCAL-00001" summary="backend">
       <created>1587463302364</created>
@@ -176,7 +171,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588226977642</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="new changes">
+      <created>1588400775902</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1588400775902</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -205,21 +207,22 @@
     <MESSAGE value="all" />
     <MESSAGE value="admin site final" />
     <MESSAGE value="all admin" />
-    <option name="LAST_COMMIT_MESSAGE" value="all admin" />
+    <MESSAGE value="new changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="new changes" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1588226976251">
+    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1588400774336">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1588226976251" />
+    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1588400774336" />
     <state width="542" height="466" key="DebuggerActiveHint" timestamp="1587462377547">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="542" height="466" key="DebuggerActiveHint/0.0.1366.728@0.0.1366.728" timestamp="1587462377547" />
-    <state x="92" y="92" width="1182" height="544" key="DiffContextDialog" timestamp="1587836502919">
+    <state x="92" y="92" width="1182" height="544" key="DiffContextDialog" timestamp="1588401082933">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="92" y="92" width="1182" height="544" key="DiffContextDialog/0.0.1366.728@0.0.1366.728" timestamp="1587836502919" />
+    <state x="92" y="92" width="1182" height="544" key="DiffContextDialog/0.0.1366.728@0.0.1366.728" timestamp="1588401082933" />
     <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1588344040300">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -276,10 +279,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="483" y="66" key="RollbackChangesDialog/0.0.1366.728@0.0.1366.728" timestamp="1588079751488" />
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1588226979933">
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1588400779272">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1588226979933" />
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1588400779272" />
     <state x="92" y="92" width="1182" height="544" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1588065991499">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

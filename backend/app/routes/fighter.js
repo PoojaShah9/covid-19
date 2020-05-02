@@ -7,7 +7,7 @@ const fs = require('fs');
 const shortid = require('shortid');
 const multer = require('multer');
 
-const cachMan = require('../libs/cache');
+const cachMan = require('../middlewares/cache');
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -34,9 +34,9 @@ module.exports.setRouter = (app) => {
 
     app.get(baseUrl + '/gettoptenfighter', cachMan.cache, [fighter.getTopTen]);
 
-    app.get(baseUrl + '/getfightergetByCountry', [fighter.getfightergetByCountry]);
+    app.get(baseUrl + '/getfightergetByCountry', cachMan.cache, [fighter.getfightergetByCountry]);
 
-    app.get(baseUrl + '/getbyid', [fighter.getbyid]);
+    app.get(baseUrl + '/getbyid', cachMan.cache, [fighter.getbyid]);
 
     app.post(baseUrl + '/comment', [fighter.comment]);
 };
