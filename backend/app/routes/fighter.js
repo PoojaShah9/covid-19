@@ -7,6 +7,8 @@ const fs = require('fs');
 const shortid = require('shortid');
 const multer = require('multer');
 
+const cachMan = require('../libs/cache');
+
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         if (!fs.existsSync('./upload/')) {
@@ -28,10 +30,13 @@ module.exports.setRouter = (app) => {
 
     // API are used in current system
 
-    app.post(baseUrl + '/', upload.single('image'), [fighter.create]);
+    app.post(baseUrl + '/', [fighter.create]);
 
-    app.get(baseUrl + '/gettoptenfighter', [fighter.getTopTen]);
+    app.get(baseUrl + '/gettoptenfighter', cachMan.cache, [fighter.getTopTen]);
 
     app.get(baseUrl + '/getfightergetByCountry', [fighter.getfightergetByCountry]);
 
+    app.get(baseUrl + '/getbyid', [fighter.getbyid]);
+
+    app.post(baseUrl + '/comment', [fighter.comment]);
 };

@@ -1,0 +1,12 @@
+{
+  "firebaseConfig": {
+    "apiKey": "AIzaSyC5o5mJTd9j3e3_BzEYqLGqbYREIco-s_8",
+    "authDomain": "databasetrial-e0476.firebaseapp.com",
+    "databaseURL": "https://databasetrial-e0476.firebaseio.com",
+    "projectId": "databasetrial-e0476",
+    "storageBucket": "databasetrial-e0476.appspot.com",
+    "messagingSenderId": "43671016649",
+    "appId": "1:43671016649:web:700b3162c89b9c4a0ee918",
+    "measurementId": "G-ELWQPX8190"
+  }
+}

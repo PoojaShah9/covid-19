@@ -1,0 +1,60 @@
+<div id="colorlib-page">
+<app-sidebar></app-sidebar>
+<div id="colorlib-main">
+  <section class="ftco-section bg-light ftco-bread">
+    <div class="container">
+      <div class="row no-gutters slider-text align-items-center">
+        <div class="col-md-9 ftco-animate fadeInUp ftco-animated">
+          <h2 class="mb-3 bread">Corona Warriors</h2>
+          <p>A small tributes towards real life heroes. Warriors who died to save world against COVID-19</p>
+<!--          <button mat-fab shareButton="facebook" [url] = '"https://www.google.com"'>-->
+<!--&lt;!&ndash;            <fa-icon [icon]="share.prop.facebook.icon" size="lg"></fa-icon>&ndash;&gt; Facebook-->
+<!--          </button>-->
+<!--          <button mat-fab shareButton="twitter" [url] = '"https://www.google.com"'>-->
+<!--&lt;!&ndash;            <fa-icon [icon]="share.prop.twitter.icon" size="lg"></fa-icon>&ndash;&gt; Twitter-->
+<!--          </button>-->
+<!--          <button mat-fab shareButton="linkedin" [url] = '"https://www.google.com"'>-->
+<!--&lt;!&ndash;            <fa-icon [icon]="share.prop.linkedin.icon" size="lg"></fa-icon>&ndash;&gt;LinkedIn-->
+<!--          </button>-->
+<!--          <button mat-fab shareButton="whatsapp" [url] = '"https://www.google.com"'>-->
+<!--&lt;!&ndash;            <fa-icon [icon]="share.prop.whatsapp.icon" size="lg"></fa-icon>&ndash;&gt; Whatsapp-->
+<!--          </button>-->
+<!--          <button mat-fab shareButton="telegram" [url] = '"https://www.google.com"'>-->
+<!--&lt;!&ndash;            <fa-icon [icon]="share.prop.telegram.icon" size="lg"></fa-icon>&ndash;&gt; Telegram-->
+<!--          </button>-->
+<!--          <button mat-fab shareButton="pinterest" [url] = '"https://www.google.com"'>-->
+<!--&lt;!&ndash;            <fa-icon [icon]="share.prop.pinterest.icon" size="lg"></fa-icon>&ndash;&gt;Pintrest-->
+<!--          </button>-->
+          <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="country-tab" data-toggle="pill" href="#country" role="tab"
+                 (click)="onTabClick('country')" aria-controls="country" aria-selected="false">Country</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="showall-tab" data-toggle="pill" href="#showall" (click)="onTabClick('world')"
+                 role="tab" aria-controls="showall" aria-selected="true">World wide</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="ftco-section-2">
+    <div class="photograhy">
+      <div class="row no-gutters">
+        <div *ngFor="let fighter of fighterData" class="col-custom ftco-animate fadeInUp ftco-animated border-image">
+          <a href="../../assets/images/image_1.jpg" class="photography-entry img image-popup d-flex justify-content-center align-items-center"
+             [ngStyle]="{'background-image': 'url(' + fighter.link + ')'}">
+            <div class="overlay"></div>
+            <div class="text text-center">
+              <h3>{{fighter.name}}</h3>
+              <span class="tag">{{fighter.occupation}}</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+<!--  <app-footer></app-footer>-->
+</div><!-- END COLORLIB-MAIN -->
+</div>

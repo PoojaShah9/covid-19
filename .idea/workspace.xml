@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="783126e4-dc3d-4157-9b97-186a2fa8683f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/backend/app/libs/cache.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/app/models/fighterComments.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/controllers/fighterController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/controllers/fighterController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/routes/fighter.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/routes/fighter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/corona/package-lock.json" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="poojaShah &lt;shah.developer9@gmail.com&gt;" />
+      </list>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/backend" />
+  </component>
+  <component name="ProjectId" id="1aqJjMYzubuiuqcOVx1TLfCnQO3" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/newDesign" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="C:\Users\abhik\Desktop\covid-19\frontend\node_modules\typescript\lib" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\abhik\Desktop\covid-19\backend" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\abhik\Desktop\covid-19" />
+      <recent name="C:\Users\abhik\Desktop\covid-19\adminSIte" />
+      <recent name="C:\Users\abhik\Desktop\covid-19\backend" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="app.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/backend/app.js" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.app.js" />
+        <item itemvalue="Node.js.app.js" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="783126e4-dc3d-4157-9b97-186a2fa8683f" name="Default Changelist" comment="" />
+      <created>1587457324713</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1587457324713</updated>
+      <workItem from="1587457326105" duration="8073000" />
+      <workItem from="1587544199244" duration="1169000" />
+      <workItem from="1587545431299" duration="6974000" />
+      <workItem from="1587639809755" duration="1816000" />
+      <workItem from="1587641647531" duration="124000" />
+      <workItem from="1587642044084" duration="998000" />
+      <workItem from="1587646278744" duration="5434000" />
+      <workItem from="1587721231742" duration="1149000" />
+      <workItem from="1587723556807" duration="5541000" />
+      <workItem from="1587810730226" duration="14105000" />
+      <workItem from="1587965088473" duration="17000" />
+      <workItem from="1588051944757" duration="374000" />
+      <workItem from="1588052334524" duration="1246000" />
+      <workItem from="1588054255065" duration="3718000" />
+      <workItem from="1588060054152" duration="572000" />
+      <workItem from="1588065548973" duration="16142000" />
+      <workItem from="1588141658129" duration="9244000" />
+      <workItem from="1588154697352" duration="1654000" />
+      <workItem from="1588157245559" duration="4112000" />
+      <workItem from="1588169222541" duration="2685000" />
+      <workItem from="1588222309901" duration="8334000" />
+      <workItem from="1588308785681" duration="1625000" />
+      <workItem from="1588343378712" duration="3388000" />
+      <workItem from="1588349759377" duration="954000" />
+      <workItem from="1588396362734" duration="1819000" />
+      <workItem from="1588398349638" duration="769000" />
+    </task>
+    <task id="LOCAL-00001" summary="backend">
+      <created>1587463302364</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1587463302365</updated>
+    </task>
+    <task id="LOCAL-00002" summary="age and occupation">
+      <created>1587463703300</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1587463703300</updated>
+    </task>
+    <task id="LOCAL-00003" summary="organization">
+      <created>1587560646167</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1587560646167</updated>
+    </task>
+    <task id="LOCAL-00004" summary="fix api">
+      <created>1587642584271</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1587642584271</updated>
+    </task>
+    <task id="LOCAL-00005" summary="jo">
+      <created>1587649504676</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1587649504676</updated>
+    </task>
+    <task id="LOCAL-00006" summary="photo">
+      <created>1587653180693</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1587653180693</updated>
+    </task>
+    <task id="LOCAL-00007" summary="admin site">
+      <created>1588079494214</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1588079494215</updated>
+    </task>
+    <task id="LOCAL-00008" summary="all">
+      <created>1588099673127</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1588099673127</updated>
+    </task>
+    <task id="LOCAL-00009" summary="admin site final">
+      <created>1588152014906</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1588152014907</updated>
+    </task>
+    <task id="LOCAL-00010" summary="all admin">
+      <created>1588226977642</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1588226977642</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="backend" />
+    <MESSAGE value="age and occupation" />
+    <MESSAGE value="organization" />
+    <MESSAGE value="fix api" />
+    <MESSAGE value="jo" />
+    <MESSAGE value="photo" />
+    <MESSAGE value="admin site" />
+    <MESSAGE value="all" />
+    <MESSAGE value="admin site final" />
+    <MESSAGE value="all admin" />
+    <option name="LAST_COMMIT_MESSAGE" value="all admin" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1588226976251">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1588226976251" />
+    <state width="542" height="466" key="DebuggerActiveHint" timestamp="1587462377547">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="542" height="466" key="DebuggerActiveHint/0.0.1366.728@0.0.1366.728" timestamp="1587462377547" />
+    <state x="92" y="92" width="1182" height="544" key="DiffContextDialog" timestamp="1587836502919">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="92" y="92" width="1182" height="544" key="DiffContextDialog/0.0.1366.728@0.0.1366.728" timestamp="1587836502919" />
+    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1588344040300">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1588344040300" />
+    <state width="1345" height="223" key="GridCell.Tab.0.bottom" timestamp="1587842019668">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1345" height="223" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1587842019668" />
+    <state width="1345" height="223" key="GridCell.Tab.0.center" timestamp="1587842019668">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1345" height="223" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1587842019668" />
+    <state width="1345" height="223" key="GridCell.Tab.0.left" timestamp="1587842019667">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1345" height="223" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1587842019667" />
+    <state width="1345" height="223" key="GridCell.Tab.0.right" timestamp="1587842019668">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1345" height="223" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1587842019668" />
+    <state width="1345" height="223" key="GridCell.Tab.1.bottom" timestamp="1587842019669">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1345" height="223" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1587842019669" />
+    <state width="1345" height="223" key="GridCell.Tab.1.center" timestamp="1587842019668">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1345" height="223" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1587842019668" />
+    <state width="1345" height="223" key="GridCell.Tab.1.left" timestamp="1587842019668">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1345" height="223" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1587842019668" />
+    <state width="1345" height="223" key="GridCell.Tab.1.right" timestamp="1587842019668">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1345" height="223" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1587842019668" />
+    <state width="1345" height="223" key="GridCell.Tab.2.bottom" timestamp="1587842019669">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1345" height="223" key="GridCell.Tab.2.bottom/0.0.1366.728@0.0.1366.728" timestamp="1587842019669" />
+    <state width="1345" height="223" key="GridCell.Tab.2.center" timestamp="1587842019669">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1345" height="223" key="GridCell.Tab.2.center/0.0.1366.728@0.0.1366.728" timestamp="1587842019669" />
+    <state width="1345" height="223" key="GridCell.Tab.2.left" timestamp="1587842019669">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1345" height="223" key="GridCell.Tab.2.left/0.0.1366.728@0.0.1366.728" timestamp="1587842019669" />
+    <state width="1345" height="223" key="GridCell.Tab.2.right" timestamp="1587842019669">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1345" height="223" key="GridCell.Tab.2.right/0.0.1366.728@0.0.1366.728" timestamp="1587842019669" />
+    <state x="483" y="66" key="RollbackChangesDialog" timestamp="1588079751488">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="483" y="66" key="RollbackChangesDialog/0.0.1366.728@0.0.1366.728" timestamp="1588079751488" />
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1588226979933">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1588226979933" />
+    <state x="92" y="92" width="1182" height="544" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1588065991499">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="92" y="92" width="1182" height="544" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1366.728@0.0.1366.728" timestamp="1588065991499" />
+    <state x="92" y="92" width="1182" height="544" key="com.intellij.history.integration.ui.views.SelectionHistoryDialog" timestamp="1588065991499">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="92" y="92" width="1182" height="544" key="com.intellij.history.integration.ui.views.SelectionHistoryDialog/0.0.1366.728@0.0.1366.728" timestamp="1588065991499" />
+    <state x="237" y="93" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1587461365051">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="237" y="93" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1366.728@0.0.1366.728" timestamp="1587461365051" />
+    <state x="390" y="99" width="585" height="530" key="find.popup" timestamp="1588054541821">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="390" y="99" width="585" height="530" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1588054541821" />
+    <state x="339" y="162" key="run.anything.popup" timestamp="1588223610316">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1588223610316" />
+  </component>
+</project>

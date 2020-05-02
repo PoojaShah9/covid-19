@@ -13,6 +13,8 @@ const fighterSchema = mongoose.Schema({
     description: String,
     age: String,
     occupation: String,
+    source: String,
+    link: String,
     photo: {data: Buffer, contentType: String}
 }, schemaOptions);
 
