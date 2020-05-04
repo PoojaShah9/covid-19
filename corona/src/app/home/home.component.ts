@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
   cntName: string = null;
   loading = false;
   currentFighter: any = {};
+  user: any = {};
   popupVisible = false;
   display = 'none';
   showDD = false;
@@ -61,6 +62,10 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  onSubmitmsg() {
+    this.user.name = localStorage.getItem('username');
+    console.log('user', this.user);
+  }
 
   getFighter(country) {
     this.loading = true;
