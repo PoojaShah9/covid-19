@@ -4,6 +4,11 @@ import {Country} from '../../country';
 import {ActivatedRoute, Router} from "@angular/router";
 import {PlatformLocation} from "@angular/common";
 
+interface IServerResponse {
+  items: string[];
+  total: number;
+}
+
 declare var magnificPopup: Function;
 
 @Component({
@@ -20,6 +25,7 @@ export class HomeComponent implements OnInit {
   user: any = {};
   popupVisible = false;
   display = 'none';
+  displayDemo = 'none';
   showDD = false;
   countrylist: any = [];
   searchText = '';
@@ -31,6 +37,10 @@ export class HomeComponent implements OnInit {
     'https://thenypost.files.wordpress.com/2020/03/200321-coronavirus-masks.jpg',
     'https://i.pinimg.com/originals/2c/a8/69/2ca869fa7b11fae2a0b15e83c318a164.jpg'];
   href;
+  // @Input('data') meals: string[] = [];
+  // asyncMeals: Observable<string[]>;
+  // p: number = 1;
+  // total: number;
 
   constructor(private fighterService: FightersService,
               private route: ActivatedRoute,
@@ -118,10 +128,14 @@ export class HomeComponent implements OnInit {
     console.log('data', this.currentFighter);
   }
 
-  closeModal() {
-    this.display = 'none';
+  open() {
+    this.displayDemo = 'block';
   }
 
+  closeModal() {
+    this.display = 'none';
+    this.displayDemo = 'none';
+  }
 
   onChanges(e) {
     // let abc = e.target.value.toUpperCase();
@@ -144,4 +158,31 @@ export class HomeComponent implements OnInit {
     window.location.reload();
   }
 
+  /*getPage(page: number) {
+    this.loading = true;
+    this.asyncMeals = serverCall(this.meals, page).pipe(
+      tap(res => {
+        this.total = res.total;
+        this.p = page;
+        this.loading = false;
+      }),
+      map(res => res.items)
+    );
+  }*/
 }
+
+/**
+ * Simulate an async HTTP call with a delayed observable.
+ */
+
+
+/*function serverCall(meals: string[], page: number): Observable<IServerResponse> {
+  const perPage = 10;
+  const start = (page - 1) * perPage;
+  const end = start + perPage;
+
+  return of({
+    items: meals.slice(start, end),
+    total: 100
+  }).pipe(delay(1000));
+}*/

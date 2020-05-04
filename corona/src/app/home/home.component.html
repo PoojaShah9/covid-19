@@ -34,6 +34,9 @@
               </datalist>
             </div>
           </div>
+          <div>
+            <button class="btn btn-default" (click)="open()">Open</button>
+          </div>
           <!-- <div class="col-md-3 ftco-animate fadeInUp ftco-animated">
             <div class="list-container">
       <dx-list
@@ -69,6 +72,17 @@
               </div>
             </a>
           </div>
+
+          <!--<ul class="meal-list">
+            <li *ngFor="let meal of asyncMeals | async | paginate: { id: 'server', itemsPerPage: 10, currentPage: p, totalItems: total }">
+              {{ meal }}
+            </li>
+          </ul>
+
+          <div class="has-text-centered">
+&lt;!&ndash;            <div class="spinner" [ngClass]="{ 'hidden': !loading }"></div>&ndash;&gt;
+            <pagination-controls (pageChange)="getPage($event)" id="server"></pagination-controls>
+          </div>-->
           <!-- </div>
            <div class="tab-pane fade show active" id="showall" role="tabpanel" aria-labelledby="showall-tab">
            </div>-->
@@ -196,15 +210,13 @@
                                       <button class="btn social-btn fa fa-twitter" mat-fab shareButton="twitter" [url]='"https://www.google.com"'></button>
                                       <button class="btn social-btn fa fa-linkedin" mat-fab shareButton="linkedin" [url]='"https://www.google.com"'></button>
                                       <button class="btn social-btn fa fa-whatsapp" mat-fab shareButton="whatsapp" [url]='"https://www.google.com"'></button>
-                                      <button class="btn social-btn fa fa-telegram" mat-fab shareButton="telegram" [url]='"https://www.google.com"'></button>
+                                      <button class="btn social-btn fa fa-paper-plane" mat-fab shareButton="telegram" [url]='"https://www.google.com"'></button>
                                       <button class="btn social-btn fa fa-pinterest" mat-fab shareButton="pinterest" [url]='"https://www.google.com"'></button>
                                     </div>
                                   </div>
                                 </div>
                               </div>
                             </div>
-
-
 <!--                        </div>-->
                       </section>
                       <!-- SECTION 2 -->
@@ -253,6 +265,30 @@
                 </div>
               </div>
             </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="backdrop" [ngStyle]="{'display':displayDemo}"></div>
+    <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayDemo}">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Modal Heading</h4>
+            <button type="button" class="close"  (click)="closeModal()">&times;</button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">
+            Modal body..
+          </div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" (click)="closeModal()">Close</button>
           </div>
 
         </div>
