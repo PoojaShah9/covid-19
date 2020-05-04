@@ -118,10 +118,7 @@ body {
 	content: none;
 }
 .form-register .steps li.current a,
-.form-register .steps li.current a:active,
-.form-register .steps li.done a::before,
-.form-register .steps li.done a,
-.form-register .steps li.done a:active  {
+.form-register .steps li.current a:active {
     background: #56a3f2;
 }
 .form-register .steps li .current-info {
@@ -370,5 +367,5 @@ body {
 	.inner .table-responsive tr.space-row > td {
 		padding-bottom: 30px;
 	}
-	
-} 
+
+}

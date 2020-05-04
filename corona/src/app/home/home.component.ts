@@ -62,9 +62,10 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  onSubmitmsg() {
+  onSubmitmsg(e) {
+    // alert('hello');
+    console.log('user', e);
     this.user.name = localStorage.getItem('username');
-    console.log('user', this.user);
   }
 
   getFighter(country) {
