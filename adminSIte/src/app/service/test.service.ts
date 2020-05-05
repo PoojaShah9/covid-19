@@ -11,5 +11,6 @@ export class TestService {
 
   newRecord(data) {
     return this.http.post<any>('https://covid19poojamaam.herokuapp.com/api/v1/fighters', data);
+    // return this.http.post<any>('http://localhost:3001/api/v1/fighters', data);
   }
 }

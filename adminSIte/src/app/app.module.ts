@@ -10,6 +10,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import {TestService} from './service/test.service';
 import {NgxFileDropModule} from 'ngx-file-drop';
 import {FileSelectDirective} from 'ng2-file-upload';
+import { SelectDropDownModule } from 'ngx-select-dropdown'
+
 
 @NgModule({
   declarations: [
@@ -19,6 +21,7 @@ import {FileSelectDirective} from 'ng2-file-upload';
   imports: [
     BrowserModule,
     NgxFileDropModule,
+    SelectDropDownModule,
     NgxSpinnerModule,
     FormsModule,
     HttpClientModule,

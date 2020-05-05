@@ -7,6 +7,7 @@ const Promise = require('bluebird');
 const fs = require('fs');
 
 const Fighters = mongoose.model('fighters');
+const FightersTesting = mongoose.model('fightersTesting');
 const FighterComments = mongoose.model('fighterComments');
 
 let create = (req, res) => {
@@ -52,12 +53,12 @@ let create = (req, res) => {
         return new Promise((resolve, reject) => {
             const body = {
                 fighter_id: shortid.generate(),
-                name: req.body.name,
-                country: (req.body.country).toLowerCase(),
-                deathDate: new Date(req.body.deathDate),
+                name: (req.body.name) ? req.body.name : '',
+                country: (req.body.country) ? req.body.country.toLowerCase() : '',
+                deathDate: (req.body.deathDate) ? new Date(req.body.deathDate) : new Date(),
                 description: (req.body.description) ? req.body.description : '',
-                occupation: req.body.occupation,
-                age: req.body.age,
+                occupation: req.body.occupation ? req.body.occupation : '',
+                age: req.body.age ? req.body.age : '',
                 source: (req.body.source) ? req.body.source : '',
                 link: (req.body.link) ? req.body.link : '',
             };
@@ -76,9 +77,9 @@ let create = (req, res) => {
         });
     }; // end of createFighter
 
-    validatingInputs()
-        .then(findRecord)
-        .then(createFighter)
+    // validatingInputs()
+    // findRecord()
+    createFighter()
         .then((resolve) => {
             if (req.file)
                 fs.unlinkSync(req.file.path)
@@ -150,7 +151,7 @@ let getTopTen = (req, res) => {
     let getData = () => {
         console.log("getData");
         return new Promise((resolve, reject) => {
-            Fighters.find()
+            FightersTesting.find()
                 .sort({created_at: -1}).limit(10)
                 .then((data) => {
                     resolve(data);
@@ -192,7 +193,7 @@ let getbyid = (req, res) => {
             if (req.query.id) {
                 body['fighter_id'] = (req.query.id);
             }
-            Fighters.findOne(body, function (err, userDetail) {
+            FightersTesting.findOne(body, function (err, userDetail) {
                 if (err) {
                     logger.error("Internal Server error while fetching Fighters", "getPhotosByCategory => getPhotos()", 5);
                     let apiResponse = response.generate(true, err, 500, null);
@@ -242,18 +243,30 @@ let getfightergetByCountry = (req, res) => {
         console.log("getFighter");
         return new Promise((resolve, reject) => {
             let body = {};
+            let limit = 18;
+            let page = 0;
+            if (req.query.limit)
+                limit = Number(req.query.limit);
+            if (req.query.pg && req.query.pg !== 0)
+                page = Number(req.query.pg) * limit;
+
+            console.log('limit', limit);
+            console.log('page', page);
+
             if (req.query.country) {
                 body['country'] = (req.query.country).toLowerCase();
             }
-            Fighters.find(body, function (err, userDetail) {
-                if (err) {
+            FightersTesting.find(body)
+                .skip(page)
+                .limit(limit)
+                .then((data) => {
+                    resolve(data);
+                })
+                .catch((err) => {
                     logger.error("Internal Server error while fetching Fighters", "getPhotosByCategory => getPhotos()", 5);
                     let apiResponse = response.generate(true, err, 500, null);
                     reject(apiResponse);
-                } else {
-                    resolve(userDetail);
-                }
-            })
+                })
         });
     }; // end of getFighter
 
