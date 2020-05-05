@@ -90,6 +90,7 @@ export class HomeComponent implements OnInit {
           this.fighterData.filter((x, i) => {
             x.link = this.photoArray[Math.floor(Math.random() * Math.floor(this.photoArray.length))];
           });
+          this.currentFighter = this.fighterData[1];
         }
       }, error => {
         this.loading = false;

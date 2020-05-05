@@ -269,7 +269,7 @@ a {
 .custom-img {
   height: 225px;
   margin: 10px 10px 10px 0;
-  width: 40%;
+  /*width: 40%;*/
 }
 .social-btn {
   border-radius: 50%;
@@ -277,7 +277,7 @@ a {
   margin: 5px;
 }
 /*Comment Section*/
-  
+
     .message-wrap
     {
         box-shadow: 0 0 3px #ddd;
@@ -293,7 +293,7 @@ a {
     .msg-wrap
     {
         padding:10px;
-        max-height: 126px;
+        /*max-height: 126px;*/
         overflow: auto;
 
     }
@@ -386,8 +386,8 @@ a {
     body::-webkit-scrollbar {
         width: 12px;
     }
- 
-    
+
+
     /* Let's get this party started */
     ::-webkit-scrollbar {
         width: 6px;
@@ -395,7 +395,7 @@ a {
 
     /* Track */
     ::-webkit-scrollbar-track {
-        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
 /*        -webkit-border-radius: 10px;
         border-radius: 10px;*/
     }
@@ -404,9 +404,9 @@ a {
     ::-webkit-scrollbar-thumb {
 /*        -webkit-border-radius: 10px;
         border-radius: 10px;*/
-        background:#ddd; 
-        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+        background:#ddd;
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
     }
     ::-webkit-scrollbar-thumb:window-inactive {
-        background: #ddd; 
+        background: #ddd;
     }
