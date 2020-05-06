@@ -34,9 +34,9 @@
               </datalist>
             </div>
           </div>
-          <div>
+          <!--<div>
             <button class="btn btn-default" (click)="open()">Open</button>
-          </div>
+          </div>-->
           <!-- <div class="col-md-3 ftco-animate fadeInUp ftco-animated">
             <div class="list-container">
       <dx-list
@@ -61,8 +61,8 @@
           <!--<div class="tab-content" id="pills-tabContent" style="width: 100%">
 
             <div class="tab-pane fade show " id="country" role="tabpanel" aria-labelledby="country-tab">-->
-          <div *ngFor="let fighter of fighterData" class="col-custom ftco-animate fadeInUp ftco-animated border-image">
-            <a (click)="openModal(fighter)" style="cursor: pointer;"
+          <div *ngFor="let fighter of fighterData | paginate: { id: 'server', itemsPerPage: limit, currentPage: p, totalItems: total }; let i = index;" class="col-custom ftco-animate fadeInUp ftco-animated border-image">
+            <a (click)="openModal(fighter, i)" style="cursor: pointer;"
                class="photography-entry img image-popup d-flex justify-content-center align-items-center"
                [ngStyle]="{'background-image': 'url(' + fighter.link + ')'}">
               <div class="overlay"></div>
@@ -72,222 +72,51 @@
               </div>
             </a>
           </div>
-
-          <!--<ul class="meal-list">
-            <li *ngFor="let meal of asyncMeals | async | paginate: { id: 'server', itemsPerPage: 10, currentPage: p, totalItems: total }">
-              {{ meal }}
-            </li>
-          </ul>
-
-          <div class="has-text-centered">
-&lt;!&ndash;            <div class="spinner" [ngClass]="{ 'hidden': !loading }"></div>&ndash;&gt;
-            <pagination-controls (pageChange)="getPage($event)" id="server"></pagination-controls>
-          </div>-->
           <!-- </div>
            <div class="tab-pane fade show active" id="showall" role="tabpanel" aria-labelledby="showall-tab">
            </div>-->
         </div>
+
+        <div style="text-align: center;margin-top: 10px">
+          <!--            <div class="spinner" [ngClass]="{ 'hidden': !loading }"></div>-->
+          <pagination-controls (pageChange)="getPage($event)" id="server"></pagination-controls>
+        </div>
       </div>
     </section>
 
-    <!--<dx-popup
-     [width]="660"
-     [height]="500"
-     [showTitle]="true"
-     [title]="currentFighter.name"
-     [dragEnabled]="false"
-     [closeOnOutsideClick]="false"
-     [(visible)]="popupVisible">
-     <div>
-       <div class='popup-property-details'>
-         <div class='large-text'>Occupation: {{currentFighter.occupation | uppercase}}</div>
-         <button class="dx-button favorites"
-                 (click)="changeFavoriteState($event)">Donate
-         </button>
-         <div class="row" style="margin-top: 30px;">
-           <div class="col-md-6">
-             <div class='images'>
-               <img src="{{currentFighter.link}}" class="custom-img"/>
-             </div>
-           </div>
-           <div class="col-md-6">
-             <div style="margin: 10px 10px 10px 0;">
-               <p><label class="label">Death Date:</label> {{currentFighter.deathDate |date: 'dd-MM-yyyy'}}</p>
-               <p><label class="label">Age:</label> {{currentFighter.age}}</p>
-               <p>{{currentFighter.description}}</p>
-             </div>
-           </div>
-         </div>
-         <div class="" style="margin-top: -30px;">
-           <div class="accordion" id="accordionExample">
-             <div class="card">
-               <div class="card-head" id="headingOne">
-                 <h2 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false"
-                     aria-controls="collapseOne">
-                   Share
-                 </h2>
-               </div>
-
-               <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-                 <div class="card-body">
-                   <button class="btn social-btn fa fa-facebook"  mat-fab shareButton="facebook"  url="{{href}}"></button>
-                   <button class="btn social-btn fa fa-twitter" mat-fab shareButton="twitter" url="{{href}}"></button>
-                   <button class="btn social-btn fa fa-linkedin" mat-fab shareButton="linkedin" url="{{href}}"></button>
-                   <button class="btn social-btn fa fa-whatsapp" mat-fab shareButton="whatsapp" url="{{href}}"></button>
-                   <button class="btn social-btn fa fa-telegram" mat-fab shareButton="telegram" url="{{href}}"></button>
-                   <button class="btn social-btn fa fa-pinterest" mat-fab shareButton="pinterest" url="{{href}}"></button>
-                 </div>
-               </div>
-             </div>
-           </div>
-         </div>
-       </div>
-     </div>
-   </dx-popup>-->
-
-
-<!--    <div class="backdrop" [ngStyle]="{'display':display}"></div>-->
-<!--    <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':display}">-->
-<!--      <div class="modal-dialog modal-lg" role="document">-->
-<!--        <div class="modal-content">-->
-<!--          <div class="modal-body">-->
-<!--            <div class="page-content">-->
-<!--              <div class="wizard-v2-content">-->
-<!--                <div class="wizard-image"-->
-<!--                     [ngStyle]="{'background-image': 'url(' + currentFighter.link + ')'}"-->
-<!--                     style="background: center center no-repeat;">-->
-<!--                </div>-->
-<!--                <div class="wizard-form">-->
-<!--                  <div class="wizard-header">-->
-<!--                    <div>-->
-<!--                      <button type="button" class="close float-right" (click)="closeModal()"><span>&times;</span>-->
-<!--                      </button>-->
-<!--                    </div>-->
-<!--                    <h3>{{currentFighter.name}}</h3>-->
-<!--                    <p>{{currentFighter.description}}</p>-->
-<!--                  </div>-->
-<!--                  <form class="form-register">-->
-<!--                    <div id="form-total">-->
-<!--                      &lt;!&ndash; SECTION 1 &ndash;&gt;-->
-<!--                      <h2>1</h2>-->
-<!--                      <section>-->
-<!--                        &lt;!&ndash;                        <div class="inner">&ndash;&gt;-->
-<!--                        <div class="form-row">-->
-<!--                          <div class="form-holder">-->
-<!--                            <p>Death Date: {{currentFighter.deathDate |date: 'dd-MM-yyyy'}}</p>-->
-<!--                          </div>-->
-<!--                          &lt;!&ndash; <div class="form-holder">-->
-<!--                            <input type="text" placeholder="First Name" class="form-control" id="first_name">-->
-<!--                          </div>-->
-<!--                          <div class="form-holder">-->
-<!--                            <input type="text" placeholder="Last Name" class="form-control" id="last_name">-->
-<!--                          </div> &ndash;&gt;-->
-<!--                        </div>-->
-<!--                        <div class="form-row">-->
-<!--                          <div class="form-holder">-->
-<!--                            <p>Age: {{currentFighter.age}}</p>-->
-<!--                          </div>-->
-<!--                          &lt;!&ndash; <div class="form-holder">-->
-<!--                            <input type="text" placeholder="Phone Number" class="form-control" id="phone">-->
-<!--                          </div>-->
-<!--                          <div class="form-holder">-->
-<!--                            <input type="email" placeholder="Email" class="form-control" id="email">-->
-<!--                          </div> &ndash;&gt;-->
-<!--                        </div>-->
-
-<!--                        <div class="">-->
-<!--                          <div class="accordion" id="accordionExample">-->
-<!--                            <div class="card">-->
-<!--                              <div class="card-head" id="headingOne">-->
-<!--                                <h2 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseOne"-->
-<!--                                    aria-expanded="false"-->
-<!--                                    aria-controls="collapseOne">-->
-<!--                                  Share-->
-<!--                                </h2>-->
-<!--                              </div>-->
-
-<!--                              <div id="collapseOne" class="collapse" aria-labelledby="headingOne"-->
-<!--                                   data-parent="#accordionExample">-->
-<!--                                <div class="card-body">-->
-<!--                                  <button class="btn social-btn fa fa-facebook" mat-fab shareButton="facebook"-->
-<!--                                          [url]='"https://www.google.com"'></button>-->
-<!--                                  <button class="btn social-btn fa fa-twitter" mat-fab shareButton="twitter"-->
-<!--                                          [url]='"https://www.google.com"'></button>-->
-<!--                                  <button class="btn social-btn fa fa-linkedin" mat-fab shareButton="linkedin"-->
-<!--                                          [url]='"https://www.google.com"'></button>-->
-<!--                                  <button class="btn social-btn fa fa-whatsapp" mat-fab shareButton="whatsapp"-->
-<!--                                          [url]='"https://www.google.com"'></button>-->
-<!--                                  <button class="btn social-btn fa fa-paper-plane" mat-fab shareButton="telegram"-->
-<!--                                          [url]='"https://www.google.com"'></button>-->
-<!--                                  <button class="btn social-btn fa fa-pinterest" mat-fab shareButton="pinterest"-->
-<!--                                          [url]='"https://www.google.com"'></button>-->
-<!--                                </div>-->
-<!--                              </div>-->
-<!--                            </div>-->
-<!--                          </div>-->
-<!--                        </div>-->
-<!--                        &lt;!&ndash;                        </div>&ndash;&gt;-->
-<!--                      </section>-->
-<!--                      &lt;!&ndash; SECTION 2 &ndash;&gt;-->
-<!--                      <h2>2</h2>-->
-<!--                      <section>-->
-<!--                        <div class="">-->
-<!--                          <div class="message-wrap">-->
-<!--                            <div class="msg-wrap">-->
-<!--                              <div class="media msg">-->
-<!--                                <a class="pull-left" href="#">-->
-<!--                                  &lt;!&ndash; <img class="media-object" data-src="holder.js/64x64" alt="64x64" style="width: 32px; height: 32px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAACqUlEQVR4Xu2Y60tiURTFl48STFJMwkQjUTDtixq+Av93P6iBJFTgg1JL8QWBGT4QfDX7gDIyNE3nEBO6D0Rh9+5z9rprr19dTa/XW2KHl4YFYAfwCHAG7HAGgkOQKcAUYAowBZgCO6wAY5AxyBhkDDIGdxgC/M8QY5AxyBhkDDIGGYM7rIAyBgeDAYrFIkajEYxGIwKBAA4PDzckpd+322243W54PJ5P5f6Omh9tqiTAfD5HNpuFVqvFyckJms0m9vf3EY/H1/u9vb0hn89jsVj8kwDfUfNviisJ8PLygru7O4TDYVgsFtDh9Xo9NBrNes9cLgeTybThgKenJ1SrVXGf1WoVDup2u4jFYhiPx1I1P7XVBxcoCVCr1UBfTqcTrVYLe3t7OD8/x/HxsdiOPqNGo9Eo0un02gHkBhJmuVzC7/fj5uYGXq8XZ2dnop5Mzf8iwMPDAxqNBmw2GxwOBx4fHzGdTpFMJkVzNB7UGAmSSqU2RoDmnETQ6XQiOyKRiHCOSk0ZEZQcUKlU8Pz8LA5vNptRr9eFCJQBFHq//szG5eWlGA1ywOnpqQhBapoWPfl+vw+fzweXyyU+U635VRGUBOh0OigUCggGg8IFK/teXV3h/v4ew+Hwj/OQU4gUq/w4ODgQrkkkEmKEVGp+tXm6XkkAOngmk4HBYBAjQA6gEKRmyOL05GnR99vbW9jtdjEGdP319bUIR8oA+pnG5OLiQoghU5OElFlKAtCGr6+vKJfLmEwm64aosd/XbDbbyIBSqSSeNKU+HXzlnFAohKOjI6maMs0rO0B20590n7IDflIzMmdhAfiNEL8R4jdC/EZIJj235R6mAFOAKcAUYApsS6LL9MEUYAowBZgCTAGZ9NyWe5gCTAGmAFOAKbAtiS7TB1Ng1ynwDkxRe58vH3FfAAAAAElFTkSuQmCC"> &ndash;&gt;-->
-<!--                                </a>-->
-<!--                                <div class="media-body">-->
-<!--                                  <small class="pull-right time"><i class="fa fa-clock-o"></i> 12:10am</small>-->
-
-<!--                                  <h6 class="media-heading">Naimish Sakhpara</h6>-->
-<!--                                  <small class="col-lg-10">this is comment section</small>-->
-<!--                                </div>-->
-<!--                              </div>-->
-
-<!--                              <div class="media msg">-->
-<!--                                <a class="pull-left" href="#">-->
-<!--                                  &lt;!&ndash; <img class="media-object" data-src="holder.js/64x64" alt="64x64" style="width: 32px; height: 32px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAACqUlEQVR4Xu2Y60tiURTFl48STFJMwkQjUTDtixq+Av93P6iBJFTgg1JL8QWBGT4QfDX7gDIyNE3nEBO6D0Rh9+5z9rprr19dTa/XW2KHl4YFYAfwCHAG7HAGgkOQKcAUYAowBZgCO6wAY5AxyBhkDDIGdxgC/M8QY5AxyBhkDDIGGYM7rIAyBgeDAYrFIkajEYxGIwKBAA4PDzckpd+322243W54PJ5P5f6Omh9tqiTAfD5HNpuFVqvFyckJms0m9vf3EY/H1/u9vb0hn89jsVj8kwDfUfNviisJ8PLygru7O4TDYVgsFtDh9Xo9NBrNes9cLgeTybThgKenJ1SrVXGf1WoVDup2u4jFYhiPx1I1P7XVBxcoCVCr1UBfTqcTrVYLe3t7OD8/x/HxsdiOPqNGo9Eo0un02gHkBhJmuVzC7/fj5uYGXq8XZ2dnop5Mzf8iwMPDAxqNBmw2GxwOBx4fHzGdTpFMJkVzNB7UGAmSSqU2RoDmnETQ6XQiOyKRiHCOSk0ZEZQcUKlU8Pz8LA5vNptRr9eFCJQBFHq//szG5eWlGA1ywOnpqQhBapoWPfl+vw+fzweXyyU+U635VRGUBOh0OigUCggGg8IFK/teXV3h/v4ew+Hwj/OQU4gUq/w4ODgQrkkkEmKEVGp+tXm6XkkAOngmk4HBYBAjQA6gEKRmyOL05GnR99vbW9jtdjEGdP319bUIR8oA+pnG5OLiQoghU5OElFlKAtCGr6+vKJfLmEwm64aosd/XbDbbyIBSqSSeNKU+HXzlnFAohKOjI6maMs0rO0B20590n7IDflIzMmdhAfiNEL8R4jdC/EZIJj235R6mAFOAKcAUYApsS6LL9MEUYAowBZgCTAGZ9NyWe5gCTAGmAFOAKbAtiS7TB1Ng1ynwDkxRe58vH3FfAAAAAElFTkSuQmCC"> &ndash;&gt;-->
-<!--                                </a>-->
-<!--                                <div class="media-body">-->
-<!--                                  <small class="pull-right time"><i class="fa fa-clock-o"></i> 12:10am</small>-->
-<!--                                  <h6 class="media-heading">Naimish Sakhpara</h6>-->
-
-<!--                                  <small class="col-lg-10">Arnab Goswami</small>-->
-<!--                                </div>-->
-<!--                              </div>-->
-<!--                            </div>-->
-<!--                            <div class="send-wrap">-->
-<!--                              <input class="form-control send-message" placeholder="Write a reply..." name="msg"-->
-<!--                                     [(ngModel)]="user.msg" (keypress)="onSubmitmsg($event)">-->
-<!--                              &lt;!&ndash;                                <button (click)="onSubmitmsg($event)">click</button>&ndash;&gt;-->
-<!--                            </div>-->
-<!--                            &lt;!&ndash; <div class="btn-panel">-->
-<!--                                <a href="" class=" col-lg-3 btn   send-message-btn " role="button"><i class="fa fa-cloud-upload"></i> Add Files</a>-->
-<!--                                <a href="" class=" col-lg-4 text-right btn   send-message-btn pull-right" role="button"><i class="fa fa-plus"></i> Send Message</a>-->
-<!--                            </div> &ndash;&gt;-->
-<!--                          </div>-->
-<!--                        </div>-->
-<!--                      </section>-->
-<!--                    </div>-->
-<!--                  </form>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-
-
-    <div class="backdrop" [ngStyle]="{'display':displayDemo}"></div>
-    <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayDemo}">
+    <div class="backdrop" [ngStyle]="{'display':displayName}"></div>
+    <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayName}">
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title">Modal Heading</h4>
+            <h4 class="modal-title">Enter Your Name</h4>
+            <button type="button" class="close" (click)="closeModal()">&times;</button>
+          </div>
+          <div class="modal-body">
+            <form #f="ngForm" (ngSubmit)="f.form.valid && onNameSubmit()">
+              <div class="form-group">
+                <input type="text" class="form-control" [(ngModel)]="user.commentBy" placeholder="Enetr your name" name="name" required #name="ngModel"
+                       [ngClass]="{ 'is-invalid': f.submitted && name.invalid }">
+                <div class="text text-danger" *ngIf="f.submitted && name.invalid">
+                  <p *ngIf="name.errors.required">Name is required</p>
+                </div>
+              </div>
+              <div>
+                <button class="btn btn-outline-primary" type="submit">Submit</button>
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="backdrop" [ngStyle]="{'display':display}"></div>
+    <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':display}">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">{{currentFighter.name}}</h4>
             <button type="button" class="close" (click)="closeModal()">&times;</button>
           </div>
 
@@ -300,34 +129,27 @@
                   <label for="tab-1" class="tab-label">Comments</label>
                   <div class="tab-content">
                     <div class="message-wrap">
-                      <div class="msg-wrap">
-                        <div class="media msg">
-                          <a class="pull-left" href="#">
-                            <!-- <img class="media-object" data-src="holder.js/64x64" alt="64x64" style="width: 32px; height: 32px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAACqUlEQVR4Xu2Y60tiURTFl48STFJMwkQjUTDtixq+Av93P6iBJFTgg1JL8QWBGT4QfDX7gDIyNE3nEBO6D0Rh9+5z9rprr19dTa/XW2KHl4YFYAfwCHAG7HAGgkOQKcAUYAowBZgCO6wAY5AxyBhkDDIGdxgC/M8QY5AxyBhkDDIGGYM7rIAyBgeDAYrFIkajEYxGIwKBAA4PDzckpd+322243W54PJ5P5f6Omh9tqiTAfD5HNpuFVqvFyckJms0m9vf3EY/H1/u9vb0hn89jsVj8kwDfUfNviisJ8PLygru7O4TDYVgsFtDh9Xo9NBrNes9cLgeTybThgKenJ1SrVXGf1WoVDup2u4jFYhiPx1I1P7XVBxcoCVCr1UBfTqcTrVYLe3t7OD8/x/HxsdiOPqNGo9Eo0un02gHkBhJmuVzC7/fj5uYGXq8XZ2dnop5Mzf8iwMPDAxqNBmw2GxwOBx4fHzGdTpFMJkVzNB7UGAmSSqU2RoDmnETQ6XQiOyKRiHCOSk0ZEZQcUKlU8Pz8LA5vNptRr9eFCJQBFHq//szG5eWlGA1ywOnpqQhBapoWPfl+vw+fzweXyyU+U635VRGUBOh0OigUCggGg8IFK/teXV3h/v4ew+Hwj/OQU4gUq/w4ODgQrkkkEmKEVGp+tXm6XkkAOngmk4HBYBAjQA6gEKRmyOL05GnR99vbW9jtdjEGdP319bUIR8oA+pnG5OLiQoghU5OElFlKAtCGr6+vKJfLmEwm64aosd/XbDbbyIBSqSSeNKU+HXzlnFAohKOjI6maMs0rO0B20590n7IDflIzMmdhAfiNEL8R4jdC/EZIJj235R6mAFOAKcAUYApsS6LL9MEUYAowBZgCTAGZ9NyWe5gCTAGmAFOAKbAtiS7TB1Ng1ynwDkxRe58vH3FfAAAAAElFTkSuQmCC"> -->
-                          </a>
+                      <div class="msg-wrap"  #scrollMe [scrollTop]="scrollMe.scrollHeight">
+                        <div class="media msg" *ngFor="let c of comments">
+                          <!--<a class="pull-left" href="#">
+                            &lt;!&ndash; <img class="media-object" data-src="holder.js/64x64" alt="64x64" style="width: 32px; height: 32px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAACqUlEQVR4Xu2Y60tiURTFl48STFJMwkQjUTDtixq+Av93P6iBJFTgg1JL8QWBGT4QfDX7gDIyNE3nEBO6D0Rh9+5z9rprr19dTa/XW2KHl4YFYAfwCHAG7HAGgkOQKcAUYAowBZgCO6wAY5AxyBhkDDIGdxgC/M8QY5AxyBhkDDIGGYM7rIAyBgeDAYrFIkajEYxGIwKBAA4PDzckpd+322243W54PJ5P5f6Omh9tqiTAfD5HNpuFVqvFyckJms0m9vf3EY/H1/u9vb0hn89jsVj8kwDfUfNviisJ8PLygru7O4TDYVgsFtDh9Xo9NBrNes9cLgeTybThgKenJ1SrVXGf1WoVDup2u4jFYhiPx1I1P7XVBxcoCVCr1UBfTqcTrVYLe3t7OD8/x/HxsdiOPqNGo9Eo0un02gHkBhJmuVzC7/fj5uYGXq8XZ2dnop5Mzf8iwMPDAxqNBmw2GxwOBx4fHzGdTpFMJkVzNB7UGAmSSqU2RoDmnETQ6XQiOyKRiHCOSk0ZEZQcUKlU8Pz8LA5vNptRr9eFCJQBFHq//szG5eWlGA1ywOnpqQhBapoWPfl+vw+fzweXyyU+U635VRGUBOh0OigUCggGg8IFK/teXV3h/v4ew+Hwj/OQU4gUq/w4ODgQrkkkEmKEVGp+tXm6XkkAOngmk4HBYBAjQA6gEKRmyOL05GnR99vbW9jtdjEGdP319bUIR8oA+pnG5OLiQoghU5OElFlKAtCGr6+vKJfLmEwm64aosd/XbDbbyIBSqSSeNKU+HXzlnFAohKOjI6maMs0rO0B20590n7IDflIzMmdhAfiNEL8R4jdC/EZIJj235R6mAFOAKcAUYApsS6LL9MEUYAowBZgCTAGZ9NyWe5gCTAGmAFOAKbAtiS7TB1Ng1ynwDkxRe58vH3FfAAAAAElFTkSuQmCC"> &ndash;&gt;
+                          </a>-->
                           <div class="media-body">
-                            <small class="pull-right time"><i class="fa fa-clock-o"></i> 12:10am</small>
+                            <small class="pull-right time"><i class="fa fa-clock-o"></i>{{c.created_at | date: "h:mm a"}}</small>
 
-                            <h6 class="media-heading">Naimish Sakhpara</h6>
-                            <small class="col-lg-10">this is comment section</small>
-                          </div>
-                        </div>
-
-                        <div class="media msg">
-                          <a class="pull-left" href="#">
-                            <!-- <img class="media-object" data-src="holder.js/64x64" alt="64x64" style="width: 32px; height: 32px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAACqUlEQVR4Xu2Y60tiURTFl48STFJMwkQjUTDtixq+Av93P6iBJFTgg1JL8QWBGT4QfDX7gDIyNE3nEBO6D0Rh9+5z9rprr19dTa/XW2KHl4YFYAfwCHAG7HAGgkOQKcAUYAowBZgCO6wAY5AxyBhkDDIGdxgC/M8QY5AxyBhkDDIGGYM7rIAyBgeDAYrFIkajEYxGIwKBAA4PDzckpd+322243W54PJ5P5f6Omh9tqiTAfD5HNpuFVqvFyckJms0m9vf3EY/H1/u9vb0hn89jsVj8kwDfUfNviisJ8PLygru7O4TDYVgsFtDh9Xo9NBrNes9cLgeTybThgKenJ1SrVXGf1WoVDup2u4jFYhiPx1I1P7XVBxcoCVCr1UBfTqcTrVYLe3t7OD8/x/HxsdiOPqNGo9Eo0un02gHkBhJmuVzC7/fj5uYGXq8XZ2dnop5Mzf8iwMPDAxqNBmw2GxwOBx4fHzGdTpFMJkVzNB7UGAmSSqU2RoDmnETQ6XQiOyKRiHCOSk0ZEZQcUKlU8Pz8LA5vNptRr9eFCJQBFHq//szG5eWlGA1ywOnpqQhBapoWPfl+vw+fzweXyyU+U635VRGUBOh0OigUCggGg8IFK/teXV3h/v4ew+Hwj/OQU4gUq/w4ODgQrkkkEmKEVGp+tXm6XkkAOngmk4HBYBAjQA6gEKRmyOL05GnR99vbW9jtdjEGdP319bUIR8oA+pnG5OLiQoghU5OElFlKAtCGr6+vKJfLmEwm64aosd/XbDbbyIBSqSSeNKU+HXzlnFAohKOjI6maMs0rO0B20590n7IDflIzMmdhAfiNEL8R4jdC/EZIJj235R6mAFOAKcAUYApsS6LL9MEUYAowBZgCTAGZ9NyWe5gCTAGmAFOAKbAtiS7TB1Ng1ynwDkxRe58vH3FfAAAAAElFTkSuQmCC"> -->
-                          </a>
-                          <div class="media-body">
-                            <small class="pull-right time"><i class="fa fa-clock-o"></i> 12:10am</small>
-                            <h6 class="media-heading">Naimish Sakhpara</h6>
-
-                            <small class="col-lg-10">Arnab Goswami</small>
+                            <h6 class="media-heading">{{c.commentBy}}</h6>
+                            <small class="col-lg-10">{{c.comment}}</small>
                           </div>
                         </div>
                       </div>
                       <div class="send-wrap">
-                        <input class="form-control send-message" placeholder="Write a reply..." name="msg"
-                               [(ngModel)]="user.msg" (keypress)="onSubmitmsg($event)">
+                        <div class="input-group">
+                          <input class="form-control send-message" placeholder="Write a comment..." name="msg"
+                                 [(ngModel)]="user.comment" (keypress)="onSubmitmsg($event, currentFighter.fighter_id, '')">
+                          <div class="input-group-append" (click)="onSubmitmsg($event, currentFighter.fighter_id, 'submit')">
+                            <span class="input-group-text send-message"><i style="background: none;color: #191616" class="fa fa-paper-plane"></i></span>
+                          </div>
+                        </div>
                         <!--                                <button (click)="onSubmitmsg($event)">click</button>-->
                       </div>
                       <!-- <div class="btn-panel">
@@ -357,28 +179,32 @@
                     </div>
                   </div>
                 </div>
+                <div class="row col-md-12 custom-nxt-prev">
+                  <div class="col-md-6">
+                    <button type="button" class="btn trade-back float-left" [disabled]="currentPage === 0" (click)="changePage(-1)"><i class="fa fa-angle-double-left"></i></button>
+                  </div>
+                  <div class="col-md-6">
+                    <button type="button" class="btn trade-next float-right" [disabled]="currentPage === total"  (click)="changePage(1)"><i class="fa fa-angle-double-right"></i></button>
+                  </div>
+                </div>
               </div>
+
             </div>
           </div>
 
           <!-- Modal footer -->
           <div class="modal-footer">
             <div class="col-9">
-              <button class="btn social-btn fa fa-facebook" mat-fab shareButton="facebook"
-                      [url]='"https://www.google.com"'></button>
-              <button class="btn social-btn fa fa-twitter" mat-fab shareButton="twitter"
-                      [url]='"https://www.google.com"'></button>
-              <button class="btn social-btn fa fa-linkedin" mat-fab shareButton="linkedin"
-                      [url]='"https://www.google.com"'></button>
-              <button class="btn social-btn fa fa-whatsapp" mat-fab shareButton="whatsapp"
-                      [url]='"https://www.google.com"'></button>
-              <button class="btn social-btn fa fa-paper-plane" mat-fab shareButton="telegram"
-                      [url]='"https://www.google.com"'></button>
-              <button class="btn social-btn fa fa-pinterest" mat-fab shareButton="pinterest"
-                      [url]='"https://www.google.com"'></button>
+              <button class="btn social-btn fa fa-facebook"  mat-fab shareButton="facebook"  url="{{href}}"></button>
+              <button class="btn social-btn fa fa-twitter" mat-fab shareButton="twitter" url="{{href}}"></button>
+              <button class="btn social-btn fa fa-linkedin" mat-fab shareButton="linkedin" url="{{href}}"></button>
+              <button class="btn social-btn fa fa-whatsapp" mat-fab shareButton="whatsapp" url="{{href}}"></button>
+              <button class="btn social-btn fa fa-paper-plane" mat-fab shareButton="telegram" url="{{href}}"></button>
+              <button class="btn social-btn fa fa-pinterest" mat-fab shareButton="pinterest" url="{{href}}"></button>
             </div>
             <div class="col-3">
-              <button  style="float: right" type="button" class="btn btn-danger" (click)="closeModal()">Close</button>
+              <button  style="float: left;" type="button" class="btn btn-success" (click)="closeModal()">Donate</button>
+              <button  style="float: right;" type="button" class="btn btn-danger" (click)="closeModal()">Close</button>
             </div>
           </div>
 

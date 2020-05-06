@@ -21,7 +21,7 @@
   position: relative;
   margin: 1rem 0;
   background: #E9A48C;
-  height: 450px;
+  height: 350px;
 }
 .tabs::before,
 .tabs::after {

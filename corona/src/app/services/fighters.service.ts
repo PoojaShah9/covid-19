@@ -12,11 +12,15 @@ export class FightersService {
   constructor(private http: HttpClient) {
   }
 
-  getFighterList(countryName) {
-    return this.http.get<any>(this.api + 'fighters/getfightergetByCountry?country=' + countryName);
+  getFighterList(countryName, pg, limit) {
+    return this.http.get<any>(this.api + 'fighters/getfightergetByCountry?limit=' + limit + '&pg=' + pg + '?country=' + countryName);
   }
 
   getFighterById(id) {
     return this.http.get<any>(this.api + 'fighters/getbyid?id=' + id);
+  }
+
+  addComment(data) {
+    return this.http.post<any>(this.api + 'fighters/comment', data);
   }
 }

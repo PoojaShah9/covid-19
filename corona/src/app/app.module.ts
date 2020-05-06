@@ -23,7 +23,8 @@ import {
   DxTemplateHost,
   DxTemplateModule
 } from 'devextreme-angular';
-import { PaymentComponent } from './payment/payment.component';
+import {PaymentComponent} from './payment/payment.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { PaymentComponent } from './payment/payment.component';
     HttpClientModule,
     ShareModule,
     FormsModule,
+    NgxPaginationModule,
     NgxLoadingModule.forRoot({
       animationType: ngxLoadingAnimationTypes.threeBounce,
       backdropBackgroundColour: 'rgba(1,1,1,0.57)',

@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FightersService} from '../services/fighters.service';
-import {Country} from '../../country';
+// import {Country} from '../../country';
 import {ActivatedRoute, Router} from "@angular/router";
 import {PlatformLocation} from "@angular/common";
 
@@ -19,16 +19,262 @@ declare var magnificPopup: Function;
 export class HomeComponent implements OnInit {
 
   fighterData: any = [];
+  comments: any = [];
   cntName: string = null;
   loading = false;
   currentFighter: any = {};
   user: any = {};
   popupVisible = false;
   display = 'none';
-  displayDemo = 'none';
+  displayName = 'none';
   showDD = false;
-  countrylist: any = [];
+  countrylist: any = [
+    {name: 'Afghanistan', code: 'AF'},
+    {name: 'Åland Islands', code: 'AX'},
+    {name: 'Albania', code: 'AL'},
+    {name: 'Algeria', code: 'DZ'},
+    {name: 'American Samoa', code: 'AS'},
+    {name: 'AndorrA', code: 'AD'},
+    {name: 'Angola', code: 'AO'},
+    {name: 'Anguilla', code: 'AI'},
+    {name: 'Antarctica', code: 'AQ'},
+    {name: 'Antigua and Barbuda', code: 'AG'},
+    {name: 'Argentina', code: 'AR'},
+    {name: 'Armenia', code: 'AM'},
+    {name: 'Aruba', code: 'AW'},
+    {name: 'Australia', code: 'AU'},
+    {name: 'Austria', code: 'AT'},
+    {name: 'Azerbaijan', code: 'AZ'},
+    {name: 'Bahamas', code: 'BS'},
+    {name: 'Bahrain', code: 'BH'},
+    {name: 'Bangladesh', code: 'BD'},
+    {name: 'Barbados', code: 'BB'},
+    {name: 'Belarus', code: 'BY'},
+    {name: 'Belgium', code: 'BE'},
+    {name: 'Belize', code: 'BZ'},
+    {name: 'Benin', code: 'BJ'},
+    {name: 'Bermuda', code: 'BM'},
+    {name: 'Bhutan', code: 'BT'},
+    {name: 'Bolivia', code: 'BO'},
+    {name: 'Bosnia and Herzegovina', code: 'BA'},
+    {name: 'Botswana', code: 'BW'},
+    {name: 'Bouvet Island', code: 'BV'},
+    {name: 'Brazil', code: 'BR'},
+    {name: 'British Indian Ocean Territory', code: 'IO'},
+    {name: 'Brunei Darussalam', code: 'BN'},
+    {name: 'Bulgaria', code: 'BG'},
+    {name: 'Burkina Faso', code: 'BF'},
+    {name: 'Burundi', code: 'BI'},
+    {name: 'Cambodia', code: 'KH'},
+    {name: 'Cameroon', code: 'CM'},
+    {name: 'Canada', code: 'CA'},
+    {name: 'Cape Verde', code: 'CV'},
+    {name: 'Cayman Islands', code: 'KY'},
+    {name: 'Central African Republic', code: 'CF'},
+    {name: 'Chad', code: 'TD'},
+    {name: 'Chile', code: 'CL'},
+    {name: 'China', code: 'CN'},
+    {name: 'Christmas Island', code: 'CX'},
+    {name: 'Cocos (Keeling) Islands', code: 'CC'},
+    {name: 'Colombia', code: 'CO'},
+    {name: 'Comoros', code: 'KM'},
+    {name: 'Congo', code: 'CG'},
+    {name: 'Congo, The Democratic Republic of the', code: 'CD'},
+    {name: 'Cook Islands', code: 'CK'},
+    {name: 'Costa Rica', code: 'CR'},
+    {name: 'Cote D\'Ivoire', code: 'CI'},
+    {name: 'Croatia', code: 'HR'},
+    {name: 'Cuba', code: 'CU'},
+    {name: 'Cyprus', code: 'CY'},
+    {name: 'Czech Republic', code: 'CZ'},
+    {name: 'Denmark', code: 'DK'},
+    {name: 'Djibouti', code: 'DJ'},
+    {name: 'Dominica', code: 'DM'},
+    {name: 'Dominican Republic', code: 'DO'},
+    {name: 'Ecuador', code: 'EC'},
+    {name: 'Egypt', code: 'EG'},
+    {name: 'El Salvador', code: 'SV'},
+    {name: 'Equatorial Guinea', code: 'GQ'},
+    {name: 'Eritrea', code: 'ER'},
+    {name: 'Estonia', code: 'EE'},
+    {name: 'Ethiopia', code: 'ET'},
+    {name: 'Falkland Islands (Malvinas)', code: 'FK'},
+    {name: 'Faroe Islands', code: 'FO'},
+    {name: 'Fiji', code: 'FJ'},
+    {name: 'Finland', code: 'FI'},
+    {name: 'France', code: 'FR'},
+    {name: 'French Guiana', code: 'GF'},
+    {name: 'French Polynesia', code: 'PF'},
+    {name: 'French Southern Territories', code: 'TF'},
+    {name: 'Gabon', code: 'GA'},
+    {name: 'Gambia', code: 'GM'},
+    {name: 'Georgia', code: 'GE'},
+    {name: 'Germany', code: 'DE'},
+    {name: 'Ghana', code: 'GH'},
+    {name: 'Gibraltar', code: 'GI'},
+    {name: 'Greece', code: 'GR'},
+    {name: 'Greenland', code: 'GL'},
+    {name: 'Grenada', code: 'GD'},
+    {name: 'Guadeloupe', code: 'GP'},
+    {name: 'Guam', code: 'GU'},
+    {name: 'Guatemala', code: 'GT'},
+    {name: 'Guernsey', code: 'GG'},
+    {name: 'Guinea', code: 'GN'},
+    {name: 'Guinea-Bissau', code: 'GW'},
+    {name: 'Guyana', code: 'GY'},
+    {name: 'Haiti', code: 'HT'},
+    {name: 'Heard Island and Mcdonald Islands', code: 'HM'},
+    {name: 'Holy See (Vatican City State)', code: 'VA'},
+    {name: 'Honduras', code: 'HN'},
+    {name: 'Hong Kong', code: 'HK'},
+    {name: 'Hungary', code: 'HU'},
+    {name: 'Iceland', code: 'IS'},
+    {name: 'India', code: 'IN'},
+    {name: 'Indonesia', code: 'ID'},
+    {name: 'Iran, Islamic Republic Of', code: 'IR'},
+    {name: 'Iraq', code: 'IQ'},
+    {name: 'Ireland', code: 'IE'},
+    {name: 'Isle of Man', code: 'IM'},
+    {name: 'Israel', code: 'IL'},
+    {name: 'Italy', code: 'IT'},
+    {name: 'Jamaica', code: 'JM'},
+    {name: 'Japan', code: 'JP'},
+    {name: 'Jersey', code: 'JE'},
+    {name: 'Jordan', code: 'JO'},
+    {name: 'Kazakhstan', code: 'KZ'},
+    {name: 'Kenya', code: 'KE'},
+    {name: 'Kiribati', code: 'KI'},
+    {name: 'Korea, Democratic People\'S Republic of', code: 'KP'},
+    {name: 'Korea, Republic of', code: 'KR'},
+    {name: 'Kuwait', code: 'KW'},
+    {name: 'Kyrgyzstan', code: 'KG'},
+    {name: 'Lao People\'S Democratic Republic', code: 'LA'},
+    {name: 'Latvia', code: 'LV'},
+    {name: 'Lebanon', code: 'LB'},
+    {name: 'Lesotho', code: 'LS'},
+    {name: 'Liberia', code: 'LR'},
+    {name: 'Libyan Arab Jamahiriya', code: 'LY'},
+    {name: 'Liechtenstein', code: 'LI'},
+    {name: 'Lithuania', code: 'LT'},
+    {name: 'Luxembourg', code: 'LU'},
+    {name: 'Macao', code: 'MO'},
+    {name: 'Macedonia, The Former Yugoslav Republic of', code: 'MK'},
+    {name: 'Madagascar', code: 'MG'},
+    {name: 'Malawi', code: 'MW'},
+    {name: 'Malaysia', code: 'MY'},
+    {name: 'Maldives', code: 'MV'},
+    {name: 'Mali', code: 'ML'},
+    {name: 'Malta', code: 'MT'},
+    {name: 'Marshall Islands', code: 'MH'},
+    {name: 'Martinique', code: 'MQ'},
+    {name: 'Mauritania', code: 'MR'},
+    {name: 'Mauritius', code: 'MU'},
+    {name: 'Mayotte', code: 'YT'},
+    {name: 'Mexico', code: 'MX'},
+    {name: 'Micronesia, Federated States of', code: 'FM'},
+    {name: 'Moldova, Republic of', code: 'MD'},
+    {name: 'Monaco', code: 'MC'},
+    {name: 'Mongolia', code: 'MN'},
+    {name: 'Montserrat', code: 'MS'},
+    {name: 'Morocco', code: 'MA'},
+    {name: 'Mozambique', code: 'MZ'},
+    {name: 'Myanmar', code: 'MM'},
+    {name: 'Namibia', code: 'NA'},
+    {name: 'Nauru', code: 'NR'},
+    {name: 'Nepal', code: 'NP'},
+    {name: 'Netherlands', code: 'NL'},
+    {name: 'Netherlands Antilles', code: 'AN'},
+    {name: 'New Caledonia', code: 'NC'},
+    {name: 'New Zealand', code: 'NZ'},
+    {name: 'Nicaragua', code: 'NI'},
+    {name: 'Niger', code: 'NE'},
+    {name: 'Nigeria', code: 'NG'},
+    {name: 'Niue', code: 'NU'},
+    {name: 'Norfolk Island', code: 'NF'},
+    {name: 'Northern Mariana Islands', code: 'MP'},
+    {name: 'Norway', code: 'NO'},
+    {name: 'Oman', code: 'OM'},
+    {name: 'Pakistan', code: 'PK'},
+    {name: 'Palau', code: 'PW'},
+    {name: 'Palestinian Territory, Occupied', code: 'PS'},
+    {name: 'Panama', code: 'PA'},
+    {name: 'Papua New Guinea', code: 'PG'},
+    {name: 'Paraguay', code: 'PY'},
+    {name: 'Peru', code: 'PE'},
+    {name: 'Philippines', code: 'PH'},
+    {name: 'Pitcairn', code: 'PN'},
+    {name: 'Poland', code: 'PL'},
+    {name: 'Portugal', code: 'PT'},
+    {name: 'Puerto Rico', code: 'PR'},
+    {name: 'Qatar', code: 'QA'},
+    {name: 'Reunion', code: 'RE'},
+    {name: 'Romania', code: 'RO'},
+    {name: 'Russian Federation', code: 'RU'},
+    {name: 'RWANDA', code: 'RW'},
+    {name: 'Saint Helena', code: 'SH'},
+    {name: 'Saint Kitts and Nevis', code: 'KN'},
+    {name: 'Saint Lucia', code: 'LC'},
+    {name: 'Saint Pierre and Miquelon', code: 'PM'},
+    {name: 'Saint Vincent and the Grenadines', code: 'VC'},
+    {name: 'Samoa', code: 'WS'},
+    {name: 'San Marino', code: 'SM'},
+    {name: 'Sao Tome and Principe', code: 'ST'},
+    {name: 'Saudi Arabia', code: 'SA'},
+    {name: 'Senegal', code: 'SN'},
+    {name: 'Serbia and Montenegro', code: 'CS'},
+    {name: 'Seychelles', code: 'SC'},
+    {name: 'Sierra Leone', code: 'SL'},
+    {name: 'Singapore', code: 'SG'},
+    {name: 'Slovakia', code: 'SK'},
+    {name: 'Slovenia', code: 'SI'},
+    {name: 'Solomon Islands', code: 'SB'},
+    {name: 'Somalia', code: 'SO'},
+    {name: 'South Africa', code: 'ZA'},
+    {name: 'South Georgia and the South Sandwich Islands', code: 'GS'},
+    {name: 'Spain', code: 'ES'},
+    {name: 'Sri Lanka', code: 'LK'},
+    {name: 'Sudan', code: 'SD'},
+    {name: 'Suriname', code: 'SR'},
+    {name: 'Svalbard and Jan Mayen', code: 'SJ'},
+    {name: 'Swaziland', code: 'SZ'},
+    {name: 'Sweden', code: 'SE'},
+    {name: 'Switzerland', code: 'CH'},
+    {name: 'Syrian Arab Republic', code: 'SY'},
+    {name: 'Taiwan, Province of China', code: 'TW'},
+    {name: 'Tajikistan', code: 'TJ'},
+    {name: 'Tanzania, United Republic of', code: 'TZ'},
+    {name: 'Thailand', code: 'TH'},
+    {name: 'Timor-Leste', code: 'TL'},
+    {name: 'Togo', code: 'TG'},
+    {name: 'Tokelau', code: 'TK'},
+    {name: 'Tonga', code: 'TO'},
+    {name: 'Trinidad and Tobago', code: 'TT'},
+    {name: 'Tunisia', code: 'TN'},
+    {name: 'Turkey', code: 'TR'},
+    {name: 'Turkmenistan', code: 'TM'},
+    {name: 'Turks and Caicos Islands', code: 'TC'},
+    {name: 'Tuvalu', code: 'TV'},
+    {name: 'Uganda', code: 'UG'},
+    {name: 'Ukraine', code: 'UA'},
+    {name: 'United Arab Emirates', code: 'AE'},
+    {name: 'United Kingdom', code: 'GB'},
+    {name: 'United States', code: 'US'},
+    {name: 'United States Minor Outlying Islands', code: 'UM'},
+    {name: 'Uruguay', code: 'UY'},
+    {name: 'Uzbekistan', code: 'UZ'},
+    {name: 'Vanuatu', code: 'VU'},
+    {name: 'Venezuela', code: 'VE'},
+    {name: 'Viet Nam', code: 'VN'},
+    {name: 'Virgin Islands, British', code: 'VG'},
+    {name: 'Virgin Islands, U.S.', code: 'VI'},
+    {name: 'Wallis and Futuna', code: 'WF'},
+    {name: 'Western Sahara', code: 'EH'},
+    {name: 'Yemen', code: 'YE'},
+    {name: 'Zambia', code: 'ZM'},
+    {name: 'Zimbabwe', code: 'ZW'}
+  ];
   searchText = '';
+  currentPage;
   photoArray: any = ['https://ak.picdn.net/offset/photos/5e9f12f3d164c0404ea4d716/medium/offset_930275.jpg',
     'https://www.themachinemaker.com/upload/innovation/Dr-Pravina-Gondalia.jpg',
     'https://media.istockphoto.com/photos/young-asian-female-doctor-with-mask-show-ok-with-both-picture-id631181544?' +
@@ -37,10 +283,11 @@ export class HomeComponent implements OnInit {
     'https://thenypost.files.wordpress.com/2020/03/200321-coronavirus-masks.jpg',
     'https://i.pinimg.com/originals/2c/a8/69/2ca869fa7b11fae2a0b15e83c318a164.jpg'];
   href;
-  // @Input('data') meals: string[] = [];
+  @Input('data') fighters: string[] = [];
   // asyncMeals: Observable<string[]>;
-  // p: number = 1;
-  // total: number;
+  p: number = 1;
+  limit: number = 10;
+  total: number;
 
   constructor(private fighterService: FightersService,
               private route: ActivatedRoute,
@@ -50,42 +297,73 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     // this.cntName = 'India';
-    this.countrylist = Country;
-    this.getFighter('');
+    // this.countrylist = Country;
+    this.getFighter('', this.p, this.limit);
     this.route.queryParams.subscribe(params => {
       console.log('params', params);
       if (params.id) {
-        // this.href = 'https://www.cnox.io';
         this.href = (this.platformLocation as any).href + '/?id=' + params.id;
-        // console.log('in if');
-        // this.getFighter(this.cntName);
-        this.fighterService.getFighterById(params.id)
-          .subscribe((res) => {
-            console.log('getbyid', res);
-            this.currentFighter = res.data;
-            this.currentFighter.link = this.photoArray[0];
-          });
+        this.getFighterById(params.id);
         this.showFighter(this.currentFighter);
-      } else {
-        console.log('in else');
       }
     });
   }
 
-  onSubmitmsg(e) {
-    // alert('hello');
-    console.log('user', e);
-    this.user.name = localStorage.getItem('username');
+  getFighterById(id) {
+    this.loading = true;
+    this.fighterService.getFighterById(id)
+      .subscribe((res) => {
+        console.log('getbyid', res);
+        this.loading = false;
+        this.currentFighter = res.data.result;
+        this.comments = res.data.comments;
+        this.currentFighter.link = this.photoArray[0];
+      }, error => {
+        console.log('error', error);
+        this.loading = false;
+      });
   }
 
-  getFighter(country) {
+  onSubmitmsg(e, id, type) {
+    // alert('hello');
+    if (e.keyCode === 13 || type === 'submit') {
+      this.user.commentBy = localStorage.getItem('username');
+      if (this.user.commentBy === null) {
+          this.open();
+      } else {
+        this.user.fighter_id = id;
+        this.loading = true;
+        console.log('user', this.user);
+        this.fighterService.addComment(this.user)
+          .subscribe((res) => {
+            console.log('res', res);
+            this.loading = false;
+            this.user = {};
+            setTimeout(() => {
+              this.getFighterById (id);
+            }, 1000);
+          }, error => {
+            console.log('error', error);
+            this.loading = false;
+          });
+      }
+    }
+  }
+
+  onNameSubmit() {
+    localStorage.setItem('username', this.user.commentBy);
+    this.display = 'block';
+  }
+
+  getFighter(country, pg, limit) {
     this.loading = true;
-    this.fighterService.getFighterList(country)
+    this.fighterService.getFighterList(country, pg, limit)
       .subscribe((res) => {
         if (res.data) {
           this.loading = false;
-          this.fighterData = res.data;
-          console.log('Herer', this.fighterData);
+          this.fighterData = res.data.result;
+          this.total = res.data.totalRecords;
+          console.log('Herer', this.fighterData, this.total);
           magnificPopup();
           this.fighterData.filter((x, i) => {
             x.link = this.photoArray[Math.floor(Math.random() * Math.floor(this.photoArray.length))];
@@ -99,10 +377,6 @@ export class HomeComponent implements OnInit {
 
   }
 
-  changeFavoriteState(e) {
-    console.log('event', e);
-  }
-
   showFighter(data) {
     this.currentFighter = data;
     // this.href = "https://www.cnox.io?id=123";
@@ -113,9 +387,9 @@ export class HomeComponent implements OnInit {
   onTabClick(type) {
     console.log('type', type);
     if (type === 'country') {
-      this.getFighter(this.cntName);
+      this.getFighter(this.cntName, this.p, this.limit);
     } else {
-      this.getFighter('');
+      this.getFighter('', this.p, this.limit);
     }
   }
 
@@ -123,19 +397,38 @@ export class HomeComponent implements OnInit {
     console.log('event', e);
   }
 
-  openModal(data) {
+  openModal(data, i) {
     this.display = 'block';
     this.currentFighter = data;
+    this.getFighterById(this.currentFighter.fighter_id);
     console.log('data', this.currentFighter);
+    this.currentPage = i;
+  }
+
+  changePage(index: number): void {
+    this.currentPage += index;
+    this.loading = true;
+    this.fighterData.filter((x, i) => {
+      if (i === this.currentPage) {
+        this.currentFighter = x;
+        this.getFighterById(this.currentFighter.fighter_id);
+        this.loading = false;
+      }
+    });
   }
 
   open() {
-    this.displayDemo = 'block';
+    this.displayName = 'block';
+    this.display = 'none';
   }
 
   closeModal() {
-    this.display = 'none';
-    this.displayDemo = 'none';
+    if (this.displayName === 'block') {
+      this.displayName = 'none';
+      this.display = 'block';
+    } else {
+      this.display = 'none';
+    }
   }
 
   onChanges(e) {
@@ -153,23 +446,18 @@ export class HomeComponent implements OnInit {
     (this.countrylist).filter((x) => {
       if (x.name === this.searchText) {
         console.log('xxxxxxxxxxxx', this.searchText);
-        this.getFighter(this.searchText);
+        this.getFighter(this.searchText, this.p, this.limit);
       }
     });
     window.location.reload();
   }
 
-  /*getPage(page: number) {
+  getPage(page: number) {
     this.loading = true;
-    this.asyncMeals = serverCall(this.meals, page).pipe(
-      tap(res => {
-        this.total = res.total;
-        this.p = page;
-        this.loading = false;
-      }),
-      map(res => res.items)
-    );
-  }*/
+    console.log('page', page);
+    this.p = page;
+    this.getFighter(this.cntName, page, this.limit);
+  }
 }
 
 /**
@@ -177,13 +465,13 @@ export class HomeComponent implements OnInit {
  */
 
 
-/*function serverCall(meals: string[], page: number): Observable<IServerResponse> {
-  const perPage = 10;
+/*function serverCall(fighters: string[], page: number): Observable<IServerResponse> {
+  const perPage = 18;
   const start = (page - 1) * perPage;
   const end = start + perPage;
 
   return of({
-    items: meals.slice(start, end),
+    items: fighters.slice(start, end),
     total: 100
   }).pipe(delay(1000));
 }*/
