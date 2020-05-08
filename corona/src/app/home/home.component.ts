@@ -1,15 +1,9 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {FightersService} from '../services/fighters.service';
 // import {Country} from '../../country';
 import {ActivatedRoute, Router} from "@angular/router";
 import {PlatformLocation} from "@angular/common";
-
-interface IServerResponse {
-  items: string[];
-  total: number;
-}
-
-declare var magnificPopup: Function;
+import {ScrollToBottomDirective} from "../services/scroll-to-bottom.directive";
 
 @Component({
   selector: 'app-home',
@@ -17,7 +11,7 @@ declare var magnificPopup: Function;
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
+  @ViewChild(ScrollToBottomDirective) scrollMe: ScrollToBottomDirective;
   fighterData: any = [];
   comments: any = [];
   cntName: string = null;
@@ -28,6 +22,7 @@ export class HomeComponent implements OnInit {
   display = 'none';
   displayName = 'none';
   showDD = false;
+  showComment = false;
   countrylist: any = [
     {name: 'Afghanistan', code: 'AF'},
     {name: 'Åland Islands', code: 'AX'},
@@ -274,17 +269,9 @@ export class HomeComponent implements OnInit {
     {name: 'Zimbabwe', code: 'ZW'}
   ];
   searchText = '';
+  active = 'profile';
   currentPage;
-  photoArray: any = ['https://ak.picdn.net/offset/photos/5e9f12f3d164c0404ea4d716/medium/offset_930275.jpg',
-    'https://www.themachinemaker.com/upload/innovation/Dr-Pravina-Gondalia.jpg',
-    'https://media.istockphoto.com/photos/young-asian-female-doctor-with-mask-show-ok-with-both-picture-id631181544?' +
-    'k=6&m=631181544&s=170667a&w=0&h=NY0meO9RIdUprv3VGpXcuBgbJKF6IPDDKnsUeaRuoAc=',
-    'https://c8.alamy.com/comp/ABJ1WE/traffic-policeman-with-face-mask-bangkok-thailand-ABJ1WE.jpg',
-    'https://thenypost.files.wordpress.com/2020/03/200321-coronavirus-masks.jpg',
-    'https://i.pinimg.com/originals/2c/a8/69/2ca869fa7b11fae2a0b15e83c318a164.jpg'];
   href;
-  @Input('data') fighters: string[] = [];
-  // asyncMeals: Observable<string[]>;
   p: number = 1;
   limit: number = 10;
   total: number;
@@ -311,13 +298,18 @@ export class HomeComponent implements OnInit {
 
   getFighterById(id) {
     this.loading = true;
+    this.active = 'profile';
     this.fighterService.getFighterById(id)
       .subscribe((res) => {
         console.log('getbyid', res);
         this.loading = false;
         this.currentFighter = res.data.result;
         this.comments = res.data.comments;
-        this.currentFighter.link = this.photoArray[0];
+        if (this.comments.length === 0) {
+          this.showComment = true;
+        }
+        console.log('comments', this.comments);
+        // this.currentFighter.link = this.photoArray[0];
       }, error => {
         console.log('error', error);
         this.loading = false;
@@ -338,10 +330,11 @@ export class HomeComponent implements OnInit {
           .subscribe((res) => {
             console.log('res', res);
             this.loading = false;
+            this.comments.push(res.data);
+            if (this.comments.length > 0) {
+              this.showComment = false;
+            }
             this.user = {};
-            setTimeout(() => {
-              this.getFighterById (id);
-            }, 1000);
           }, error => {
             console.log('error', error);
             this.loading = false;
@@ -364,11 +357,6 @@ export class HomeComponent implements OnInit {
           this.fighterData = res.data.result;
           this.total = res.data.totalRecords;
           console.log('Herer', this.fighterData, this.total);
-          magnificPopup();
-          this.fighterData.filter((x, i) => {
-            x.link = this.photoArray[Math.floor(Math.random() * Math.floor(this.photoArray.length))];
-          });
-          this.currentFighter = this.fighterData[1];
         }
       }, error => {
         this.loading = false;
@@ -400,6 +388,7 @@ export class HomeComponent implements OnInit {
   openModal(data, i) {
     this.display = 'block';
     this.currentFighter = data;
+    this.active = 'profile';
     this.getFighterById(this.currentFighter.fighter_id);
     console.log('data', this.currentFighter);
     this.currentPage = i;
@@ -459,19 +448,3 @@ export class HomeComponent implements OnInit {
     this.getFighter(this.cntName, page, this.limit);
   }
 }
-
-/**
- * Simulate an async HTTP call with a delayed observable.
- */
-
-
-/*function serverCall(fighters: string[], page: number): Observable<IServerResponse> {
-  const perPage = 18;
-  const start = (page - 1) * perPage;
-  const end = start + perPage;
-
-  return of({
-    items: fighters.slice(start, end),
-    total: 100
-  }).pipe(delay(1000));
-}*/

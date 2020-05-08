@@ -37,7 +37,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     ContactComponent,
     GalleryComponent,
     SingleComponent,
-    PaymentComponent
+    PaymentComponent,
+    // ScrollToBottomDirective
   ],
   imports: [
     BrowserModule,
