@@ -117,7 +117,7 @@
                   <label for="tab-2" class="tab-label">Comments</label>
                   <div class="tab-content">
                     <div class="message-wrap">
-                      <div class="msg-wrap"  #scrollMe [scrollTop]="scrollMe.scrollHeight">
+                      <div class="msg-wrap">
 
                         <div class="media msg" *ngIf="showComment === true;else other_content">
                           <div class="media-body">
@@ -172,11 +172,11 @@
                     </div>
                   </div>
                 </div>
-                <div class="row col-md-12 custom-nxt-prev">
-                  <div class="col-md-6">
+                <div class="row col-12 custom-nxt-prev">
+                  <div class="col-6">
                     <button type="button" class="btn trade-back float-left" [disabled]="currentPage === 0" (click)="changePage(-1)"><i class="fa fa-angle-double-left"></i></button>
                   </div>
-                  <div class="col-md-6">
+                  <div class="col-6">
                     <button type="button" class="btn trade-next float-right" [disabled]="currentPage === total"  (click)="changePage(1)"><i class="fa fa-angle-double-right"></i></button>
                   </div>
                 </div>

@@ -37,8 +37,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     ContactComponent,
     GalleryComponent,
     SingleComponent,
-    PaymentComponent,
-    // ScrollToBottomDirective
+    PaymentComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +51,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
       animationType: ngxLoadingAnimationTypes.threeBounce,
       backdropBackgroundColour: 'rgba(1,1,1,0.57)',
       backdropBorderRadius: '4px',
+      fullScreenBackdrop: true,
       primaryColour: '#ffffff',
       secondaryColour: '#ffffff',
       tertiaryColour: '#ffffff'}),

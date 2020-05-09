@@ -1,9 +1,8 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FightersService} from '../services/fighters.service';
 // import {Country} from '../../country';
 import {ActivatedRoute, Router} from "@angular/router";
 import {PlatformLocation} from "@angular/common";
-import {ScrollToBottomDirective} from "../services/scroll-to-bottom.directive";
 
 @Component({
   selector: 'app-home',
@@ -11,7 +10,6 @@ import {ScrollToBottomDirective} from "../services/scroll-to-bottom.directive";
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  @ViewChild(ScrollToBottomDirective) scrollMe: ScrollToBottomDirective;
   fighterData: any = [];
   comments: any = [];
   cntName: string = null;
@@ -269,7 +267,7 @@ export class HomeComponent implements OnInit {
     {name: 'Zimbabwe', code: 'ZW'}
   ];
   searchText = '';
-  active = 'profile';
+  active = 'Profile';
   currentPage;
   href;
   p: number = 1;
@@ -281,6 +279,8 @@ export class HomeComponent implements OnInit {
               private router: Router,
               private platformLocation: PlatformLocation) {
   }
+
+
 
   ngOnInit(): void {
     // this.cntName = 'India';
@@ -355,6 +355,9 @@ export class HomeComponent implements OnInit {
         if (res.data) {
           this.loading = false;
           this.fighterData = res.data.result;
+          if(this.fighterData.link === null || this.fighterData.link === undefined) {
+            this.fighterData.link = 'https://www.cornwallbusinessawards.co.uk/wp-content/uploads/2017/11/dummy450x450.jpg';
+          }
           this.total = res.data.totalRecords;
           console.log('Herer', this.fighterData, this.total);
         }
