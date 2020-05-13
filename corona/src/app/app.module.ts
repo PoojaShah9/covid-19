@@ -25,6 +25,7 @@ import {
 } from 'devextreme-angular';
 import {PaymentComponent} from './payment/payment.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import {InfiniteScrollModule} from "ngx-infinite-scroll";
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     HttpClientModule,
     ShareModule,
     FormsModule,
+    InfiniteScrollModule,
     NgxPaginationModule,
     NgxLoadingModule.forRoot({
       animationType: ngxLoadingAnimationTypes.threeBounce,

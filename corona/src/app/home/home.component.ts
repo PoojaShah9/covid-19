@@ -4,6 +4,8 @@ import {FightersService} from '../services/fighters.service';
 import {ActivatedRoute, Router} from "@angular/router";
 import {PlatformLocation} from "@angular/common";
 
+declare var tab: Function;
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -12,7 +14,7 @@ import {PlatformLocation} from "@angular/common";
 export class HomeComponent implements OnInit {
   fighterData: any = [];
   comments: any = [];
-  cntName: string = null;
+  cntName: string = '';
   loading = false;
   currentFighter: any = {};
   user: any = {};
@@ -20,6 +22,7 @@ export class HomeComponent implements OnInit {
   display = 'none';
   displayName = 'none';
   showDD = false;
+  isFullListDisplayed = false;
   showComment = false;
   countrylist: any = [
     {name: 'Afghanistan', code: 'AF'},
@@ -267,12 +270,17 @@ export class HomeComponent implements OnInit {
     {name: 'Zimbabwe', code: 'ZW'}
   ];
   searchText = '';
-  active = 'Profile';
   currentPage;
   href;
-  p: number = 1;
+  p: number = 0;
   limit: number = 10;
   total: number;
+  btnColor = false;
+  likecount = 0;
+  throttle = 10;
+  scrollDistance = 1;
+  scrollUpDistance = 2;
+
 
   constructor(private fighterService: FightersService,
               private route: ActivatedRoute,
@@ -281,8 +289,8 @@ export class HomeComponent implements OnInit {
   }
 
 
-
   ngOnInit(): void {
+    tab();
     // this.cntName = 'India';
     // this.countrylist = Country;
     this.getFighter('', this.p, this.limit);
@@ -296,9 +304,19 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  onLikeClick() {
+    if (this.btnColor) {
+      this.btnColor = false;
+      this.likecount--;
+    } else {
+      console.log('in like');
+      this.btnColor = true;
+      this.likecount++;
+    }
+  }
+
   getFighterById(id) {
     this.loading = true;
-    this.active = 'profile';
     this.fighterService.getFighterById(id)
       .subscribe((res) => {
         console.log('getbyid', res);
@@ -321,7 +339,7 @@ export class HomeComponent implements OnInit {
     if (e.keyCode === 13 || type === 'submit') {
       this.user.commentBy = localStorage.getItem('username');
       if (this.user.commentBy === null) {
-          this.open();
+        this.open();
       } else {
         this.user.fighter_id = id;
         this.loading = true;
@@ -354,10 +372,14 @@ export class HomeComponent implements OnInit {
       .subscribe((res) => {
         if (res.data) {
           this.loading = false;
-          this.fighterData = res.data.result;
-          if(this.fighterData.link === null || this.fighterData.link === undefined) {
-            this.fighterData.link = 'https://www.cornwallbusinessawards.co.uk/wp-content/uploads/2017/11/dummy450x450.jpg';
-          }
+          res.data.result.filter((x) => {
+            this.fighterData.push(x);
+          });
+          this.fighterData.filter((x) => {
+            if (x.link === null || x.link === undefined) {
+              x.link = 'https://www.cornwallbusinessawardsL.co.uk/wp-content/uploads/2017/11/dummy450x450.jpg';
+            }
+          });
           this.total = res.data.totalRecords;
           console.log('Herer', this.fighterData, this.total);
         }
@@ -366,6 +388,19 @@ export class HomeComponent implements OnInit {
         console.log('error', error);
       });
 
+  }
+
+  onScroll() {
+    console.log("scrolled in");
+    // if (this.fighterData.length < this.total) {
+      // Update ending position to select more items from the array
+      this.p = this.p + 1;
+      this.getFighter(this.cntName, this.p, this.limit);
+      console.log("scrolled");
+    // } else {
+    //   console.log('in else');
+    //   this.isFullListDisplayed = true;
+    // }
   }
 
   showFighter(data) {
@@ -391,7 +426,6 @@ export class HomeComponent implements OnInit {
   openModal(data, i) {
     this.display = 'block';
     this.currentFighter = data;
-    this.active = 'profile';
     this.getFighterById(this.currentFighter.fighter_id);
     console.log('data', this.currentFighter);
     this.currentPage = i;

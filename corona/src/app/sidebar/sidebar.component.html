@@ -1,6 +1,6 @@
 <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
 <aside id="colorlib-aside" role="complementary" class="js-fullheight text-center">
-  <h1 id="colorlib-logo"><a [routerLink]="['/']"><span class="test-img"></span>Corona Warriors</a></h1>
+  <h1 id="colorlib-logo"><a [routerLink]="['/']"><span class="test-img"></span>Corona Champion</a></h1>
   <nav id="colorlib-main-menu" role="navigation">
     <ul>
       <li [routerLinkActive]="'colorlib-active'" [routerLinkActiveOptions]="{exact:true}"><a
@@ -10,17 +10,40 @@
       <!--      <li [routerLinkActive]="'colorlib-active'" ><a [routerLink]="['/blog']">Blog</a></li>-->
       <li [routerLinkActive]="'colorlib-active'"><a [routerLink]="['/contact']">Contact</a></li>
     </ul>
+    <div id="accordion" class="accordion">
+      <div class="card mb-0">
+        <div class="card-header collapsed" data-toggle="collapse" href="#collapseOne">
+          <a class="card-title">Total Donation</a>
+        </div>
+        <div id="collapseOne" class="card-body collapse" data-parent="#accordion">
+          <p>1000 $</p>
+        </div>
+        <div class="card-header collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+          <a class="card-title">Total Views</a>
+        </div>
+        <div id="collapseTwo" class="card-body collapse" data-parent="#accordion">
+          <p>1000</p>
+        </div>
+        <div class="card-header collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+          <a class="card-title">Total Solidities</a>
+        </div>
+        <div id="collapseThree" class="collapse" data-parent="#accordion">
+          <div class="card-body">1000</div>
+        </div>
+      </div>
+    </div>
+
   </nav>
 
-  <div class="colorlib-footer">
+  <!--<div class="colorlib-footer">
     <h3>Follow Us Here!</h3>
     <div class="d-flex justify-content-center">
       <ul class="d-flex align-items-center">
         <li class="d-flex align-items-center jusitfy-content-center"><a href="#"><i class="icon-facebook"></i></a></li>
         <li class="d-flex align-items-center jusitfy-content-center"><a href="#"><i class="icon-twitter"></i></a></li>
         <li class="d-flex align-items-center jusitfy-content-center"><a href="#"><i class="icon-instagram"></i></a></li>
-        <!--        <li class="d-flex align-items-center jusitfy-content-center"><a href="#"><i class="icon-linkedin"></i></a></li>-->
+        &lt;!&ndash;        <li class="d-flex align-items-center jusitfy-content-center"><a href="#"><i class="icon-linkedin"></i></a></li>&ndash;&gt;
       </ul>
     </div>
-  </div>
+  </div>-->
 </aside> <!-- END COLORLIB-ASIDE -->

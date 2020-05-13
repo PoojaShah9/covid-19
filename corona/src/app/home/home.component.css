@@ -268,6 +268,7 @@ a {
 
 .custom-img {
   height: 225px;
+  width: 320px;
   margin: 10px 10px 10px 0;
   /*width: 40%;*/
 }
@@ -297,7 +298,13 @@ a {
   height: 215px;
   /*max-height: 126px;*/
   overflow: auto;
+}
 
+.trans-wrap {
+  padding: 10px;
+  height: 230px;
+  /*max-height: 126px;*/
+  overflow: auto;
 }
 
 .time {
@@ -407,9 +414,98 @@ body::-webkit-scrollbar {
   display: flex;
   z-index: 12;
   position: absolute;
-  margin-top: 200px
+  margin-top: -155px
 }
 .trade-back, .trade-next {
   border-radius: 50%;
-  background: #a2979775;
+  background: #888181;
+}
+.trade-back {
+  margin-left: -40px;
+}
+
+
+.tabs {
+  max-width: inherit;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+#tab-button {
+  display: table;
+  table-layout: fixed;
+  /*width: 100%;*/
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#tab-button li {
+  display: table-cell;
+  width: 130px;
+}
+#tab-button li a {
+  display: block;
+  padding: .5em;
+  background: #E9A48C;
+  border: 1px solid #ddd;
+  text-align: center;
+  color: #000;
+  text-decoration: none;
+}
+#tab-button li:not(:first-child) a {
+  border-left: none;
+}
+#tab-button li a:hover,
+#tab-button .is-active a {
+  border-bottom-color: transparent;
+  background: #fff;
+}
+.tab-contents {
+  padding: .5em 2em 1em;
+  /*border: 1px solid #ddd;*/
+}
+.tab-button-outer {
+  width: 100%;
+  background: #E9A48C;
+  display: none;
+}
+.tab-contents {
+  /*margin-top: 20px;*/
+}
+@media screen and (min-width: 768px) {
+  .tab-button-outer {
+    position: relative;
+    z-index: 2;
+    background: #E9A48C;
+    display: block;
+  }
+  .tab-select-outer {
+    display: none;
+  }
+  .tab-contents {
+    position: relative;
+    top: -1px;
+    margin-top: 0;
+  }
+}
+@media screen and (max-width: 768px) {
+  .modal {
+    overflow: scroll;
+  }
+  .custom-img {
+    width: 270px;
+  }
+}
+
+.ges-location-from .form-group label , .total-wrap .form-group {
+  margin: 5px;
+}
+
+.ges-location-from .form-group {
+  border: 0px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  border-radius: 0px;
+}
+.total-wrap {
+  margin: 10px;
+  height: 50px;
 }

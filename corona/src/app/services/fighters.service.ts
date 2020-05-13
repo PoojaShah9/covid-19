@@ -13,7 +13,7 @@ export class FightersService {
   }
 
   getFighterList(countryName, pg, limit) {
-    return this.http.get<any>(this.api + 'fighters/getfightergetByCountry?limit=' + limit + '&pg=' + pg + '?country=' + countryName);
+    return this.http.get<any>(this.api + 'fighters/getfightergetByCountry?limit=' + limit + '&pg=' + pg + '&country=' + countryName);
   }
 
   getFighterById(id) {
