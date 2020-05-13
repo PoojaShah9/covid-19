@@ -120,6 +120,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "coronaFighter"
+    }
+  },
+  "defaultProject": "coronaFighter",
+  "cli": {
+    "analytics": "2994ad65-8658-462c-8cb9-6b9fd935ce00"
+  }
 }
