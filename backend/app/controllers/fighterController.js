@@ -99,7 +99,7 @@ let comment = (req, res) => {
     let validatingInputs = () => {
         console.log("validatingInputs");
         return new Promise((resolve, reject) => {
-            if (req.body.fighter_id && req.body.comment) {
+            if (req.body.fighter_id && req.body.comment && req.body.commentBy) {
                 resolve();
             } else {
                 let apiResponse = response.generate(true, "Required Parameter fighter_id, comment is missing", 400, null);
@@ -114,6 +114,7 @@ let comment = (req, res) => {
             const body = {
                 fighterCommentsId: shortid.generate(),
                 fighter_id: req.body.fighter_id,
+                commentBy: req.body.commentBy,
                 comment: req.body.comment,
             };
             FighterComments.create(body,
@@ -146,12 +147,56 @@ let comment = (req, res) => {
         });
 };
 
+let postLike = (req, res) => {
+
+    let validatingInputs = () => {
+        console.log("validatingInputs");
+        return new Promise((resolve, reject) => {
+            if (req.body.fighter_id && req.body.likes) {
+                resolve();
+            } else {
+                let apiResponse = response.generate(true, "Required Parameter fighter_id, likes is missing", 400, null);
+                reject(apiResponse);
+            }
+        });
+    }; // end of validatingInputs
+
+    let updateLike = () => {
+        console.log("updateLike");
+        return new Promise((resolve, reject) => {
+            Fighters.findOneAndUpdate({fighter_id: req.body.fighter_id}, {totalComment: req.body.likes}, {new: true}, function (err, fightersDetails) {
+                if (err) {
+                    console.log('err', err);
+                    logger.error("Internal Server error while create Record", "create => createFighter()", 5);
+                    let apiResponse = response.generate(true, err, 500, null);
+                    reject(apiResponse);
+                } else {
+                    resolve(fightersDetails);
+                }
+            })
+        });
+    }; // end of updateLike
+
+    validatingInputs()
+        .then(updateLike)
+        .then((resolve) => {
+            let apiResponse = response.generate(false, "Post Like Successfully!!", 200, resolve);
+            res.status(200).send(apiResponse);
+        })
+        .catch((err) => {
+            console.log(err);
+            if (req.file)
+                fs.unlinkSync(req.file.path)
+            res.status(err.status).send(err);
+        });
+};
+
 let getTopTen = (req, res) => {
 
     let getData = () => {
         console.log("getData");
         return new Promise((resolve, reject) => {
-            FightersTesting.find()
+            Fighters.find()
                 .sort({created_at: -1}).limit(10)
                 .then((data) => {
                     resolve(data);
@@ -193,7 +238,7 @@ let getbyid = (req, res) => {
             if (req.query.id) {
                 body['fighter_id'] = (req.query.id);
             }
-            FightersTesting.findOne(body, function (err, userDetail) {
+            Fighters.findOne(body, function (err, userDetail) {
                 if (err) {
                     logger.error("Internal Server error while fetching Fighters", "getPhotosByCategory => getPhotos()", 5);
                     let apiResponse = response.generate(true, err, 500, null);
@@ -218,8 +263,10 @@ let getbyid = (req, res) => {
                     let apiResponse = response.generate(true, err, 500, null);
                     reject(apiResponse);
                 } else {
-                    result['comments'] = userDetail;
-                    resolve(result);
+                    let final = {};
+                    final['comments'] = userDetail;
+                    final['result'] = result;
+                    resolve(final);
                 }
             })
         }); // end of getComments
@@ -256,7 +303,7 @@ let getfightergetByCountry = (req, res) => {
             if (req.query.country) {
                 body['country'] = (req.query.country).toLowerCase();
             }
-            FightersTesting.find(body)
+            Fighters.find(body)
                 .skip(page)
                 .limit(limit)
                 .then((data) => {
@@ -270,7 +317,30 @@ let getfightergetByCountry = (req, res) => {
         });
     }; // end of getFighter
 
+    let getTotal = (result) => {
+        console.log("getTotal");
+        return new Promise((resolve, reject) => {
+            let body = {};
+            if (req.query.country) {
+                body['country'] = (req.query.country).toLowerCase();
+            }
+            Fighters.find(body)
+                .then((data) => {
+                    let final = {};
+                    final['totalRecords'] = data.length;
+                    final['result'] = result;
+                    resolve(final);
+                })
+                .catch((err) => {
+                    logger.error("Internal Server error while fetching Fighters", "getPhotosByCategory => getPhotos()", 5);
+                    let apiResponse = response.generate(true, err, 500, null);
+                    reject(apiResponse);
+                })
+        });
+    }; // end of getTotal
+
     getFighter()
+        .then(getTotal)
         .then((resolve) => {
             let apiResponse = response.generate(false, "Get Fighter Successfully!!", 200, resolve);
             res.status(200).send(apiResponse);
@@ -286,5 +356,6 @@ module.exports = {
     getTopTen: getTopTen,
     getbyid: getbyid,
     comment: comment,
+    postLike: postLike,
     getfightergetByCountry: getfightergetByCountry,
 }

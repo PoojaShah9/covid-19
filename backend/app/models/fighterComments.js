@@ -7,6 +7,7 @@ const schemaOptions = {
 const fighterCommentsSchema = mongoose.Schema({
     // _id: mongoose.Schema.Types.ObjectId,
     fighterCommentsId: String,
+    commentBy: String,
     fighter_id: String,
     comment: String
 }, schemaOptions);

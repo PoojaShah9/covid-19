@@ -7,6 +7,7 @@ const schemaOptions = {
 const fighterSchema = mongoose.Schema({
     // _id: mongoose.Schema.Types.ObjectId,
     fighter_id: String,
+    totalComment: {type: Number, default: 0},
     name: String,
     country: String,
     deathDate: String,

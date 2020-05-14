@@ -12,10 +12,9 @@
   <component name="ChangeListManager">
     <list default="true" id="783126e4-dc3d-4157-9b97-186a2fa8683f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/corona/src/app/home/home.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/corona/src/app/home/home.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/corona/src/app/home/home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/corona/src/app/home/home.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/corona/src/app/home/home.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/corona/src/app/home/home.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/corona/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/corona/src/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/controllers/fighterController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/controllers/fighterController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/models/fighters.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/models/fighters.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/routes/fighter.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/routes/fighter.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,7 +27,7 @@
         <option value="poojaShah &lt;shah.developer9@gmail.com&gt;" />
       </list>
     </option>
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/backend" />
   </component>
   <component name="ProjectId" id="1aqJjMYzubuiuqcOVx1TLfCnQO3" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -42,12 +41,15 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="D:/MyOwnProjects/demo/lime-pay-demo" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="ts.external.directory.path" value="C:\Users\mitul\Desktop\pooja-work\covid-19\frontend\node_modules\typescript\lib" />
+    <property name="ts.external.directory.path" value="C:\Users\abhik\Desktop\covid-19\adminSIte\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -107,6 +109,13 @@
       <workItem from="1588349759377" duration="954000" />
       <workItem from="1588396362734" duration="1819000" />
       <workItem from="1588398349638" duration="18380000" />
+      <workItem from="1589174844700" duration="223000" />
+      <workItem from="1589175279842" duration="7272000" />
+      <workItem from="1589182989863" duration="3233000" />
+      <workItem from="1589261069214" duration="5797000" />
+      <workItem from="1589346662396" duration="3718000" />
+      <workItem from="1589372194893" duration="1000" />
+      <workItem from="1589440423542" duration="2332000" />
     </task>
     <task id="LOCAL-00001" summary="backend">
       <created>1587463302364</created>
@@ -196,7 +205,13 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="true" />
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -226,14 +241,14 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="542" height="466" key="DebuggerActiveHint/0.0.1366.728@0.0.1366.728" timestamp="1587462377547" />
-    <state x="92" y="92" width="1182" height="544" key="DiffContextDialog" timestamp="1588401082933">
+    <state x="92" y="92" width="1182" height="544" key="DiffContextDialog" timestamp="1589183383833">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="92" y="92" width="1182" height="544" key="DiffContextDialog/0.0.1366.728@0.0.1366.728" timestamp="1588401082933" />
-    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1588410252100">
+    <state x="92" y="92" width="1182" height="544" key="DiffContextDialog/0.0.1366.728@0.0.1366.728" timestamp="1589183383833" />
+    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1589183077364">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1588410252100" />
+    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1589183077364" />
     <state width="1345" height="223" key="GridCell.Tab.0.bottom" timestamp="1587842019668">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -302,10 +317,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="237" y="93" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1366.728@0.0.1366.728" timestamp="1587461365051" />
-    <state x="439" y="112" width="658" height="600" key="find.popup" timestamp="1588669226483">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="390" y="0" width="585" height="728" key="find.popup" timestamp="1589444889448">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="390" y="99" width="585" height="530" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1588054541821" />
+    <state x="390" y="0" width="585" height="728" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1589444889448" />
     <state x="439" y="112" width="658" height="600" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1588669226483" />
     <state x="339" y="162" key="run.anything.popup" timestamp="1588223610316">
       <screen x="0" y="0" width="1366" height="728" />

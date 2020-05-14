@@ -39,4 +39,6 @@ module.exports.setRouter = (app) => {
     app.get(baseUrl + '/getbyid', cachMan.cache, [fighter.getbyid]);
 
     app.post(baseUrl + '/comment', [fighter.comment]);
+
+    app.post(baseUrl + '/postlike', [fighter.postLike]);
 };
