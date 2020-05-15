@@ -3,6 +3,7 @@ import {FightersService} from '../services/fighters.service';
 // import {Country} from '../../country';
 import {ActivatedRoute, Router} from "@angular/router";
 import {PlatformLocation} from "@angular/common";
+import {HttpClient} from "@angular/common/http";
 
 declare var tab: Function;
 
@@ -22,7 +23,6 @@ export class HomeComponent implements OnInit {
   display = 'none';
   displayName = 'none';
   showDD = false;
-  isFullListDisplayed = false;
   showComment = false;
   countrylist: any = [
     {name: 'Afghanistan', code: 'AF'},
@@ -273,27 +273,49 @@ export class HomeComponent implements OnInit {
   currentPage;
   href;
   p: number = 0;
-  limit: number = 10;
+  limit: number = 20;
   total: number;
   btnColor = false;
-  likecount = 0;
+  likecount;
   throttle = 10;
   scrollDistance = 1;
   scrollUpDistance = 2;
-
+  changeClass = false;
+  displayData = {
+    showCountry: true,
+    showoccupation: true,
+    showdeathDate: true,
+    showdescription: true,
+    showname: true,
+    showage: true,
+    showsource: true,
+  };
 
   constructor(private fighterService: FightersService,
               private route: ActivatedRoute,
               private router: Router,
+              private http: HttpClient,
               private platformLocation: PlatformLocation) {
   }
 
 
   ngOnInit(): void {
     tab();
+    // this.getFighter('', this.p, this.limit);
+    this.http.get<any>('http://ip-api.com/json')
+      .subscribe((res) => {
+        console.log('resssss', res);
+        this.cntName = res.country;
+        if (this.cntName !== undefined) {
+          this.changeClass = false;
+          this.getFighter(this.cntName, this.p, this.limit);
+        } else {
+          this.changeClass = true;
+          this.getFighter('', this.p, this.limit);
+        }
+      });
     // this.cntName = 'India';
     // this.countrylist = Country;
-    this.getFighter('', this.p, this.limit);
     this.route.queryParams.subscribe(params => {
       console.log('params', params);
       if (params.id) {
@@ -307,12 +329,23 @@ export class HomeComponent implements OnInit {
   onLikeClick() {
     if (this.btnColor) {
       this.btnColor = false;
-      this.likecount--;
+      this.currentFighter.totalLikes = this.currentFighter.totalLikes - 1;
     } else {
       console.log('in like');
       this.btnColor = true;
-      this.likecount++;
+      this.currentFighter.totalLikes = this.currentFighter.totalLikes + 1;
     }
+    let data = {
+      fighter_id: this.currentFighter.fighter_id,
+      likes: this.currentFighter.totalLikes
+    };
+    this.loading = true;
+    this.fighterService.addLike(data)
+      .subscribe((res) => {
+        console.log('res', res);
+        this.currentFighter.totalLikes = res.data.totalLikes;
+        this.loading = false;
+      });
   }
 
   getFighterById(id) {
@@ -322,12 +355,33 @@ export class HomeComponent implements OnInit {
         console.log('getbyid', res);
         this.loading = false;
         this.currentFighter = res.data.result;
+        this.likecount = this.currentFighter.totalLikes;
+        if (this.currentFighter.country === '') {
+          this.displayData.showCountry = false;
+        }
+        if (this.currentFighter.age === '') {
+          this.displayData.showage = false;
+        }
+        if (this.currentFighter.description === '') {
+          this.displayData.showdescription = false;
+        }
+        if (this.currentFighter.occupation === '') {
+          this.displayData.showoccupation = false;
+        }
+        if (this.currentFighter.name === '') {
+          this.displayData.showname = false;
+        }
+        if (this.currentFighter.deathDate === '') {
+          this.displayData.showdeathDate = false;
+        }
+        if (this.currentFighter.source === '') {
+          this.displayData.showsource = false;
+        }
         this.comments = res.data.comments;
         if (this.comments.length === 0) {
           this.showComment = true;
         }
         console.log('comments', this.comments);
-        // this.currentFighter.link = this.photoArray[0];
       }, error => {
         console.log('error', error);
         this.loading = false;
@@ -393,10 +447,10 @@ export class HomeComponent implements OnInit {
   onScroll() {
     console.log("scrolled in");
     // if (this.fighterData.length < this.total) {
-      // Update ending position to select more items from the array
-      this.p = this.p + 1;
-      this.getFighter(this.cntName, this.p, this.limit);
-      console.log("scrolled");
+    // Update ending position to select more items from the array
+    this.p = this.p + 1;
+    this.getFighter(this.cntName, this.p, this.limit);
+    console.log("scrolled");
     // } else {
     //   console.log('in else');
     //   this.isFullListDisplayed = true;
@@ -413,8 +467,10 @@ export class HomeComponent implements OnInit {
   onTabClick(type) {
     console.log('type', type);
     if (type === 'country') {
+      this.changeClass = false;
       this.getFighter(this.cntName, this.p, this.limit);
     } else {
+      this.changeClass = true;
       this.getFighter('', this.p, this.limit);
     }
   }
@@ -475,7 +531,7 @@ export class HomeComponent implements OnInit {
         this.getFighter(this.searchText, this.p, this.limit);
       }
     });
-    window.location.reload();
+    // window.location.reload();
   }
 
   getPage(page: number) {

@@ -10,23 +10,25 @@
       <div class="container">
         <div class="row no-gutters slider-text align-items-center">
           <div class="col-md-9 ftco-animate fadeInUp ftco-animated">
-            <h2 class="mb-3 bread">Corona Champion</h2>
+            <!--            <h2 class="mb-3 bread">Corona Champion</h2>-->
             <p>A small tributes towards real life heroes. Warriors who died to save world against COVID-19</p>
 
             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
               <li class="nav-item">
                 <a class="nav-link" id="country-tab" data-toggle="pill" href="#country" role="tab"
+                   [ngClass]="{'active': changeClass === false}"
                    (click)="onTabClick('country')" aria-controls="country" aria-selected="false">Country</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" id="showall-tab" data-toggle="pill" href="#showall"
+                <a class="nav-link" id="showall-tab" data-toggle="pill" href="#showall"
+                   [ngClass]="{'active': changeClass === true}"
                    (click)="onTabClick('world')"
                    role="tab" aria-controls="showall" aria-selected="true">World wide</a>
               </li>
             </ul>
           </div>
           <div class="col-md-3 ftco-animate fadeInUp ftco-animated">
-            <div class="form-group has-search">
+            <div class="form-group has-search float-right">
               <span class="icon-search form-control-feedback"></span>
               <input type="text" name="searchText" (keyup)="onChanges($event)" class="form-control"
                      list="filteredArray" [(ngModel)]="searchText" placeholder="Search Country" autocomplete="on"
@@ -44,25 +46,45 @@
     <section class="ftco-section-2">
       <div class="photograhy">
         <div class="row no-gutters">
-          <!--<div class="tab-content" id="pills-tabContent" style="width: 100%">
-
-            <div class="tab-pane fade show " id="country" role="tabpanel" aria-labelledby="country-tab">-->
-          <div
-            *ngFor="let fighter of fighterData; let i = index;"
-            class="col-custom ftco-animate fadeInUp ftco-animated border-image">
-            <a (click)="openModal(fighter, i)" style="cursor: pointer;"
-               class="photography-entry img image-popup d-flex justify-content-center align-items-center"
-               [ngStyle]="{'background-image': 'url(' + fighter.link + ')'}">
-              <div class="overlay"></div>
-              <div class="text text-center">
-                <h3>{{fighter.name}}</h3>
-                <span class="tag">{{fighter.occupation}}</span>
+          <div class="tab-content" id="pills-tabContent" style="width: 100%">
+            <div class="tab-pane fade show" [ngClass]="{'active': changeClass === false}" id="country" role="tabpanel"
+                 aria-labelledby="country-tab">
+              <div class="row col-md-12">
+                <div
+                  *ngFor="let fighter of fighterData; let i = index;"
+                  class="col-custom ftco-animate fadeInUp ftco-animated border-image col-md-2">
+                  <a (click)="openModal(fighter, i)" style="cursor: pointer;"
+                     class="photography-entry img image-popup d-flex justify-content-center align-items-center"
+                     [ngStyle]="{'background-image': 'url(' + fighter.link + ')'}">
+                    <div class="overlay"></div>
+                    <div class="text text-center">
+                      <h3>{{fighter.name}}</h3>
+                      <span class="tag">{{fighter.occupation}}</span>
+                    </div>
+                  </a>
+                </div>
               </div>
-            </a>
+            </div>
+            <div class="tab-pane fade show" [ngClass]="{'active': changeClass === true}" id="showall" role="tabpanel"
+                 aria-labelledby="showall-tab">
+              <div class="row col-md-12">
+                <div
+                  *ngFor="let fighter of fighterData; let i = index;"
+                  class="ftco-animate fadeInUp ftco-animated border-image col-md-2">
+                  <a (click)="openModal(fighter, i)" style="cursor: pointer;"
+                     class="photography-entry img image-popup d-flex justify-content-center align-items-center"
+                     [ngStyle]="{'background-image': 'url(' + fighter.link + ')'}">
+                    <div class="overlay"></div>
+                    <div class="text text-center">
+                      <h3>{{fighter.name}}</h3>
+                      <span class="tag">{{fighter.occupation}}</span>
+                    </div>
+                  </a>
+                </div>
+              </div>
+
+            </div>
           </div>
-          <!-- </div>
-           <div class="tab-pane fade show active" id="showall" role="tabpanel" aria-labelledby="showall-tab">
-           </div>-->
         </div>
 
         <!--<div style="text-align: center;margin-top: 10px">
@@ -105,7 +127,7 @@
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title">{{currentFighter.name}}</h4>
+            <h4 class="modal-title" *ngIf="displayData.showname">{{currentFighter.name}}</h4>
             <button type="button" class="close" (click)="closeModal()">&times;</button>
           </div>
 
@@ -132,21 +154,33 @@
                   <div class="col-md-6">
                     <div class='images'>
                       <img src="{{currentFighter.link}}" class="custom-img"/>
-                      <div style="margin-top: -10px;width: 320px;background: #e9a48cfa;">
+                      <div class="img-div">
                         <button class="btn btn-sm" [ngClass]="(btnColor)?'btn-danger':'btn-default'"
                                 style="border-radius: 10%;margin: 5px;float: left;" (click)="onLikeClick()">
                           <img src="../../assets/images/namaste.png" style="width: 20px; height: 20px" alt=""> <span
-                          class="badge">{{likecount}}</span></button>
+                          class="badge">{{currentFighter.totalLikes}}</span></button>
                       </div>
                     </div>
 
                   </div>
                   <div class="col-md-6">
                     <div style="margin: 10px 10px 10px 0;">
-                      <p><label class="label">Death Date:</label> {{currentFighter.deathDate |date: 'dd-MM-yyyy'}}</p>
-                      <p><label class="label">Age:</label> {{currentFighter.age}}</p>
-                      <div><p>{{currentFighter.description}}</p></div>
-                      <!--                      style="height: 50px; overflow: scroll"-->
+                      <p *ngIf="displayData.showoccupation"><label
+                        class="label">Occupation:</label> {{currentFighter.occupation}}</p>
+                      <p *ngIf="displayData.showCountry"><label
+                        class="label">Country:</label> {{currentFighter.country}}</p>
+                      <p *ngIf="displayData.showdeathDate"><label class="label">Death
+                        Date:</label> {{currentFighter.deathDate |date: 'dd-MM-yyyy'}}</p>
+                      <p *ngIf="displayData.showage"><label class="label">Age:</label> {{currentFighter.age}}</p>
+                      <p *ngIf="displayData.showsource"><label class="label">Source:</label> <a
+                        href="{{currentFighter.source}}"></a>{{currentFighter.source}}</p>
+                      <div *ngIf="displayData.showdescription" style="height: 70px;
+    /* overflow: auto; */
+    overflow-y: auto;
+    overflow-x: hidden;
+    word-break: break-all;">
+                        <p>{{currentFighter.description}}</p></div>
+                      <!--                      -->
                     </div>
                   </div>
                 </div>
@@ -233,92 +267,27 @@
                 </div>
               </div>
             </div>
-            <!--<div class="wrapper">
-              <div class="tabs">
-                <div class="tab">
-                  <input type="radio" name="css-tabs" id="tab-1" value="transaction" class="tab-switch" [(ngModel)]="active">
-                  <label for="tab-1" class="tab-label">Transaction</label>
-                  <div class="tab-content">
-                  </div>
-                </div>
-                <div class="tab">
-                  <input type="radio" name="css-tabs" id="tab-2" value="comment" class="tab-switch" [(ngModel)]="active">
-                  <label for="tab-2" class="tab-label">Comments</label>
-                  <div class="tab-content">
-                    <div class="message-wrap">
-                      <div class="msg-wrap">
-
-                        <div class="media msg" *ngIf="showComment === true;else other_content">
-                          <div class="media-body">
-                            <h3 class="text-center">No Comments are there.</h3>
-                          </div>
-                        </div>
-                        <ng-template #other_content>
-
-                          <div class="media msg" *ngFor="let c of comments">
-                            <div class="media-body">
-                              <small class="pull-right time"><i class="fa fa-clock-o"></i>{{c.created_at | date: "h:mm a"}}</small>
-                              <h6 class="media-heading">{{c.commentBy}}</h6>
-                              <small class="col-lg-10">{{c.comment}}</small>
-                            </div>
-                          </div>
-                        </ng-template>
-                      </div>
-                      <div class="send-wrap">
-                        <div class="input-group">
-                          <input class="form-control send-message" placeholder="Write a comment..." name="msg"
-                                 [(ngModel)]="user.comment" (keypress)="onSubmitmsg($event, currentFighter.fighter_id, '')">
-                          <div class="input-group-append" (click)="onSubmitmsg($event, currentFighter.fighter_id, 'submit')">
-                            <span class="input-group-text send-message"><i style="background: none;color: #191616" class="fa fa-paper-plane"></i></span>
-                          </div>
-                        </div>
-                        &lt;!&ndash;                                <button (click)="onSubmitmsg($event)">click</button>&ndash;&gt;
-                      </div>
-                      &lt;!&ndash; <div class="btn-panel">
-                          <a href="" class=" col-lg-3 btn   send-message-btn " role="button"><i class="fa fa-cloud-upload"></i> Add Files</a>
-                          <a href="" class=" col-lg-4 text-right btn   send-message-btn pull-right" role="button"><i class="fa fa-plus"></i> Send Message</a>
-                      </div> &ndash;&gt;
-                    </div>
-                  </div>
-                </div>
-                <div class="tab">
-                  <input type="radio" name="css-tabs" id="tab-3" value="profile" checked class="tab-switch" [(ngModel)]="active">
-                  <label for="tab-3" class="tab-label">Profile</label>
-                  <div class="tab-content">
-                    <div class="row" style="margin-top: 30px;">
-                      <div class="col-md-6">
-                        <div class='images'>
-                          <img src="{{currentFighter.link}}" class="custom-img"/>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div style="margin: 10px 10px 10px 0;">
-                          <p><label class="label">Death Date:</label> {{currentFighter.deathDate |date: 'dd-MM-yyyy'}}</p>
-                          <p><label class="label">Age:</label> {{currentFighter.age}}</p>
-                          <p>{{currentFighter.description}}</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </div>-->
           </div>
 
           <!-- Modal footer -->
           <div class="modal-footer">
-            <div class="col-9">
-              <button class="btn social-btn fa fa-facebook" mat-fab shareButton="facebook" url="{{href}}"></button>
-              <button class="btn social-btn fa fa-twitter" mat-fab shareButton="twitter" url="{{href}}"></button>
-              <button class="btn social-btn fa fa-linkedin" mat-fab shareButton="linkedin" url="{{href}}"></button>
-              <button class="btn social-btn fa fa-whatsapp" mat-fab shareButton="whatsapp" url="{{href}}"></button>
-              <button class="btn social-btn fa fa-paper-plane" mat-fab shareButton="telegram" url="{{href}}"></button>
-              <button class="btn social-btn fa fa-pinterest" mat-fab shareButton="pinterest" url="{{href}}"></button>
-            </div>
-            <div class="col-3">
-              <button style="float: left;" type="button" class="btn btn-success" (click)="closeModal()">Donate</button>
-              <button style="float: right;" type="button" class="btn btn-danger" (click)="closeModal()">Close</button>
+            <div class="row col-12">
+              <div class="col-8">
+                <button class="btn social-btn fa fa-facebook" mat-fab shareButton="facebook" url="{{href}}"></button>
+                <button class="btn social-btn fa fa-twitter" mat-fab shareButton="twitter" url="{{href}}"></button>
+                <button class="btn social-btn fa fa-linkedin" mat-fab shareButton="linkedin" url="{{href}}"></button>
+                <button class="btn social-btn fa fa-whatsapp" mat-fab shareButton="whatsapp" url="{{href}}"></button>
+                <button class="btn social-btn fa fa-paper-plane" mat-fab shareButton="telegram" url="{{href}}"></button>
+                <button class="btn social-btn fa fa-pinterest" mat-fab shareButton="pinterest" url="{{href}}"></button>
+              </div>
+              <div class="col-4" style="display: flex">
+                <div class="gfm-embed" data-url="https://www.gofundme.com/f/covidchampions/widget/small">
+                  <!--                <button style="float: left;" type="button" class="btn btn-success" (click)="closeModal()">Donate</button>-->
+                </div>
+                <button style="float: right;height: 33px;font-size: 13px;font-weight: 600;" type="button" class="btn btn-danger"
+                        (click)="closeModal()">Close
+                </button>
+              </div>
             </div>
           </div>
 

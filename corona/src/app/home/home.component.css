@@ -420,6 +420,9 @@ body::-webkit-scrollbar {
   border-radius: 50%;
   background: #888181;
 }
+.trade-next {
+  margin-right: 25px;
+}
 .trade-back {
   margin-left: -40px;
 }
@@ -494,6 +497,9 @@ body::-webkit-scrollbar {
   .custom-img {
     width: 270px;
   }
+  .img-div {
+    width:270px !important;
+  }
 }
 
 .ges-location-from .form-group label , .total-wrap .form-group {
@@ -508,4 +514,18 @@ body::-webkit-scrollbar {
 .total-wrap {
   margin: 10px;
   height: 50px;
+}
+
+.col-md-2, .col-md-12 {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+.row {
+  margin-left: unset;
+  margin-right: unset;
+}
+.img-div {
+  margin-top: -10px;
+  width: 320px !important;
+  background: #e9a48cfa;
 }
