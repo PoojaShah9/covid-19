@@ -290,6 +290,7 @@ export class HomeComponent implements OnInit {
     showage: true,
     showsource: true,
   };
+  tabName = '#tab01';
 
   constructor(private fighterService: FightersService,
               private route: ActivatedRoute,
@@ -302,6 +303,20 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     tab();
     // this.getFighter('', this.p, this.limit);
+    this.getCurrentLocation();
+    // this.cntName = 'India';
+    // this.countrylist = Country;
+    this.route.queryParams.subscribe(params => {
+      console.log('params', params);
+      if (params.id) {
+        this.href = (this.platformLocation as any).href + '/?id=' + params.id;
+        this.getFighterById(params.id);
+        this.showFighter(this.currentFighter);
+      }
+    });
+  }
+
+  getCurrentLocation() {
     this.http.get<any>('http://ip-api.com/json')
       .subscribe((res) => {
         console.log('resssss', res);
@@ -314,16 +329,6 @@ export class HomeComponent implements OnInit {
           this.getFighter('', this.p, this.limit);
         }
       });
-    // this.cntName = 'India';
-    // this.countrylist = Country;
-    this.route.queryParams.subscribe(params => {
-      console.log('params', params);
-      if (params.id) {
-        this.href = (this.platformLocation as any).href + '/?id=' + params.id;
-        this.getFighterById(params.id);
-        this.showFighter(this.currentFighter);
-      }
-    });
   }
 
   onLikeClick() {
@@ -356,6 +361,7 @@ export class HomeComponent implements OnInit {
         this.loading = false;
         this.currentFighter = res.data.result;
         this.likecount = this.currentFighter.totalLikes;
+        console.log('currentFighter', this.currentFighter);
         if (this.currentFighter.country === '') {
           this.displayData.showCountry = false;
         }
@@ -468,10 +474,23 @@ export class HomeComponent implements OnInit {
     console.log('type', type);
     if (type === 'country') {
       this.changeClass = false;
-      this.getFighter(this.cntName, this.p, this.limit);
+      this.getCurrentLocation();
+      // this.getFighter(this.cntName, this.p, this.limit);
     } else {
       this.changeClass = true;
+      this.cntName = '';
       this.getFighter('', this.p, this.limit);
+    }
+  }
+
+  onTabButtonClick(tab) {
+    console.log('type', tab);
+    if (tab === '#tab01') {
+      this.tabName = tab;
+    } else if (tab === '#tab02') {
+      this.tabName = tab;
+    } else if (tab === '#tab03') {
+      this.tabName = tab;
     }
   }
 
@@ -482,6 +501,7 @@ export class HomeComponent implements OnInit {
   openModal(data, i) {
     this.display = 'block';
     this.currentFighter = data;
+    this.tabName = '#tab01';
     this.getFighterById(this.currentFighter.fighter_id);
     console.log('data', this.currentFighter);
     this.currentPage = i;
@@ -490,6 +510,7 @@ export class HomeComponent implements OnInit {
   changePage(index: number): void {
     this.currentPage += index;
     this.loading = true;
+    this.tabName = '#tab01';
     this.fighterData.filter((x, i) => {
       if (i === this.currentPage) {
         this.currentFighter = x;

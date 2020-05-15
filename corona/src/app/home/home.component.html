@@ -136,20 +136,20 @@
             <div class="tabs">
               <div class="tab-button-outer">
                 <ul id="tab-button">
-                  <li><a href="#tab01">Profile</a></li>
-                  <li><a href="#tab02">Comments</a></li>
-                  <li><a href="#tab03">Transaction</a></li>
+                  <li [class.is-active]="(tabName === '#tab01')"><a href="#tab01" (click)="onTabButtonClick('#tab01')" >Profile</a></li>
+                  <li [class.is-active]="(tabName === '#tab02')"><a href="#tab02" (click)="onTabButtonClick('#tab02')">Comments</a></li>
+                  <li [class.is-active]="(tabName === '#tab03')"><a href="#tab03" (click)="onTabButtonClick('#tab03')">Transaction</a></li>
                 </ul>
               </div>
               <div class="tab-select-outer">
-                <select id="tab-select" class="form-control">
+                <select id="tab-select" class="form-control" [(ngModel)]="tabName">
                   <option value="#tab01">Profile</option>
                   <option value="#tab02">Comments</option>
                   <option value="#tab03">Transaction</option>
                 </select>
               </div>
 
-              <div id="tab01" class="tab-contents">
+              <div id="tab01" class="tab-contents" [style.display]="(tabName === '#tab01') ? 'block' : 'none'">
                 <div class="row" style="">
                   <div class="col-md-6">
                     <div class='images'>
@@ -185,7 +185,7 @@
                   </div>
                 </div>
               </div>
-              <div id="tab02" class="tab-contents">
+              <div id="tab02" class="tab-contents" [style.display]="(tabName === '#tab02') ? 'block' : 'none'">
                 <div class="message-wrap">
                   <div class="msg-wrap">
 
@@ -224,7 +224,7 @@
                   </div> -->
                 </div>
               </div>
-              <div id="tab03" class="tab-contents">
+              <div id="tab03" class="tab-contents" [style.display]="(tabName === '#tab03') ? 'block' : 'none'">
                 <div class="message-wrap">
                   <div class="trans-wrap">
                     <form class="seminor-login-form ges-location-from">
