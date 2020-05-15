@@ -164,7 +164,7 @@ let postLike = (req, res) => {
     let updateLike = () => {
         console.log("updateLike");
         return new Promise((resolve, reject) => {
-            Fighters.findOneAndUpdate({fighter_id: req.body.fighter_id}, {totalComment: req.body.likes}, {new: true}, function (err, fightersDetails) {
+            Fighters.findOneAndUpdate({fighter_id: req.body.fighter_id}, {totalLikes: req.body.likes}, {new: true}, function (err, fightersDetails) {
                 if (err) {
                     console.log('err', err);
                     logger.error("Internal Server error while create Record", "create => createFighter()", 5);
@@ -218,6 +218,41 @@ let getTopTen = (req, res) => {
     });*/
         }); // end of getPhotos
     }
+    getData()
+        .then((resolve) => {
+            let apiResponse = response.generate(false, "Get top 10 data Successfully!!", 200, resolve);
+            res.status(200).send(apiResponse);
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(err.status).send(err);
+        });
+};
+
+let totalLikes = (req, res) => {
+
+    let getData = () => {
+        console.log("getData");
+        return new Promise((resolve, reject) => {
+            Fighters.aggregate([
+                {
+                    $group:
+                        {
+                            _id:  "$__v",
+                            totalLikes: {$sum: "$totalLikes"},
+                        }
+                }
+            ],
+                function (err, data) {
+                    if (err)
+                        reject(err);
+
+                    resolve(data)
+                }
+            );
+        }); // end of getPhotos
+    }
+
     getData()
         .then((resolve) => {
             let apiResponse = response.generate(false, "Get top 10 data Successfully!!", 200, resolve);
@@ -357,5 +392,6 @@ module.exports = {
     getbyid: getbyid,
     comment: comment,
     postLike: postLike,
+    totalLikes: totalLikes,
     getfightergetByCountry: getfightergetByCountry,
 }

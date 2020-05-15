@@ -14,7 +14,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/app/controllers/fighterController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/controllers/fighterController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/app/models/fighters.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/models/fighters.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app/routes/fighter.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/routes/fighter.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +114,7 @@
       <workItem from="1589261069214" duration="5797000" />
       <workItem from="1589346662396" duration="3718000" />
       <workItem from="1589372194893" duration="1000" />
-      <workItem from="1589440423542" duration="2332000" />
+      <workItem from="1589440423542" duration="1911000" />
     </task>
     <task id="LOCAL-00001" summary="backend">
       <created>1587463302364</created>

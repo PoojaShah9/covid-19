@@ -41,4 +41,6 @@ module.exports.setRouter = (app) => {
     app.post(baseUrl + '/comment', [fighter.comment]);
 
     app.post(baseUrl + '/postlike', [fighter.postLike]);
+
+    app.get(baseUrl + '/totalLikes', [fighter.totalLikes]);
 };

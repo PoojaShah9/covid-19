@@ -7,6 +7,7 @@ const schemaOptions = {
 const fightersTestingSchema = mongoose.Schema({
     // _id: mongoose.Schema.Types.ObjectId,
     fighter_id: String,
+    totalLikes: {type: Number, default: 0},
     name: String,
     country: String,
     deathDate: String,
