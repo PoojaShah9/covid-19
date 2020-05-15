@@ -31,4 +31,8 @@ export class FightersService {
   addLike(data) {
     return this.http.post<any>(this.api + 'fighters/postlike', data);
   }
+
+  sendMail(data) {
+    return this.http.post<any>(this.api + 'contact/', data);
+  }
 }
