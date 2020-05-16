@@ -7,6 +7,7 @@ import {GalleryComponent} from './gallery/gallery.component';
 import {SingleComponent} from './single/single.component';
 import {ContactComponent} from './contact/contact.component';
 import {PaymentComponent} from "./payment/payment.component";
+import {DonationComponent} from "./donation/donation.component";
 
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: 'single', component: SingleComponent},
   {path: 'contact', component: ContactComponent},
   {path: 'pay', component: PaymentComponent},
+  {path: 'donation', component: DonationComponent},
 ];
 
 

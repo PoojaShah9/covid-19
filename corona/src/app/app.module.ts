@@ -26,6 +26,7 @@ import {
 import {PaymentComponent} from './payment/payment.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {InfiniteScrollModule} from "ngx-infinite-scroll";
+import { DonationComponent } from './donation/donation.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import {InfiniteScrollModule} from "ngx-infinite-scroll";
     ContactComponent,
     GalleryComponent,
     SingleComponent,
-    PaymentComponent
+    PaymentComponent,
+    DonationComponent
   ],
   imports: [
     BrowserModule,
