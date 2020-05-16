@@ -281,15 +281,6 @@ export class HomeComponent implements OnInit {
   scrollDistance = 1;
   scrollUpDistance = 2;
   changeClass = false;
-  displayData = {
-    showCountry: true,
-    showoccupation: true,
-    showdeathDate: true,
-    showdescription: true,
-    showname: true,
-    showage: true,
-    showsource: true,
-  };
   tabName = '#tab01';
 
   constructor(private fighterService: FightersService,
@@ -359,30 +350,9 @@ export class HomeComponent implements OnInit {
       .subscribe((res) => {
         console.log('getbyid', res);
         this.loading = false;
-        this.currentFighter = res.data.result;
         this.likecount = this.currentFighter.totalLikes;
+        this.currentFighter = res.data.result;
         console.log('currentFighter', this.currentFighter);
-        if (this.currentFighter.country === '') {
-          this.displayData.showCountry = false;
-        }
-        if (this.currentFighter.age === '') {
-          this.displayData.showage = false;
-        }
-        if (this.currentFighter.description === '') {
-          this.displayData.showdescription = false;
-        }
-        if (this.currentFighter.occupation === '') {
-          this.displayData.showoccupation = false;
-        }
-        if (this.currentFighter.name === '') {
-          this.displayData.showname = false;
-        }
-        if (this.currentFighter.deathDate === '') {
-          this.displayData.showdeathDate = false;
-        }
-        if (this.currentFighter.source === '') {
-          this.displayData.showsource = false;
-        }
         this.comments = res.data.comments;
         if (this.comments.length === 0) {
           this.showComment = true;
@@ -467,6 +437,7 @@ export class HomeComponent implements OnInit {
     this.currentFighter = data;
     // this.href = "https://www.cnox.io?id=123";
     this.href = (this.platformLocation as any).href + '?id=' + this.currentFighter.fighter_id;
+    console.log('href', this.href);
     this.popupVisible = true;
   }
 
@@ -502,6 +473,8 @@ export class HomeComponent implements OnInit {
     this.display = 'block';
     this.currentFighter = data;
     this.tabName = '#tab01';
+    this.href = (this.platformLocation as any).href + '?id=' + this.currentFighter.fighter_id;
+    console.log('href', this.href);
     this.getFighterById(this.currentFighter.fighter_id);
     console.log('data', this.currentFighter);
     this.currentPage = i;
@@ -513,8 +486,8 @@ export class HomeComponent implements OnInit {
     this.tabName = '#tab01';
     this.fighterData.filter((x, i) => {
       if (i === this.currentPage) {
-        this.currentFighter = x;
-        this.getFighterById(this.currentFighter.fighter_id);
+        let data = x;
+        this.getFighterById(data.fighter_id);
         this.loading = false;
       }
     });

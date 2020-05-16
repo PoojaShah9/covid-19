@@ -127,7 +127,7 @@
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title" *ngIf="displayData.showname">{{currentFighter.name}}</h4>
+            <h4 class="modal-title" *ngIf="currentFighter.name !== ''">{{currentFighter.name}}</h4>
             <button type="button" class="close" (click)="closeModal()">&times;</button>
           </div>
 
@@ -165,16 +165,16 @@
                   </div>
                   <div class="col-md-6">
                     <div style="margin: 10px 10px 10px 0;">
-                      <p *ngIf="displayData.showoccupation"><label
+                      <p *ngIf="currentFighter.occupation !== ''"><label
                         class="label">Occupation:</label> {{currentFighter.occupation}}</p>
-                      <p *ngIf="displayData.showCountry"><label
+                      <p *ngIf="currentFighter.country !== ''"><label
                         class="label">Country:</label> {{currentFighter.country}}</p>
-                      <p *ngIf="displayData.showdeathDate"><label class="label">Death
+                      <p *ngIf="currentFighter.deathDate !== ''"><label class="label">Death
                         Date:</label> {{currentFighter.deathDate |date: 'dd-MM-yyyy'}}</p>
-                      <p *ngIf="displayData.showage"><label class="label">Age:</label> {{currentFighter.age}}</p>
-                      <p *ngIf="displayData.showsource"><label class="label">Source:</label> <a
+                      <p *ngIf="currentFighter.age !== ''"><label class="label">Age:</label> {{currentFighter.age}}</p>
+                      <p *ngIf="currentFighter.source !== ''"><label class="label">Source:</label> <a
                         href="{{currentFighter.source}}"></a>{{currentFighter.source}}</p>
-                      <div *ngIf="displayData.showdescription" style="height: 70px;
+                      <div *ngIf="currentFighter.description !== ''" style="height: 70px;
     /* overflow: auto; */
     overflow-y: auto;
     overflow-x: hidden;
