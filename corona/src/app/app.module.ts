@@ -12,7 +12,7 @@ import {BlogComponent} from './blog/blog.component';
 import {ContactComponent} from './contact/contact.component';
 import {GalleryComponent} from './gallery/gallery.component';
 import {SingleComponent} from './single/single.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {ngxLoadingAnimationTypes, NgxLoadingModule} from 'ngx-loading';
 import {FormsModule} from "@angular/forms";
 import {
@@ -27,6 +27,7 @@ import {PaymentComponent} from './payment/payment.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {InfiniteScrollModule} from "ngx-infinite-scroll";
 import { DonationComponent } from './donation/donation.component';
+import {CacheInterceptor} from "./services/cache.interceptor";
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { DonationComponent } from './donation/donation.component';
     DxPopoverModule,
     DxListModule
   ],
-  providers: [DxTemplateHost],
+  providers: [DxTemplateHost,
+    { provide: HTTP_INTERCEPTORS, useClass: CacheInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule {
