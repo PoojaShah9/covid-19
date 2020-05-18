@@ -280,7 +280,7 @@ export class HomeComponent implements OnInit {
   throttle = 10;
   scrollDistance = 1;
   scrollUpDistance = 2;
-  changeClass = false;
+  changeClass = true;
   tabName = '#tab01';
 
   constructor(private fighterService: FightersService,
@@ -293,8 +293,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     tab();
-    // this.getFighter('', this.p, this.limit);
-    this.getCurrentLocation();
+    this.getFighter('', this.p, this.limit);
+    // this.getCurrentLocation();
     // this.cntName = 'India';
     // this.countrylist = Country;
     this.route.queryParams.subscribe(params => {

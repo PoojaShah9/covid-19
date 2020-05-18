@@ -494,12 +494,6 @@ body::-webkit-scrollbar {
   .modal {
     overflow: scroll;
   }
-  .custom-img {
-    width: 270px;
-  }
-  .img-div {
-    width:270px !important;
-  }
 }
 
 .ges-location-from .form-group label , .total-wrap .form-group {
@@ -524,8 +518,17 @@ body::-webkit-scrollbar {
   margin-left: unset;
   margin-right: unset;
 }
-.img-div {
+.images .img-div {
   margin-top: -10px;
-  width: 320px !important;
+  width: 320px;
   background: #e9a48cfa;
+}
+
+@media screen and (max-width: 400px) {
+  .custom-img {
+    width: 215px;
+  }
+  .images .img-div {
+    width:215px;
+  }
 }

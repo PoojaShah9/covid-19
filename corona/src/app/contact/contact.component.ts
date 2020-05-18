@@ -9,6 +9,7 @@ import {FightersService} from "../services/fighters.service";
 export class ContactComponent implements OnInit {
 
   email: any = {};
+  emailId = 'covid.champions@gmail.com';
 
   constructor(private fightersService: FightersService) {
   }

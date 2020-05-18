@@ -150,9 +150,9 @@
               </div>
 
               <div id="tab01" class="tab-contents" [style.display]="(tabName === '#tab01') ? 'block' : 'none'">
-                <div class="row" style="">
-                  <div class="col-md-6">
-                    <div class='images'>
+                <div class="row col-md-12 col-sm-12 col-lg-12" style="">
+                  <div class="col-md-12 col-sm-12 col-lg-6">
+                    <div class="images">
                       <img src="{{currentFighter.link}}" class="custom-img"/>
                       <div class="img-div">
                         <button class="btn btn-sm" [ngClass]="(btnColor)?'btn-danger':'btn-default'"
@@ -163,7 +163,7 @@
                     </div>
 
                   </div>
-                  <div class="col-md-6">
+                  <div class="col-md-12 col-sm-12 col-lg-6">
                     <div style="margin: 10px 10px 10px 0;">
                       <p *ngIf="currentFighter.occupation !== ''"><label
                         class="label">Occupation:</label> {{currentFighter.occupation}}</p>
@@ -272,7 +272,7 @@
           <!-- Modal footer -->
           <div class="modal-footer">
             <div class="row col-12">
-              <div class="col-8">
+              <div class="col-md-6 col-sm-6 col-lg-8">
                 <button class="btn social-btn fa fa-facebook" mat-fab shareButton="facebook" url="{{href}}"></button>
                 <button class="btn social-btn fa fa-twitter" mat-fab shareButton="twitter" url="{{href}}"></button>
                 <button class="btn social-btn fa fa-linkedin" mat-fab shareButton="linkedin" url="{{href}}"></button>
@@ -280,7 +280,7 @@
                 <button class="btn social-btn fa fa-paper-plane" mat-fab shareButton="telegram" url="{{href}}"></button>
                 <button class="btn social-btn fa fa-pinterest" mat-fab shareButton="pinterest" url="{{href}}"></button>
               </div>
-              <div class="col-4" style="display: flex">
+              <div class="col-md-6 col-sm-6 col-lg-4" style="display: flex">
                 <div class="gfm-embed" data-url="https://www.gofundme.com/f/covidchampions/widget/small">
                   <!--                <button style="float: left;" type="button" class="btn btn-success" (click)="closeModal()">Donate</button>-->
                 </div>
