@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit {
   currentFighter: any = {};
   user: any = {};
   popupVisible = false;
+  dataShow = false;
   display = 'none';
   displayName = 'none';
   showDD = false;
@@ -400,8 +401,9 @@ export class HomeComponent implements OnInit {
     this.loading = true;
     this.fighterService.getFighterList(country, pg, limit)
       .subscribe((res) => {
-        if (res.data) {
-          this.loading = false;
+        this.loading = false;
+        if (res.data.totalRecords !== 0) {
+          this.dataShow = false;
           res.data.result.filter((x) => {
             this.fighterData.push(x);
           });
@@ -412,6 +414,9 @@ export class HomeComponent implements OnInit {
           });
           this.total = res.data.totalRecords;
           console.log('Herer', this.fighterData, this.total);
+        } else {
+          this.dataShow = true;
+          this.fighterData = [];
         }
       }, error => {
         this.loading = false;
@@ -423,10 +428,11 @@ export class HomeComponent implements OnInit {
   onScroll() {
     console.log("scrolled in");
     // if (this.fighterData.length < this.total) {
-    // Update ending position to select more items from the array
-    this.p = this.p + 1;
-    this.getFighter(this.cntName, this.p, this.limit);
-    console.log("scrolled");
+      // Update ending position to select more items from the array
+      this.p = this.p + 1;
+      this.getFighter(this.cntName, this.p, this.limit);
+      console.log("scrolled");
+    // }
     // } else {
     //   console.log('in else');
     //   this.isFullListDisplayed = true;
@@ -443,14 +449,15 @@ export class HomeComponent implements OnInit {
 
   onTabClick(type) {
     console.log('type', type);
-    if (type === 'country') {
-      this.changeClass = false;
-      this.getCurrentLocation();
-      // this.getFighter(this.cntName, this.p, this.limit);
-    } else {
+    if (type === 'world') {
       this.changeClass = true;
       this.cntName = '';
       this.getFighter('', this.p, this.limit);
+    } else {
+      this.changeClass = false;
+      this.cntName = type;
+      this.fighterData = [];
+      this.getFighter(type, this.p, this.limit);
     }
   }
 
@@ -470,6 +477,7 @@ export class HomeComponent implements OnInit {
   }
 
   openModal(data, i) {
+    alert('hiii');
     this.display = 'block';
     this.currentFighter = data;
     this.tabName = '#tab01';

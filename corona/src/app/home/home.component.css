@@ -532,3 +532,7 @@ body::-webkit-scrollbar {
     width:215px;
   }
 }
+.ftco-section-2 {
+  z-index: -1;
+  position: relative;
+}
