@@ -6,7 +6,7 @@
      (scrolled)="onScroll()">
   <app-sidebar></app-sidebar>
   <div id="colorlib-main">
-    <section class="ftco-section bg-light ftco-bread">
+    <section class="ftco-section bg-light ftco-bread" style="z-index: 1">
       <div class="container">
         <div class="row no-gutters slider-text align-items-center">
           <div class="col-md-9 ftco-animate fadeInUp ftco-animated">
@@ -59,12 +59,12 @@
             <div class="tab-pane fade show" [ngClass]="{'active': changeClass === false}" id="country" role="tabpanel"
                  aria-labelledby="country-tab">
 
-              <!--<div class="row col-md-12" *ngIf="dataShow === true;else other_content">
+              <div class="row col-md-12" *ngIf="dataShow === true;else other_content">
               <div class="col-custom ftco-animate fadeInUp ftco-animated" style="height: 500px;">
                 <h3 class="text-center">No data are there.</h3>
               </div>
-              </div>-->
-<!--              <ng-template #other_content>-->
+              </div>
+              <ng-template #other_content>
                 <div class="row col-md-12">
                   <div
                     *ngFor="let fighter of fighterData; let i = index;"
@@ -80,7 +80,7 @@
                     </a>
                   </div>
                 </div>
-<!--              </ng-template>-->
+              </ng-template>
             </div>
             <div class="tab-pane fade show" [ngClass]="{'active': changeClass === true}" id="showall" role="tabpanel"
                  aria-labelledby="showall-tab">
