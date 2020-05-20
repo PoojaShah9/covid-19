@@ -67,8 +67,9 @@
               <ng-template #other_content>
                 <div class="row col-md-12">
                   <div
-                    *ngFor="let fighter of fighterData; let i = index;"
+                    *ngFor="let fighter of fighterData; let i = index;" (deferLoad)="fighter.show = true"
                     class="col-custom ftco-animate fadeInUp ftco-animated border-image col-md-2">
+                    <ng-container *ngIf="fighter.show">
                     <a (click)="openModal(fighter, i)" style="cursor: pointer;"
                        class="photography-entry img image-popup d-flex justify-content-center align-items-center"
                        [ngStyle]="{'background-image': 'url(' + fighter.link + ')'}">
@@ -78,6 +79,7 @@
                         <span class="tag">{{fighter.occupation}}</span>
                       </div>
                     </a>
+                    </ng-container>
                   </div>
                 </div>
               </ng-template>

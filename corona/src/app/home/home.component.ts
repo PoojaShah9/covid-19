@@ -405,6 +405,7 @@ export class HomeComponent implements OnInit {
         if (res.data.totalRecords !== 0) {
           this.dataShow = false;
           res.data.result.filter((x) => {
+            x.show= false;
             this.fighterData.push(x);
           });
           this.fighterData.filter((x) => {
