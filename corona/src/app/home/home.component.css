@@ -414,7 +414,7 @@ body::-webkit-scrollbar {
   display: flex;
   z-index: 12;
   position: absolute;
-  margin-top: -155px
+  margin-top: -27%;
 }
 .trade-back, .trade-next {
   border-radius: 50%;
