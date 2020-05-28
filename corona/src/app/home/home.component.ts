@@ -555,13 +555,11 @@ export class HomeComponent implements OnInit {
 
   changePage(index: number): void {
     this.currentPage += index;
-    this.loading = true;
     this.tabName = '#tab01';
     this.fighterData.filter((x, i) => {
       if (i === this.currentPage) {
         let data = x;
         this.getFighterById(data.fighter_id);
-        this.loading = false;
       }
     });
   }

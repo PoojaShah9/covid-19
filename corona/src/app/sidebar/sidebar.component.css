@@ -60,3 +60,8 @@
 .social-part {
   padding-right:20px;
 }
+@media (max-width: 991.98px) {
+  .social-part {
+    display: inline-grid;
+  }
+}

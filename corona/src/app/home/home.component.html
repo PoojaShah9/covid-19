@@ -11,7 +11,7 @@
         <div class="row no-gutters slider-text align-items-center">
           <div class="col-md-9 ftco-animate fadeInUp ftco-animated">
             <!--            <h2 class="mb-3 bread">Corona Champion</h2>-->
-            <p>A small tributes towards real life heroes. Warriors who died to save world against COVID-19</p>
+            <p class="custom-tag">A small tributes towards real life heroes. Warriors who died to save world against COVID-19</p>
 
             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
               <div class="nav-item dropdown">
@@ -161,15 +161,12 @@
                   </li>
                   <li [class.is-active]="(tabName === '#tab02')"><a href="#tab02" (click)="onTabButtonClick('#tab02')">Comments</a>
                   </li>
-                  <li [class.is-active]="(tabName === '#tab03')"><a href="#tab03" (click)="onTabButtonClick('#tab03')">Transaction</a>
-                  </li>
                 </ul>
               </div>
               <div class="tab-select-outer">
                 <select id="tab-select" class="form-control" [(ngModel)]="tabName">
                   <option value="#tab01">Profile</option>
                   <option value="#tab02">Comments</option>
-                  <option value="#tab03">Transaction</option>
                 </select>
               </div>
 
@@ -181,7 +178,7 @@
                       <div class="img-div">
                         <button class="btn btn-sm" [ngClass]="(btnColor)?'btn-danger':'btn-default'"
                                 style="border-radius: 10%;margin: 5px;float: left;" (click)="onLikeClick()">
-                          <img src="../../assets/images/namaste.png" style="width: 20px; height: 20px" alt=""> <span
+                          <img src="./../../assets/images/mediamodifier_cropped_image.png" style="width: 20px; height: 20px" alt=""> <span
                           class="badge">{{currentFighter.totalLikes}}</span></button>
                       </div>
                     </div>
@@ -213,12 +210,12 @@
                 <div class="message-wrap">
                   <div class="msg-wrap">
 
-                    <div class="media msg" *ngIf="showComment === true;else other_content">
+                    <div class="media msg" *ngIf="showComment === true;else comment_content">
                       <div class="media-body">
                         <h3 class="text-center">No Comments are there.</h3>
                       </div>
                     </div>
-                    <ng-template #other_content>
+                    <ng-template #comment_content>
 
                       <div class="media msg" *ngFor="let c of comments">
                         <div class="media-body">
@@ -246,41 +243,6 @@
                       <a href="" class=" col-lg-3 btn   send-message-btn " role="button"><i class="fa fa-cloud-upload"></i> Add Files</a>
                       <a href="" class=" col-lg-4 text-right btn   send-message-btn pull-right" role="button"><i class="fa fa-plus"></i> Send Message</a>
                   </div> -->
-                </div>
-              </div>
-              <div id="tab03" class="tab-contents" [style.display]="(tabName === '#tab03') ? 'block' : 'none'">
-                <div class="message-wrap">
-
-                  <div class="trans-wrap">
-                      <h3 class="text-center">No Transactions are there.</h3>
-                  </div>
-                  <!--<div class="trans-wrap">
-                    <form class="seminor-login-form ges-location-from">
-                      <div class="form-group">
-                        <label>Anna Sthesia donate 1000$.</label>
-                      </div>
-                      <div class="form-group">
-                        <label>Anna Sthesia donate 1000$.</label>
-                      </div>
-                      <div class="form-group">
-                        <label>Anna Sthesia donate 1000$.</label>
-                      </div>
-                      <div class="form-group">
-                        <label>Paul Molive donate 1000$.</label>
-                      </div>
-                      <div class="form-group">
-                        <label>Bob Frapples donate 1000$.</label>
-                      </div>
-                    </form>
-                  </div>
-                  <div>
-                    <div class="total-wrap">
-                      <div class="form-group">
-                        <label>Total Donation is 5000$.</label>
-                      </div>
-                    </div>
-                  </div>-->
-
                 </div>
               </div>
 
