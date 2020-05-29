@@ -91,13 +91,21 @@
                   *ngFor="let fighter of fighterData; let i = index;"  (deferLoad)="fighter.show = true"
                   class="ftco-animate fadeInUp ftco-animated border-image col-md-2">
                   <ng-container *ngIf="fighter.show">
-                    <a (click)="openModal(fighter, i)" style="cursor: pointer;"
+                    <a style="cursor: pointer;"
                      class="photography-entry img image-popup d-flex justify-content-center align-items-center"
                      [ngStyle]="{'background-image': 'url(' + fighter.link + ')'}">
                     <div class="overlay"></div>
                     <div class="text text-center">
                       <h3>{{fighter.name}}</h3>
-                      <span class="tag">{{fighter.occupation}}</span>
+                      <span class="tag">{{fighter.occupation}}</span><br>
+                      <button class="btn btn-sm" [ngClass]="(btnColor && fighter.flag)?'btn-danger':'btn-default'"
+                              style="border-radius: 10%;margin: 5px;" (click)="onLikeClick(fighter)">
+                        <img src="./../../assets/images/mediamodifier_cropped_image.png" style="width: 20px; height: 20px" alt=""> <span
+                        class="badge">{{fighter.totalLikes}}</span></button>
+                      <button class="btn btn-sm"
+                              style="border-radius: 10%;margin: 5px;" (click)="openModal(fighter, i)">
+                        <i class="fa fa-eye"></i>
+                      </button>
                     </div>
                   </a>
                   </ng-container>
@@ -177,7 +185,7 @@
                       <img src="{{currentFighter.link}}" class="custom-img"/>
                       <div class="img-div">
                         <button class="btn btn-sm" [ngClass]="(btnColor)?'btn-danger':'btn-default'"
-                                style="border-radius: 10%;margin: 5px;float: left;" (click)="onLikeClick()">
+                                style="border-radius: 10%;margin: 5px;float: left;" (click)="onLikeClick(currentFighter)">
                           <img src="./../../assets/images/mediamodifier_cropped_image.png" style="width: 20px; height: 20px" alt=""> <span
                           class="badge">{{currentFighter.totalLikes}}</span></button>
                       </div>
