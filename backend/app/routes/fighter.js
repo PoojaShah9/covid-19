@@ -36,6 +36,8 @@ module.exports.setRouter = (app) => {
 
     app.get(baseUrl + '/getfightergetByCountry', cachMan.cache, [fighter.getfightergetByCountry]);
 
+    app.get(baseUrl + '/getfightergetByName', cachMan.cache, [fighter.getfightergetByName]);
+
     app.get(baseUrl + '/getbyid', cachMan.cache, [fighter.getbyid]);
 
     app.post(baseUrl + '/comment', [fighter.comment]);

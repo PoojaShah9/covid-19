@@ -477,7 +477,7 @@ export class HomeComponent implements OnInit {
   }
 
   openModal(data, i) {
-    alert('hiii');
+    console.log('hiii');
     this.display = 'block';
     this.currentFighter = data;
     this.tabName = '#tab01';

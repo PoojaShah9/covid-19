@@ -235,14 +235,14 @@ let totalLikes = (req, res) => {
         console.log("getData");
         return new Promise((resolve, reject) => {
             Fighters.aggregate([
-                {
-                    $group:
-                        {
-                            _id:  "$__v",
-                            totalLikes: {$sum: "$totalLikes"},
-                        }
-                }
-            ],
+                    {
+                        $group:
+                            {
+                                _id: "$__v",
+                                totalLikes: {$sum: "$totalLikes"},
+                            }
+                    }
+                ],
                 function (err, data) {
                     if (err)
                         reject(err);
@@ -386,6 +386,78 @@ let getfightergetByCountry = (req, res) => {
         });
 };
 
+let getfightergetByName = (req, res) => {
+
+    let getFighter = () => {
+        console.log("getFighter");
+        return new Promise((resolve, reject) => {
+            let body = {};
+            let limit = 18;
+            let page = 0;
+            if (req.query.limit)
+                limit = Number(req.query.limit);
+            if (req.query.pg && req.query.pg !== 0)
+                page = Number(req.query.pg) * limit;
+
+            console.log('limit', limit);
+            console.log('page', page);
+
+            if (req.query.searchText) {
+                // body['name'] = {$regex: '.*' + req.query.searchText + '.*'};
+                body['name'] = {$regex: req.query.searchText, $options: 'i'};
+            }
+            console.log('body', body);
+            Fighters.find(body)
+                .skip(page)
+                .limit(limit)
+                .then((data) => {
+                    console.log('data', data.length);
+                    resolve(data);
+                })
+                .catch((err) => {
+                    logger.error("Internal Server error while fetching Fighters", "getPhotosByCategory => getPhotos()", 5);
+                    let apiResponse = response.generate(true, err, 500, null);
+                    reject(apiResponse);
+                })
+        });
+    }; // end of getFighter
+
+    let getTotal = (result) => {
+        console.log("getTotal");
+        return new Promise((resolve, reject) => {
+            let body = {};
+            if (req.query.searchText) {
+                // body['name'] = {$regex: '.*' + req.query.searchText + '.*'};
+                body['name'] = {$regex: req.query.searchText, $options: 'i'};
+            }
+            console.log('body', body);
+            Fighters.find(body)
+                .then((data) => {
+                    let final = {};
+                    final['totalRecords'] = data.length;
+                    final['result'] = result;
+                    resolve(final);
+                })
+                .catch((err) => {
+                    logger.error("Internal Server error while fetching Fighters", "getPhotosByCategory => getPhotos()", 5);
+                    let apiResponse = response.generate(true, err, 500, null);
+                    reject(apiResponse);
+                })
+        });
+    }; // end of getTotal
+
+    getFighter()
+        .then(getTotal)
+        .then((resolve) => {
+            let apiResponse = response.generate(false, "Get Fighter Successfully!!", 200, resolve);
+            res.status(200).send(apiResponse);
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(err.status).send(err);
+        });
+};
+
 module.exports = {
     create: create,
     getTopTen: getTopTen,
@@ -394,4 +466,5 @@ module.exports = {
     postLike: postLike,
     totalLikes: totalLikes,
     getfightergetByCountry: getfightergetByCountry,
+    getfightergetByName: getfightergetByName,
 }
