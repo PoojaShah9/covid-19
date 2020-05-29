@@ -283,6 +283,8 @@ export class HomeComponent implements OnInit {
   scrollUpDistance = 2;
   changeClass = true;
   tabName = '#tab01';
+  solidityData: any = [];
+  json: any = {};
 
   constructor(private fighterService: FightersService,
               private route: ActivatedRoute,
@@ -306,6 +308,12 @@ export class HomeComponent implements OnInit {
         this.showFighter(this.currentFighter);
       }
     });
+    this.getSolidity();
+  }
+
+  getSolidity() {
+    this.json = JSON.parse(localStorage.getItem('solidityArray'));
+    console.log('json', this.json);
   }
 
   getCurrentLocation() {
@@ -324,24 +332,47 @@ export class HomeComponent implements OnInit {
   }
 
   onLikeClick() {
-    if (this.btnColor) {
-      this.btnColor = false;
-      this.currentFighter.totalLikes = this.currentFighter.totalLikes - 1;
+    this.loading = true;
+    console.log(' Object.keys(this.json).length',  Object.keys(this.json).length);
+    if (this.json !== null && Object.keys(this.json).length !== 0) {
+      console.log('if');
+      Object.keys(this.json).forEach((x) => {
+        console.log('xxx', x);
+        if (x === this.currentFighter.fighter_id) {
+          console.log('if', x);
+          this.btnColor = false;
+          this.currentFighter.totalLikes = this.currentFighter.totalLikes - 1;
+          delete this.json[x];
+        } else {
+          console.log('else', x);
+          this.btnColor = true;
+          this.currentFighter.totalLikes = this.currentFighter.totalLikes + 1;
+          this.json[this.currentFighter.fighter_id] = this.currentFighter.totalLikes;
+        }
+      });
     } else {
-      console.log('in like');
+      console.log('else');
+      this.json = {};
       this.btnColor = true;
       this.currentFighter.totalLikes = this.currentFighter.totalLikes + 1;
+      this.json[this.currentFighter.fighter_id] = this.currentFighter.totalLikes;
     }
+    console.log('json', this.json);
+    localStorage.setItem('solidityArray', JSON.stringify(this.json));
+
     let data = {
       fighter_id: this.currentFighter.fighter_id,
       likes: this.currentFighter.totalLikes
     };
-    this.loading = true;
     this.fighterService.addLike(data)
       .subscribe((res) => {
         console.log('res', res);
         this.currentFighter.totalLikes = res.data.totalLikes;
         this.loading = false;
+      }, error => {
+        console.log('error', error);
+        this.loading = false;
+        this.btnColor = false;
       });
   }
 
@@ -353,6 +384,18 @@ export class HomeComponent implements OnInit {
         this.loading = false;
         this.likecount = this.currentFighter.totalLikes;
         this.currentFighter = res.data.result;
+        let flag = 0;
+        Object.keys(this.json).forEach((x) => {
+          console.log('xxx', x);
+          if (x === this.currentFighter.fighter_id) {
+            flag = 1;
+          }
+          if (flag === 1) {
+            this.btnColor = true;
+          } else {
+            this.btnColor = false;
+          }
+        });
         console.log('currentFighter', this.currentFighter);
         this.comments = res.data.comments;
         if (this.comments.length === 0) {
@@ -405,6 +448,7 @@ export class HomeComponent implements OnInit {
         if (res.data.totalRecords !== 0) {
           this.dataShow = false;
           res.data.result.filter((x) => {
+            x.show = false;
             this.fighterData.push(x);
           });
           this.fighterData.filter((x) => {
@@ -428,10 +472,10 @@ export class HomeComponent implements OnInit {
   onScroll() {
     console.log("scrolled in");
     // if (this.fighterData.length < this.total) {
-      // Update ending position to select more items from the array
-      this.p = this.p + 1;
-      this.getFighter(this.cntName, this.p, this.limit);
-      console.log("scrolled");
+    // Update ending position to select more items from the array
+    this.p = this.p + 1;
+    this.getFighter(this.cntName, this.p, this.limit);
+    console.log("scrolled");
     // }
     // } else {
     //   console.log('in else');
@@ -441,6 +485,17 @@ export class HomeComponent implements OnInit {
 
   showFighter(data) {
     this.currentFighter = data;
+    if (this.solidityData.length !== 0) {
+      this.solidityData.filter((x) => {
+        if (x.fighter_id === this.currentFighter.fighter_id) {
+          this.btnColor = false;
+          // this.currentFighter.totalLikes = this.currentFighter.totalLikes - 1;
+        } else {
+          this.btnColor = true;
+          // this.currentFighter.totalLikes = this.currentFighter.totalLikes + 1;
+        }
+      });
+    }
     // this.href = "https://www.cnox.io?id=123";
     this.href = (this.platformLocation as any).href + '?id=' + this.currentFighter.fighter_id;
     console.log('href', this.href);
@@ -482,21 +537,30 @@ export class HomeComponent implements OnInit {
     this.currentFighter = data;
     this.tabName = '#tab01';
     this.href = (this.platformLocation as any).href + '?id=' + this.currentFighter.fighter_id;
-    console.log('href', this.href);
+    console.log('href', this.href, this.solidityData.length);
+    let flag = 0;
+    Object.keys(this.json).forEach((x) => {
+      console.log('xxx', x);
+      if (x === this.currentFighter.fighter_id) {
+        flag = 1;
+      }
+      if (flag === 1) {
+        this.btnColor = true;
+      } else {
+        this.btnColor = false;
+      }
+    });
     this.getFighterById(this.currentFighter.fighter_id);
-    console.log('data', this.currentFighter);
     this.currentPage = i;
   }
 
   changePage(index: number): void {
     this.currentPage += index;
-    this.loading = true;
     this.tabName = '#tab01';
     this.fighterData.filter((x, i) => {
       if (i === this.currentPage) {
         let data = x;
         this.getFighterById(data.fighter_id);
-        this.loading = false;
       }
     });
   }

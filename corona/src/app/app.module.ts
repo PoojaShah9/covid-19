@@ -28,6 +28,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import {InfiniteScrollModule} from "ngx-infinite-scroll";
 import { DonationComponent } from './donation/donation.component';
 import {CacheInterceptor} from "./services/cache.interceptor";
+import { DeferLoadModule } from '@trademe/ng-defer-load';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import {CacheInterceptor} from "./services/cache.interceptor";
     DxButtonModule,
     DxPopupModule,
     DxPopoverModule,
-    DxListModule
+    DxListModule,
+    DeferLoadModule
   ],
   providers: [DxTemplateHost,
     { provide: HTTP_INTERCEPTORS, useClass: CacheInterceptor, multi: true }],

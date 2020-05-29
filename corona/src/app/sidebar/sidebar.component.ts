@@ -12,6 +12,8 @@ declare var mobileMenuOutsideClick: Function;
 export class SidebarComponent implements OnInit {
 
   totalLikes;
+  totalViews = 500;
+  totalDonation = 100;
   constructor(private fightersService: FightersService) { }
 
   ngOnInit(): void {

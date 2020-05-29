@@ -410,19 +410,23 @@ body::-webkit-scrollbar {
 ::-webkit-scrollbar-thumb:window-inactive {
   background: #ddd;
 }
+
 .custom-nxt-prev {
   display: flex;
   z-index: 12;
   position: absolute;
-  margin-top: -155px
+  margin-top: -27%;
 }
+
 .trade-back, .trade-next {
   border-radius: 50%;
   background: #888181;
 }
+
 .trade-next {
   margin-right: 25px;
 }
+
 .trade-back {
   margin-left: -40px;
 }
@@ -433,6 +437,7 @@ body::-webkit-scrollbar {
   margin: 0 auto;
   padding: 0 20px;
 }
+
 #tab-button {
   display: table;
   table-layout: fixed;
@@ -441,10 +446,12 @@ body::-webkit-scrollbar {
   padding: 0;
   list-style: none;
 }
+
 #tab-button li {
   display: table-cell;
   width: 130px;
 }
+
 #tab-button li a {
   display: block;
   padding: .5em;
@@ -454,26 +461,32 @@ body::-webkit-scrollbar {
   color: #000;
   text-decoration: none;
 }
+
 #tab-button li:not(:first-child) a {
   border-left: none;
 }
+
 #tab-button li a:hover,
 #tab-button .is-active a {
   border-bottom-color: transparent;
   background: #fff;
 }
+
 .tab-contents {
   padding: .5em 2em 1em;
   /*border: 1px solid #ddd;*/
 }
+
 .tab-button-outer {
   width: 100%;
   background: #E9A48C;
   display: none;
 }
+
 .tab-contents {
   /*margin-top: 20px;*/
 }
+
 @media screen and (min-width: 768px) {
   .tab-button-outer {
     position: relative;
@@ -481,22 +494,25 @@ body::-webkit-scrollbar {
     background: #E9A48C;
     display: block;
   }
+
   .tab-select-outer {
     display: none;
   }
+
   .tab-contents {
     position: relative;
     top: -1px;
     margin-top: 0;
   }
 }
+
 @media screen and (max-width: 768px) {
   .modal {
     overflow: scroll;
   }
 }
 
-.ges-location-from .form-group label , .total-wrap .form-group {
+.ges-location-from .form-group label, .total-wrap .form-group {
   margin: 5px;
 }
 
@@ -505,6 +521,7 @@ body::-webkit-scrollbar {
   border-bottom: 1px solid #ccc;
   border-radius: 0px;
 }
+
 .total-wrap {
   margin: 10px;
   height: 50px;
@@ -514,25 +531,38 @@ body::-webkit-scrollbar {
   padding-left: 0px !important;
   padding-right: 0px !important;
 }
+
 .row {
   margin-left: unset;
   margin-right: unset;
 }
+
 .images .img-div {
   margin-top: -10px;
   width: 320px;
-  background: #e9a48cfa;
+  /*background: #e9a48cfa;*/
+}
+.images .img-div {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
 }
 
 @media screen and (max-width: 400px) {
   .custom-img {
     width: 215px;
   }
+
   .images .img-div {
-    width:215px;
+    width: 215px;
   }
 }
-.ftco-section-2 {
-  z-index: -1;
-  position: relative;
+
+.custom-tag {
+  color: #7c795d;
+  font-family: 'Trocchi', serif;
+  font-size: 30px;
+  font-weight: normal;
+  line-height: 48px;
+  margin: 0;
 }
