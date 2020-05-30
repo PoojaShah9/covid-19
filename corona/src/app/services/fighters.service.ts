@@ -35,4 +35,8 @@ export class FightersService {
   sendMail(data) {
     return this.http.post<any>(this.api + 'contact/', data);
   }
+
+  searchByname(searchText, pg, limit) {
+    return this.http.get<any>(this.api + 'fighters/getfightergetByName?searchText=' + searchText + '&pg=' + pg + '&limit=' + limit);
+  }
 }

@@ -3,8 +3,8 @@
 }
 
 .has-search .form-control {
-  padding-left: 2.375rem;
-  height: 48px !important;
+  padding-left: 1.375rem;
+  height: 40px !important;
   border: none;
   border-bottom: 1px solid gray;
 }

@@ -4,6 +4,7 @@ import {FightersService} from '../services/fighters.service';
 import {ActivatedRoute, Router} from "@angular/router";
 import {PlatformLocation} from "@angular/common";
 import {HttpClient} from "@angular/common/http";
+import {isNotNullOrUndefined} from "codelyzer/util/isNotNullOrUndefined";
 
 declare var tab: Function;
 
@@ -271,6 +272,7 @@ export class HomeComponent implements OnInit {
     {name: 'Zimbabwe', code: 'ZW'}
   ];
   searchText = '';
+  searchName = '';
   currentPage;
   href;
   p: number = 0;
@@ -284,6 +286,7 @@ export class HomeComponent implements OnInit {
   changeClass = true;
   tabName = '#tab01';
   json: any = {};
+  arrayNull = 0;
 
   constructor(private fighterService: FightersService,
               private route: ActivatedRoute,
@@ -486,17 +489,16 @@ export class HomeComponent implements OnInit {
   }
 
   onScroll() {
-    console.log("scrolled in");
-    // if (this.fighterData.length < this.total) {
-    // Update ending position to select more items from the array
-    this.p = this.p + 1;
-    this.getFighter(this.cntName, this.p, this.limit);
+    console.log("scrolled in", this.searchName);
+    if (this.fighterData.length !== this.total) {
+      this.p = this.p + 1;
+      if (!isNotNullOrUndefined(this.searchName)) {
+        this.getFighter(this.cntName, this.p, this.limit);
+      } else {
+        this.searchByName();
+      }
+    }
     console.log("scrolled");
-    // }
-    // } else {
-    //   console.log('in else');
-    //   this.isFullListDisplayed = true;
-    // }
   }
 
   showFighter(data) {
@@ -622,5 +624,46 @@ export class HomeComponent implements OnInit {
     console.log('page', page);
     this.p = page;
     this.getFighter(this.cntName, page, this.limit);
+  }
+
+  searchByName() {
+    console.log('this.searchName', this.searchName);
+    this.loading = true;
+    if (this.arrayNull === 0) {
+      this.fighterData = [];
+    }
+    this.fighterService.searchByname(this.searchName, this.p, this.limit)
+      .subscribe((res) => {
+        console.log('search res', res);
+        this.loading = false;
+        if (res.data.totalRecords !== 0) {
+          this.dataShow = false;
+          res.data.result.filter((x) => {
+            x.show = false;
+            this.fighterData.push(x);
+            this.arrayNull = 1;
+          });
+          this.fighterData.filter((y) => {
+            if (y.link === null || y.link === undefined) {
+              y.link = 'https://www.cornwallbusinessawardsL.co.uk/wp-content/uploads/2017/11/dummy450x450.jpg';
+            }
+            Object.keys(this.json).forEach((x) => {
+              if (x === y.fighter_id) {
+                y.flag = true;
+                this.btnColor = true;
+              }
+            });
+          });
+
+          this.total = res.data.totalRecords;
+          console.log('Herer', this.fighterData, this.total);
+        } else {
+          this.dataShow = true;
+          this.fighterData = [];
+        }
+      }, error => {
+        this.loading = false;
+        console.log('search err', error);
+      });
   }
 }

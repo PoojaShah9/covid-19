@@ -11,7 +11,8 @@
         <div class="row no-gutters slider-text align-items-center">
           <div class="col-md-9 ftco-animate fadeInUp ftco-animated">
             <!--            <h2 class="mb-3 bread">Corona Champion</h2>-->
-            <p class="custom-tag">A small tributes towards real life heroes. Warriors who died to save world against COVID-19</p>
+            <p class="custom-tag">A small tributes towards real life heroes. Warriors who died to save world against
+              COVID-19</p>
 
             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
               <div class="nav-item dropdown">
@@ -35,6 +36,19 @@
                    role="tab" aria-controls="showall" aria-selected="true">World wide</a>
               </li>
             </ul>
+          </div>
+
+          <div class="col-md-3 ftco-animate fadeInUp ftco-animated">
+            <div class="form-group has-search float-right">
+              <div class="input-group">
+                <input class="form-control py-2" type="search" name="searchName" placeholder="Search By Name" [(ngModel)]="searchName" id="example-search-input">
+                <span class="input-group-append">
+                  <button class="btn" style="border-bottom: 1px solid gray;" type="button" (click)="searchByName()">
+                      <i class="fa fa-search"></i>
+                  </button>
+                </span>
+              </div>
+            </div>
           </div>
           <!--<div class="col-md-3 ftco-animate fadeInUp ftco-animated">
             <div class="form-group has-search float-right">
@@ -60,9 +74,9 @@
                  aria-labelledby="country-tab">
 
               <div class="row col-md-12" *ngIf="dataShow === true;else other_content">
-              <div class="col-custom ftco-animate fadeInUp ftco-animated" style="height: 500px;">
-                <h3 class="text-center">No data are there.</h3>
-              </div>
+                <div class="col-custom ftco-animate fadeInUp ftco-animated" style="height: 500px;">
+                  <h3 class="text-center">No data are there.</h3>
+                </div>
               </div>
               <ng-template #other_content>
                 <div class="row col-md-12">
@@ -70,15 +84,15 @@
                     *ngFor="let fighter of fighterData; let i = index;" (deferLoad)="fighter.show = true"
                     class="col-custom ftco-animate fadeInUp ftco-animated border-image col-md-2">
                     <ng-container *ngIf="fighter.show">
-                    <a (click)="openModal(fighter, i)" style="cursor: pointer;"
-                       class="photography-entry img image-popup d-flex justify-content-center align-items-center"
-                       [ngStyle]="{'background-image': 'url(' + fighter.link + ')'}">
-                      <div class="overlay"></div>
-                      <div class="text text-center">
-                        <h3>{{fighter.name}}</h3>
-                        <span class="tag">{{fighter.occupation}}</span>
-                      </div>
-                    </a>
+                      <a (click)="openModal(fighter, i)" style="cursor: pointer;"
+                         class="photography-entry img image-popup d-flex justify-content-center align-items-center"
+                         [ngStyle]="{'background-image': 'url(' + fighter.link + ')'}">
+                        <div class="overlay"></div>
+                        <div class="text text-center">
+                          <h3>{{fighter.name}}</h3>
+                          <span class="tag">{{fighter.occupation}}</span>
+                        </div>
+                      </a>
                     </ng-container>
                   </div>
                 </div>
@@ -88,26 +102,27 @@
                  aria-labelledby="showall-tab">
               <div class="row col-md-12">
                 <div
-                  *ngFor="let fighter of fighterData; let i = index;"  (deferLoad)="fighter.show = true"
+                  *ngFor="let fighter of fighterData; let i = index;" (deferLoad)="fighter.show = true"
                   class="ftco-animate fadeInUp ftco-animated border-image col-md-2">
                   <ng-container *ngIf="fighter.show">
                     <a style="cursor: pointer;"
-                     class="photography-entry img image-popup d-flex justify-content-center align-items-center"
-                     [ngStyle]="{'background-image': 'url(' + fighter.link + ')'}">
-                    <div class="overlay"></div>
-                    <div class="text text-center">
-                      <h3>{{fighter.name}}</h3>
-                      <span class="tag">{{fighter.occupation}}</span><br>
-                      <button class="btn btn-sm" [ngClass]="(btnColor && fighter.flag)?'btn-danger':'btn-default'"
-                              style="border-radius: 10%;margin: 5px;" (click)="onLikeClick(fighter)">
-                        <img src="./../../assets/images/mediamodifier_cropped_image.png" style="width: 20px; height: 20px" alt=""> <span
-                        class="badge">{{fighter.totalLikes}}</span></button>
-                      <button class="btn btn-sm"
-                              style="border-radius: 10%;margin: 5px;" (click)="openModal(fighter, i)">
-                        <i class="fa fa-eye"></i>
-                      </button>
-                    </div>
-                  </a>
+                       class="photography-entry img image-popup d-flex justify-content-center align-items-center"
+                       [ngStyle]="{'background-image': 'url(' + fighter.link + ')'}">
+                      <div class="overlay"></div>
+                      <div class="text text-center">
+                        <h3>{{fighter.name}}</h3>
+                        <span class="tag">{{fighter.occupation}}</span><br>
+                        <button class="btn btn-sm" [ngClass]="(btnColor && fighter.flag)?'btn-danger':'btn-default'"
+                                style="border-radius: 10%;margin: 5px;" (click)="onLikeClick(fighter)">
+                          <img src="./../../assets/images/mediamodifier_cropped_image.png"
+                               style="width: 20px; height: 20px" alt=""> <span
+                          class="badge">{{fighter.totalLikes}}</span></button>
+                        <button class="btn btn-sm"
+                                style="border-radius: 10%;margin: 5px;" (click)="openModal(fighter, i)">
+                          <i class="fa fa-eye"></i>
+                        </button>
+                      </div>
+                    </a>
                   </ng-container>
                 </div>
               </div>
@@ -185,8 +200,10 @@
                       <img src="{{currentFighter.link}}" class="custom-img"/>
                       <div class="img-div">
                         <button class="btn btn-sm" [ngClass]="(btnColor)?'btn-danger':'btn-default'"
-                                style="border-radius: 10%;margin: 5px;float: left;" (click)="onLikeClick(currentFighter)">
-                          <img src="./../../assets/images/mediamodifier_cropped_image.png" style="width: 20px; height: 20px" alt=""> <span
+                                style="border-radius: 10%;margin: 5px;float: left;"
+                                (click)="onLikeClick(currentFighter)">
+                          <img src="./../../assets/images/mediamodifier_cropped_image.png"
+                               style="width: 20px; height: 20px" alt=""> <span
                           class="badge">{{currentFighter.totalLikes}}</span></button>
                       </div>
                     </div>
