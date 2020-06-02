@@ -397,17 +397,19 @@ export class HomeComponent implements OnInit {
         this.likecount = this.currentFighter.totalLikes;
         this.currentFighter = res.data.result;
         let flag = 0;
-        Object.keys(this.json).forEach((x) => {
-          console.log('xxx', x);
-          if (x === this.currentFighter.fighter_id) {
-            flag = 1;
-          }
-          if (flag === 1) {
-            this.btnColor = true;
-          } else {
-            this.btnColor = false;
-          }
-        });
+        if (this.json !== null && this.json !== undefined) {
+          Object.keys(this.json).forEach((x) => {
+            console.log('xxx', x);
+            if (x === this.currentFighter.fighter_id) {
+              flag = 1;
+            }
+            if (flag === 1) {
+              this.btnColor = true;
+            } else {
+              this.btnColor = false;
+            }
+          });
+        }
         console.log('currentFighter', this.currentFighter);
         this.comments = res.data.comments;
         if (this.comments.length === 0) {
@@ -509,18 +511,20 @@ export class HomeComponent implements OnInit {
   showFighter(data) {
     this.currentFighter = data;
     let flag = 0;
-    Object.keys(this.json).forEach((x) => {
-      console.log('xxx', x);
-      if (x === this.currentFighter.fighter_id) {
-        flag = 1;
-        this.currentFighter.flag = true;
-      }
-      if (flag === 1) {
-        this.btnColor = true;
-      } else {
-        this.btnColor = false;
-      }
-    });
+    if (this.json !== null && this.json !== undefined) {
+      Object.keys(this.json).forEach((x) => {
+        console.log('xxx', x);
+        if (x === this.currentFighter.fighter_id) {
+          flag = 1;
+          this.currentFighter.flag = true;
+        }
+        if (flag === 1) {
+          this.btnColor = true;
+        } else {
+          this.btnColor = false;
+        }
+      });
+    }
     // this.href = "https://www.cnox.io?id=123";
     this.href = (this.platformLocation as any).href + '?id=' + this.currentFighter.fighter_id;
     console.log('href', this.href);
@@ -563,17 +567,19 @@ export class HomeComponent implements OnInit {
     this.tabName = '#tab01';
     this.href = (this.platformLocation as any).href + '?id=' + this.currentFighter.fighter_id;
     let flag = 0;
-    Object.keys(this.json).forEach((x) => {
-      console.log('xxx', x);
-      if (x === this.currentFighter.fighter_id) {
-        flag = 1;
-      }
-      if (flag === 1) {
-        this.btnColor = true;
-      } else {
-        this.btnColor = false;
-      }
-    });
+    if (this.json !== null && this.json !== undefined) {
+      Object.keys(this.json).forEach((x) => {
+        console.log('xxx', x);
+        if (x === this.currentFighter.fighter_id) {
+          flag = 1;
+        }
+        if (flag === 1) {
+          this.btnColor = true;
+        } else {
+          this.btnColor = false;
+        }
+      });
+    }
     this.getFighterById(this.currentFighter.fighter_id);
     this.currentPage = i;
   }
@@ -652,7 +658,7 @@ export class HomeComponent implements OnInit {
             if (y.link === null || y.link === undefined) {
               y.link = 'https://www.cornwallbusinessawardsL.co.uk/wp-content/uploads/2017/11/dummy450x450.jpg';
             }
-            if (!isNotNullOrUndefined(this.searchName)) {
+            if (this.json !== null && this.json !== undefined) {
               Object.keys(this.json).forEach((x) => {
                 if (x === y.fighter_id) {
                   y.flag = true;
