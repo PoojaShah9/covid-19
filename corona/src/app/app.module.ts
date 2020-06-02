@@ -15,14 +15,6 @@ import {SingleComponent} from './single/single.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {ngxLoadingAnimationTypes, NgxLoadingModule} from 'ngx-loading';
 import {FormsModule} from "@angular/forms";
-import {
-  DxButtonModule,
-  DxListModule,
-  DxPopoverModule,
-  DxPopupModule,
-  DxTemplateHost,
-  DxTemplateModule
-} from 'devextreme-angular';
 import {PaymentComponent} from './payment/payment.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {InfiniteScrollModule} from "ngx-infinite-scroll";
@@ -61,14 +53,9 @@ import { DeferLoadModule } from '@trademe/ng-defer-load';
       primaryColour: '#ffffff',
       secondaryColour: '#ffffff',
       tertiaryColour: '#ffffff'}),
-    DxTemplateModule,
-    DxButtonModule,
-    DxPopupModule,
-    DxPopoverModule,
-    DxListModule,
     DeferLoadModule
   ],
-  providers: [DxTemplateHost,
+  providers: [
     { provide: HTTP_INTERCEPTORS, useClass: CacheInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })

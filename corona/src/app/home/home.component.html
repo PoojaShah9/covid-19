@@ -41,9 +41,9 @@
           <div class="col-md-3 ftco-animate fadeInUp ftco-animated">
             <div class="form-group has-search float-right">
               <div class="input-group">
-                <input class="form-control py-2" type="search" name="searchName" placeholder="Search By Name" [(ngModel)]="searchName" id="example-search-input">
-                <span class="input-group-append">
-                  <button class="btn" style="border-bottom: 1px solid gray;" type="button" (click)="searchByName()">
+                <input class="form-control py-2" type="search" name="searchName" placeholder="Search By Name" [(ngModel)]="searchName" (keyup)="onSearchNameChange()" id="example-search-input">
+                <span class="input-group-append" (click)="searchByName()">
+                  <button class="btn" style="border-bottom: 1px solid gray;" type="button" >
                       <i class="fa fa-search"></i>
                   </button>
                 </span>
@@ -90,7 +90,16 @@
                         <div class="overlay"></div>
                         <div class="text text-center">
                           <h3>{{fighter.name}}</h3>
-                          <span class="tag">{{fighter.occupation}}</span>
+                          <span class="tag">{{fighter.occupation}}</span><br>
+                          <button class="btn btn-sm" [ngClass]="(btnColor && fighter.flag)?'btn-danger':'btn-default'"
+                                  style="border-radius: 10%;margin: 5px;" (click)="onLikeClick(fighter)">
+                            <img src="./../../assets/images/mediamodifier_cropped_image.png"
+                                 style="width: 20px; height: 20px" alt=""> <span
+                            class="badge">{{fighter.totalLikes}}</span></button>
+                          <button class="btn btn-sm"
+                                  style="border-radius: 10%;margin: 5px;" (click)="openModal(fighter, i)">
+                            <i class="fa fa-eye"></i>
+                          </button>
                         </div>
                       </a>
                     </ng-container>

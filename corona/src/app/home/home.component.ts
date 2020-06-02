@@ -373,7 +373,7 @@ export class HomeComponent implements OnInit {
 
     let data = {
       fighter_id: this.currentFighter.fighter_id,
-      likes: totalLike
+      likes: totalLike.toString()
     };
     console.log('count data', data);
     this.fighterService.addLike(data)
@@ -464,15 +464,20 @@ export class HomeComponent implements OnInit {
             this.fighterData.push(x);
           });
           this.fighterData.filter((y) => {
+            if (y.totalLikes === -1) {
+              y.totalLikes = 0;
+            }
             if (y.link === null || y.link === undefined) {
               y.link = 'https://www.cornwallbusinessawardsL.co.uk/wp-content/uploads/2017/11/dummy450x450.jpg';
             }
-            Object.keys(this.json).forEach((x) => {
-              if (x === y.fighter_id) {
-                y.flag = true;
-                this.btnColor = true;
-              }
-            });
+            if (this.json !== null && this.json !== undefined) {
+              Object.keys(this.json).forEach((x) => {
+                if (x === y.fighter_id) {
+                  y.flag = true;
+                  this.btnColor = true;
+                }
+              });
+            }
           });
 
           this.total = res.data.totalRecords;
@@ -492,7 +497,7 @@ export class HomeComponent implements OnInit {
     console.log("scrolled in", this.searchName);
     if (this.fighterData.length !== this.total) {
       this.p = this.p + 1;
-      if (!isNotNullOrUndefined(this.searchName)) {
+      if (this.searchName !== null && this.searchName !== undefined) {
         this.getFighter(this.cntName, this.p, this.limit);
       } else {
         this.searchByName();
@@ -632,7 +637,7 @@ export class HomeComponent implements OnInit {
     if (this.arrayNull === 0) {
       this.fighterData = [];
     }
-    this.fighterService.searchByname(this.searchName, this.p, this.limit)
+    this.fighterService.searchByname(this.searchName, 0, this.limit)
       .subscribe((res) => {
         console.log('search res', res);
         this.loading = false;
@@ -647,12 +652,14 @@ export class HomeComponent implements OnInit {
             if (y.link === null || y.link === undefined) {
               y.link = 'https://www.cornwallbusinessawardsL.co.uk/wp-content/uploads/2017/11/dummy450x450.jpg';
             }
-            Object.keys(this.json).forEach((x) => {
-              if (x === y.fighter_id) {
-                y.flag = true;
-                this.btnColor = true;
-              }
-            });
+            if (!isNotNullOrUndefined(this.searchName)) {
+              Object.keys(this.json).forEach((x) => {
+                if (x === y.fighter_id) {
+                  y.flag = true;
+                  this.btnColor = true;
+                }
+              });
+            }
           });
 
           this.total = res.data.totalRecords;
@@ -665,5 +672,13 @@ export class HomeComponent implements OnInit {
         this.loading = false;
         console.log('search err', error);
       });
+  }
+
+  onSearchNameChange() {
+    console.log('searchName', this.searchName);
+    if (this.searchName === '') {
+      this.fighterData = [];
+      this.getFighter(this.cntName, 0, this.limit);
+    }
   }
 }

@@ -30,8 +30,6 @@
     "@ngx-share/buttons": "^7.1.4",
     "@ngx-share/core": "^7.1.4",
     "@trademe/ng-defer-load": "^8.0.0",
-    "devextreme": "^19.2.7",
-    "devextreme-angular": "^19.2.7",
     "jquery": "^3.5.0",
     "magnific-popup": "^1.1.0",
     "ngx-infinite-scroll": "^8.0.2",
