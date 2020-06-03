@@ -315,7 +315,6 @@ export class HomeComponent implements OnInit {
 
   getSolidity() {
     this.json = JSON.parse(localStorage.getItem('solidityArray'));
-    console.log('json', this.json);
   }
 
   getCurrentLocation() {
@@ -337,20 +336,19 @@ export class HomeComponent implements OnInit {
     this.loading = true;
     let totalLike = 0;
     this.currentFighter = fdata;
-    console.log('fdata', fdata);
+    this.getSolidity();
     if (this.json !== null && Object.keys(this.json).length !== 0) {
-      console.log('if');
       let flag = 0;
       Object.keys(this.json).forEach((x) => {
-        console.log('xxx', x);
         if (x === this.currentFighter.fighter_id) {
-          console.log('if', x);
           flag = 1;
         } else {
           flag = 0;
         }
         if (flag === 1) {
+          console.log('xxx if', x, flag);
           totalLike = this.currentFighter.totalLikes - 1;
+          this.currentFighter.flag = false;
           this.btnColor = false;
           delete this.json[x];
         } else {
@@ -368,7 +366,6 @@ export class HomeComponent implements OnInit {
       totalLike = this.currentFighter.totalLikes + 1;
       this.json[this.currentFighter.fighter_id] = totalLike;
     }
-    console.log('json', this.currentFighter);
     localStorage.setItem('solidityArray', JSON.stringify(this.json));
 
     let data = {
@@ -378,8 +375,13 @@ export class HomeComponent implements OnInit {
     console.log('count data', data);
     this.fighterService.addLike(data)
       .subscribe((res) => {
-        console.log('res', res);
         this.currentFighter.totalLikes = res.data.totalLikes;
+        this.fighterData.filter((x) => {
+          if (x.fighter_id === this.currentFighter.fighter_id) {
+            x.totalLikes = this.currentFighter.totalLikes;
+            x.flag = true;
+          }
+        });
         this.loading = false;
       }, error => {
         console.log('error', error);
@@ -405,6 +407,7 @@ export class HomeComponent implements OnInit {
             }
             if (flag === 1) {
               this.btnColor = true;
+              this.currentFighter.flag = true;
             } else {
               this.btnColor = false;
             }
@@ -472,6 +475,7 @@ export class HomeComponent implements OnInit {
             if (y.link === null || y.link === undefined) {
               y.link = 'https://www.cornwallbusinessawardsL.co.uk/wp-content/uploads/2017/11/dummy450x450.jpg';
             }
+            this.getSolidity();
             if (this.json !== null && this.json !== undefined) {
               Object.keys(this.json).forEach((x) => {
                 if (x === y.fighter_id) {
@@ -566,15 +570,17 @@ export class HomeComponent implements OnInit {
     this.currentFighter = data;
     this.tabName = '#tab01';
     this.href = (this.platformLocation as any).href + '?id=' + this.currentFighter.fighter_id;
-    let flag = 0;
+    this.getSolidity();
     if (this.json !== null && this.json !== undefined) {
+      let flag = 0;
       Object.keys(this.json).forEach((x) => {
-        console.log('xxx', x);
         if (x === this.currentFighter.fighter_id) {
           flag = 1;
         }
+        console.log('xxx', x, flag);
         if (flag === 1) {
           this.btnColor = true;
+          this.currentFighter.flag = true;
         } else {
           this.btnColor = false;
         }
@@ -606,6 +612,22 @@ export class HomeComponent implements OnInit {
       this.display = 'block';
     } else {
       this.display = 'none';
+    }
+    this.getSolidity();
+    if (this.json !== null && this.json !== undefined) {
+      let flag = 0;
+      Object.keys(this.json).forEach((x) => {
+        if (x === this.currentFighter.fighter_id) {
+          flag = 1;
+        }
+        if (flag === 1) {
+          this.btnColor = true;
+          this.currentFighter.flag = true;
+        } else {
+          this.btnColor = false;
+          this.currentFighter.flag = false;
+        }
+      });
     }
   }
 

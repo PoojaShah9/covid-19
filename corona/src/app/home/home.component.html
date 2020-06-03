@@ -208,7 +208,7 @@
                     <div class="images">
                       <img src="{{currentFighter.link}}" class="custom-img"/>
                       <div class="img-div">
-                        <button class="btn btn-sm" [ngClass]="(btnColor)?'btn-danger':'btn-default'"
+                        <button class="btn btn-sm" [ngClass]="(btnColor && currentFighter.flag)?'btn-danger':'btn-default'"
                                 style="border-radius: 10%;margin: 5px;float: left;"
                                 (click)="onLikeClick(currentFighter)">
                           <img src="./../../assets/images/mediamodifier_cropped_image.png"
