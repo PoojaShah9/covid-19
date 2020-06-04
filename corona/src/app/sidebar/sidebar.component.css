@@ -59,6 +59,7 @@
 }
 .social-part {
   padding-right:20px;
+  display: contents;
 }
 @media (max-width: 991.98px) {
   .social-part {
