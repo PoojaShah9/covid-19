@@ -11,12 +11,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="783126e4-dc3d-4157-9b97-186a2fa8683f" name="Default Changelist" comment="new changes">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app/controllers/fighterController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/controllers/fighterController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app/routes/fighter.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/routes/fighter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/corona/src/app/home/home.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/corona/src/app/home/home.component.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/corona/src/app/home/home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/corona/src/app/home/home.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/corona/src/app/home/home.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/corona/src/app/home/home.component.ts" afterDir="false" />
     </list>
+    <list id="b44d15f4-d93e-4af1-8d00-ff49b7186687" name="Revert &quot;set tagline&quot;" comment="Revert &quot;set tagline&quot;&#10;&#10;This reverts commit 9058e229" />
+    <list id="3e9e14e4-adf1-4ce3-b71f-ae4de3e5daac" name="set tagline" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,7 +27,7 @@
         <option value="poojaShah &lt;shah.developer9@gmail.com&gt;" />
       </list>
     </option>
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/backend" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1aqJjMYzubuiuqcOVx1TLfCnQO3" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -235,12 +234,14 @@
     <MESSAGE value="admin site final" />
     <MESSAGE value="all admin" />
     <MESSAGE value="new changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="new changes" />
+    <MESSAGE value="set tagline" />
+    <option name="LAST_COMMIT_MESSAGE" value="set tagline" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1588400774336">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="289" y="0" key="CommitChangelistDialog2" timestamp="1594361158195">
+      <screen x="0" y="0" width="1280" height="728" />
     </state>
+    <state x="289" y="0" key="CommitChangelistDialog2/0.0.1280.728@0.0.1280.728" timestamp="1594361158195" />
     <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1588400774336" />
     <state width="542" height="466" key="DebuggerActiveHint" timestamp="1587462377547">
       <screen x="0" y="0" width="1366" height="728" />
@@ -322,9 +323,14 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="483" y="66" key="RollbackChangesDialog/0.0.1366.728@0.0.1366.728" timestamp="1588079751488" />
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1588400779272">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="487" y="277" key="VCS.ChangelistChooser" timestamp="1594361189981">
+      <screen x="0" y="0" width="1280" height="728" />
     </state>
+    <state x="487" y="277" key="VCS.ChangelistChooser/0.0.1280.728@0.0.1280.728" timestamp="1594361189981" />
+    <state x="258" y="97" key="Vcs.Push.Dialog.v2" timestamp="1594361052639">
+      <screen x="0" y="0" width="1280" height="728" />
+    </state>
+    <state x="258" y="97" key="Vcs.Push.Dialog.v2/0.0.1280.728@0.0.1280.728" timestamp="1594361052639" />
     <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1588400779272" />
     <state x="92" y="92" width="1182" height="544" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1588065991499">
       <screen x="0" y="0" width="1366" height="728" />
@@ -353,7 +359,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/corona/src/app/home/home.component.html</url>
-          <line>58</line>
+          <line>59</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
