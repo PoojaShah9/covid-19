@@ -336,8 +336,9 @@ let getfightergetByCountry = (req, res) => {
             console.log('page', page);
 
             if (req.query.country) {
-                body['country'] = (req.query.country).toLowerCase();
+                body['country'] = {$regex: '.*' + req.query.country.toLowerCase() + '.*'}; // (req.query.country).toLowerCase();
             }
+            console.log('body', body);
             Fighters.find(body)
                 .skip(page)
                 .limit(limit)
