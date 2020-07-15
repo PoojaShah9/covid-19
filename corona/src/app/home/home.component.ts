@@ -709,4 +709,20 @@ export class HomeComponent implements OnInit {
       this.getFighter(this.cntName, 0, this.limit);
     }
   }
+
+  readMore() {
+    let dots = document.getElementById("dots");
+    let moreText = document.getElementById("more");
+    let btnText = document.getElementById("myBtn");
+
+    if (dots.style.display === "none") {
+      dots.style.display = "inline";
+      btnText.innerHTML = "Read more <i class=\"fa fa-angle-double-right\" aria-hidden=\"true\"></i>";
+      moreText.style.display = "none";
+    } else {
+      dots.style.display = "none";
+      btnText.innerHTML = "Read less <i class=\"fa fa-angle-double-right\" aria-hidden=\"true\"></i>";
+      moreText.style.display = "inline";
+    }
+  }
 }

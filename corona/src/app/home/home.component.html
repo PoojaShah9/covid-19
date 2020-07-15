@@ -13,14 +13,15 @@
             <!--            <h2 class="mb-3 bread">Corona Champion</h2>-->
             <p class="custom-tag">A tribute to the real heroes who gave their life to save ours in fight against the
               COVID-19.
-              Thru we Covid Champions we are trying to Inspire the world by bringing forward the face of so many great
+              Thru we Covid <span id="dots">...</span><span id="more">Champions we are trying to Inspire the world by bringing forward the face of so many great
               souls who gave their life to protect us. This is a small attempt to provide an opportunity for remembering
               them forever.
               The solidarity you share here thru Covid Champions would give the families of these great people a hope
-              and encouragement. </p>
+                and encouragement. </span></p>
+            <button class="btn myBtn" (click)="readMore()" id="myBtn">Read more <i class="fa fa-angle-double-right" aria-hidden="true"></i></button>
           </div>
           <div class="col-md-12 row ftco-animate fadeInUp ftco-animated">
-            <div class="col-md-9 ftco-animate fadeInUp ftco-animated">
+            <div class="col-md-9 ftco-animate fadeInUp ftco-animated" style="z-index: 1">
               <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                 <div class="nav-item dropdown">
                   <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"
@@ -45,7 +46,7 @@
               </ul>
             </div>
             <div class="col-md-3 ftco-animate fadeInUp ftco-animated">
-              <div class="form-group has-search float-right">
+              <div class="form-group has-search">
                 <div class="input-group">
                   <input class="form-control py-2" type="search" name="searchName" placeholder="Search By Name"
                          [(ngModel)]="searchName" (keyup)="onSearchNameChange()" id="example-search-input">

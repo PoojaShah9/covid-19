@@ -369,6 +369,23 @@ body::-webkit-scrollbar {
   .modal {
     overflow: scroll;
   }
+
+  #more {
+    display: none;
+  }
+
+  .myBtn{
+    display: block !important;
+  }
+
+  #myBtn {
+    background: unset;
+  }
+
+}
+
+.myBtn{
+  display: none;
 }
 
 .ges-location-from .form-group label, .total-wrap .form-group {
@@ -417,11 +434,19 @@ body::-webkit-scrollbar {
   }
 }
 
-.custom-tag {
+/*.custom-tag {
   color: #7c795d;
   font-family: 'Trocchi', serif;
   font-size: 30px;
   font-weight: normal;
   line-height: 48px;
   margin: 0;
+}*/
+.custom-tag {
+  color: #342929;
+  font-family: Trocchi,serif;
+  font-size: 18px;
+  /* font-weight: 350; */
+  line-height: 26px;
+  /* margin: 0; */
 }
