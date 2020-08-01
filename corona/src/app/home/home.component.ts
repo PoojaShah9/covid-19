@@ -287,6 +287,8 @@ export class HomeComponent implements OnInit {
   tabName = '#tab01';
   json: any = {};
   arrayNull = 0;
+  msgdisplay;
+  btnText = 'Read more';
 
   constructor(private fighterService: FightersService,
               private route: ActivatedRoute,
@@ -707,6 +709,16 @@ export class HomeComponent implements OnInit {
     if (this.searchName === '') {
       this.fighterData = [];
       this.getFighter(this.cntName, 0, this.limit);
+    }
+  }
+
+  readMore(text) {
+    if (text === 'Read more') {
+      this.msgdisplay = 'unset';
+      this.btnText = 'Read less';
+    } else {
+      this.msgdisplay = '-webkit-box';
+      this.btnText = 'Read more';
     }
   }
 }

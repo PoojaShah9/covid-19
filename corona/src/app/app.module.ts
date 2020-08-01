@@ -17,10 +17,13 @@ import {ngxLoadingAnimationTypes, NgxLoadingModule} from 'ngx-loading';
 import {FormsModule} from "@angular/forms";
 import {PaymentComponent} from './payment/payment.component';
 import {NgxPaginationModule} from 'ngx-pagination';
-import {InfiniteScrollModule} from "ngx-infinite-scroll";
+import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 import { DonationComponent } from './donation/donation.component';
-import {CacheInterceptor} from "./services/cache.interceptor";
+import {CacheInterceptor} from './services/cache.interceptor';
 import { DeferLoadModule } from '@trademe/ng-defer-load';
+import { ToastrModule } from 'ngx-toastr';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {CommonModule} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -43,8 +46,11 @@ import { DeferLoadModule } from '@trademe/ng-defer-load';
     HttpClientModule,
     ShareModule,
     FormsModule,
+    CommonModule,
     InfiniteScrollModule,
     NgxPaginationModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     NgxLoadingModule.forRoot({
       animationType: ngxLoadingAnimationTypes.threeBounce,
       backdropBackgroundColour: 'rgba(1,1,1,0.57)',

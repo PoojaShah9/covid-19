@@ -36,6 +36,8 @@
     "ngx-loading": "^8.0.0",
     "ngx-pagination": "^5.0.0",
     "ngx-stripe": "^9.0.2",
+    "ngx-toastr": "^13.0.0",
+    "resolve-url": "^0.2.1",
     "rxjs": "~6.5.4",
     "save": "^2.4.0",
     "tslib": "^1.10.0",

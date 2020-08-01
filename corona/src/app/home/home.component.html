@@ -9,48 +9,56 @@
     <section class="ftco-section bg-light ftco-bread" style="z-index: 1">
       <div class="container">
         <div class="row no-gutters slider-text align-items-center">
-          <div class="col-md-9 ftco-animate fadeInUp ftco-animated">
+          <div class="col-md-12 ftco-animate fadeInUp ftco-animated">
             <!--            <h2 class="mb-3 bread">Corona Champion</h2>-->
-            <p class="custom-tag">A tribute to the real heroes who gave their life to save ours in fight against the COVID-19.
-              Thru we Covid Champions we are trying to Inspire the world by bringing forward the face of so many great souls who gave their life to protect us. This is a small attempt to provide an opportunity for remembering them forever.
-              The solidarity you share here thru Covid Champions would give the families of these great people a hope and encouragement. </p>
-
-            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-              <div class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"
-                   [ngClass]="{'active': changeClass === false}">Country</a>
-                <div class="dropdown-menu">
-                  <a (click)="onTabClick('USA')" class="dropdown-item">USA</a>
-                  <a (click)="onTabClick('UK')" class="dropdown-item">UK</a>
-                  <a (click)="onTabClick('Europe')" class="dropdown-item">Europe</a>
-                  <a (click)="onTabClick('Australia')" class="dropdown-item">Australia</a>
-                </div>
-              </div>
-              <!--<li class="nav-item">
-                <a class="nav-link" id="country-tab" data-toggle="pill" href="#country" role="tab"
-                   (click)="onTabClick('country')" aria-controls="country" aria-selected="false">Country</a>
-              </li>-->
-              <li class="nav-item">
-                <a class="nav-link" id="showall-tab" data-toggle="pill" href="#showall"
-                   [ngClass]="{'active': changeClass === true}"
-                   (click)="onTabClick('world')"
-                   role="tab" aria-controls="showall" aria-selected="true">World wide</a>
-              </li>
-            </ul>
+            <p class="custom-tag" [ngStyle]="{display: msgdisplay}">A tribute to the real heroes who gave their life to save ours in fight against the
+              COVID-19.
+              Thru we Covid Champions we are trying to Inspire the world by bringing forward the face of so many great
+              souls who gave their life to protect us. This is a small attempt to provide an opportunity for remembering
+              them forever. The solidarity you share here thru Covid Champions would give the families of these great people a hope
+              and encouragement.</p>
+            <button class="btn myBtn" (click)="readMore(btnText)" id="myBtn">{{btnText}} <i class="fa fa-angle-double-right" aria-hidden="true"></i></button>
           </div>
-
-          <div class="col-md-3 ftco-animate fadeInUp ftco-animated">
-            <div class="form-group has-search float-right">
-              <div class="input-group">
-                <input class="form-control py-2" type="search" name="searchName" placeholder="Search By Name" [(ngModel)]="searchName" (keyup)="onSearchNameChange()" id="example-search-input">
-                <span class="input-group-append" (click)="searchByName()">
-                  <button class="btn" style="border-bottom: 1px solid gray;" type="button" >
+          <div class="col-md-12 row ftco-animate fadeInUp ftco-animated">
+            <div class="col-md-9 ftco-animate fadeInUp ftco-animated" style="z-index: 1">
+              <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                <div class="nav-item dropdown">
+                  <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"
+                     [ngClass]="{'active': changeClass === false}">Country</a>
+                  <div class="dropdown-menu">
+                    <a (click)="onTabClick('USA')" class="dropdown-item">USA</a>
+                    <a (click)="onTabClick('UK')" class="dropdown-item">UK</a>
+                    <a (click)="onTabClick('Europe')" class="dropdown-item">Europe</a>
+                    <a (click)="onTabClick('Australia')" class="dropdown-item">Australia</a>
+                  </div>
+                </div>
+                <!--<li class="nav-item">
+                  <a class="nav-link" id="country-tab" data-toggle="pill" href="#country" role="tab"
+                     (click)="onTabClick('country')" aria-controls="country" aria-selected="false">Country</a>
+                </li>-->
+                <li class="nav-item">
+                  <a class="nav-link" id="showall-tab" data-toggle="pill" href="#showall"
+                     [ngClass]="{'active': changeClass === true}"
+                     (click)="onTabClick('world')"
+                     role="tab" aria-controls="showall" aria-selected="true">World wide</a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-3 ftco-animate fadeInUp ftco-animated">
+              <div class="form-group has-search">
+                <div class="input-group">
+                  <input class="form-control py-2" type="search" name="searchName" placeholder="Search By Name"
+                         [(ngModel)]="searchName" (keyup)="onSearchNameChange()" id="example-search-input">
+                  <span class="input-group-append" (click)="searchByName()">
+                  <button class="btn" style="border-bottom: 1px solid gray;" type="button">
                       <i class="fa fa-search"></i>
                   </button>
                 </span>
+                </div>
               </div>
             </div>
           </div>
+
           <!--<div class="col-md-3 ftco-animate fadeInUp ftco-animated">
             <div class="form-group has-search float-right">
               <span class="icon-search form-control-feedback"></span>
@@ -209,7 +217,8 @@
                     <div class="images">
                       <img src="{{currentFighter.link}}" class="custom-img"/>
                       <div class="img-div">
-                        <button class="btn btn-sm" [ngClass]="(btnColor && currentFighter.flag)?'btn-danger':'btn-default'"
+                        <button class="btn btn-sm"
+                                [ngClass]="(btnColor && currentFighter.flag)?'btn-danger':'btn-default'"
                                 style="border-radius: 10%;margin: 5px;float: left;"
                                 (click)="onLikeClick(currentFighter)">
                           <img src="./../../assets/images/mediamodifier_cropped_image.png"
