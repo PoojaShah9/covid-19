@@ -143,7 +143,7 @@ mongoose.connection.on('open', function (err) {
         //     'database connection open handler', 10)
     }
     //process.exit(1)
-}); // enr mongoose connection o
+}); // enr mongoose connection on
 
 module.exports = app;
 
